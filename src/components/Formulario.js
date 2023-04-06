@@ -18,15 +18,13 @@ function Formulario() {
     return obj;
   }, {});
 
-  const preguntasSinAntecesor = preguntas.filter(
-    (pregunta) => !pregunta.antecesor
-  );
-
-  const preguntasFiltradas = preguntasSinAntecesor.filter((pregunta) => {
+  const preguntasFiltradas = preguntas.filter((pregunta) => {
     if (!pregunta.antecesor) return true;
     const antecesor = preguntas.find((p) => p.id === pregunta.antecesor);
-    return antecesor.respuesta;
+    const respuestaAntecesor = respuestas[antecesor.id];
+    return respuestaAntecesor === true;
   });
+  
 
   return (
     <div>

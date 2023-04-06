@@ -1,42 +1,90 @@
 [
   {
-    "id": 1,
-    "enunciado": "¿Respuesta 1 d-1?",
-    "dimension": "Dimensión 1",
+    "id": 11,
+    "enunciado": "Cuentan con herramientas que permitan el almacenamiento estructurado de datos",
+    "dimension": "Tecnología",
     "nivel": 1,
     "respuesta": null,
     "antecesor": null
   },
   {
-    "id": 2,
-    "enunciado": "¿Respuesta 2 d-1?",
-    "dimension": "Dimensión 1",
+    "id":111,
+    "enunciado": "La organización cuenta con un plan de gestión de datos e incluye la definición de herramientas y tecnologías específicas para el manejo de los datos",
+    "dimension": "Tecnología",
     "nivel": 2,
     "respuesta": null,
-    "antecesor": 1
+    "antecesor": 11
   },
   {
-    "id": 3,
-    "enunciado": "¿Respuesta 3 d-2?",
-    "dimension": "Dimensión 2",
+    "id": 1111,
+    "enunciado": " Se están implementado tecnologías analíticas para facilitar la recolección y compartición de datos a través de las funciones",
+    "dimension": "Tecnología",
+    "nivel": 3,
+    "respuesta": null,
+    "antecesor": 111
+  },
+  {
+    "id": 11111,
+    "enunciado": "Los resultados del análisis de datos guían posibles acciones y decisiones estratégicas",
+    "dimension": "Tecnología",
+    "nivel": 4,
+    "respuesta": null,
+    "antecesor": 1111
+  },
+  {
+    "id": 111111,
+    "enunciado": "Las tecnologías como el análisis avanzado de datos respaldan los procesos de innovación en toda la empresa, desde el desarrollo de nuevos servicios hasta la garantía del servicio y la atención al cliente.",
+    "dimension": "Tecnología",
+    "nivel": 5,
+    "respuesta": null,
+    "antecesor": 11111
+  },
+{
+    "id": 12,
+    "enunciado": "Los equipos de su organización cuentan con un antivirus actualizado y los empleados cuentan con un usr y contraseña para ingresar a los equipos.",
+    "dimension": "Tecnología",
     "nivel": 1,
     "respuesta": null,
     "antecesor": null
   },
-  {
-    "id": 4,
-    "enunciado": "¿Respuesta 4 d-3?",
-    "dimension": "Dimensión 3",
-    "nivel": 1,
+{
+    "id": 121,
+    "enunciado": "La organización cuenta con estrategias de backup, cifrado de equipos, inventario de activos",
+    "dimension": "Tecnología",
+    "nivel": 2,
     "respuesta": null,
-    "antecesor": null
+    "antecesor": 12
   },
-  {
-    "id": 5,
-    "enunciado": "¿Respuesta 5 d-1?",
-    "dimension": "Dimensión 1",
-    "nivel": 1,
+{
+    "id": 1211,
+    "enunciado": "La organización cuenta con una politica de seguridad de la información, personal y herramientas para su cumplimiento",
+    "dimension": "Tecnología",
+    "nivel": 3,
     "respuesta": null,
-    "antecesor": 1
+    "antecesor": 121
+  },
+{
+    "id": 1212,
+    "enunciado": "Se cuenta con responsabilidades y roles de seguridad de la información definidos",
+    "dimension": "Tecnología",
+    "nivel": 3,
+    "respuesta": null,
+    "antecesor": 121
+  },
+{
+    "id": 12111,
+    "enunciado": "La organización realiza actividades de monitoreo y control sobre las herramientas de seguridad orientadas a datos, acceso y activos tecnologícos",
+    "dimension": "Tecnología",
+    "nivel": 4,
+    "respuesta": null,
+    "antecesor": 1211
+  },
+{
+    "id": 121111,
+    "enunciado": "La organización cuenta una sólida estrategia de ciberseguridad que soporte los objetivos estratégicos de la organización protegiendo sus sistemas y datos de posibles amenazas y ataques cibernéticos.",
+    "dimension": "Tecnología",
+    "nivel": 5,
+    "respuesta": null,
+    "antecesor": 12111
   }
 ]
