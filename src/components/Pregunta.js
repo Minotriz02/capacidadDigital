@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../assets/css/Pregunta.css";
 
 function Pregunta({ pregunta, respuesta, handleRespuesta }) {
   const [respondido, setRespondido] = useState(false);
@@ -10,7 +11,7 @@ function Pregunta({ pregunta, respuesta, handleRespuesta }) {
 
   return (
     <div className={`pregunta ${pregunta.dimension}`}>
-      <h3>{pregunta.enunciado}</h3>
+      <h5>{pregunta.enunciado}</h5>
       <div className="opciones">
         <button
           className={`opcion ${respuesta === true ? "seleccionado" : ""}`}
@@ -20,7 +21,7 @@ function Pregunta({ pregunta, respuesta, handleRespuesta }) {
           Sí
         </button>
         <button
-          className={`opcion ${respuesta === false ? "seleccionado" : ""}`}
+          className={`opcion ${respuesta === false ? "no seleccionado" : ""}`}
           disabled={respondido}
           onClick={() => handleSeleccion(false)}
         >
