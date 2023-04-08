@@ -1,90 +1,770 @@
 [
   {
     "id": 11,
-    "enunciado": "Cuentan con herramientas que permitan el almacenamiento estructurado de datos",
-    "dimension": "Tecnología",
+    "enunciado": "¿La organización cuenta con un plan estratégico que incluya una estrategia digital?",
+    "dimension": "Estrategia",
     "nivel": 1,
     "respuesta": null,
     "antecesor": null
   },
   {
-    "id": 111,
-    "enunciado": "La organización cuenta con un plan de gestión de datos e incluye la definición de herramientas y tecnologías específicas para el manejo de los datos",
-    "dimension": "Tecnología",
+    "id":111,
+    "enunciado": "¿La estrategia digital de la organización tiene una influencia significativa en los modelos operativos y de negocios existentes?",
+    "dimension": "Estrategia",
     "nivel": 2,
     "respuesta": null,
     "antecesor": 11
   },
   {
     "id": 1111,
-    "enunciado": " Se están implementado tecnologías analíticas para facilitar la recolección y compartición de datos a través de las funciones",
-    "dimension": "Tecnología",
+    "enunciado": "¿Se están haciendo inversiones en integración y desarrollo de capacidades no sólo para habilitar, sino para acelerar y reducir los costos de la creación de servicios digitales?",
+    "dimension": "Estrategia",
     "nivel": 3,
     "respuesta": null,
     "antecesor": 111
   },
   {
     "id": 11111,
-    "enunciado": "Los resultados del análisis de datos guían posibles acciones y decisiones estratégicas",
-    "dimension": "Tecnología",
+    "enunciado": "¿En la organización los nuevos modelos de negocio se implementan con elementos completamente digitales?",
+    "dimension": "Estrategia",
     "nivel": 4,
     "respuesta": null,
     "antecesor": 1111
   },
   {
     "id": 111111,
-    "enunciado": "Las tecnologías como el análisis avanzado de datos respaldan los procesos de innovación en toda la empresa, desde el desarrollo de nuevos servicios hasta la garantía del servicio y la atención al cliente.",
-    "dimension": "Tecnología",
+    "enunciado": "¿Los ingresos por negocios digitales permiten una inversión constante en nuevas iniciativas digitales?",
+    "dimension": "Estrategia",
     "nivel": 5,
     "respuesta": null,
     "antecesor": 11111
   },
   {
-    "id": 12,
-    "enunciado": "Los equipos de su organización cuentan con un antivirus actualizado y los empleados cuentan con un usr y contraseña para ingresar a los equipos.",
+    "id": 21,
+    "enunciado": "¿La organización cuenta con objetivos definidos en transformación digital?",
+    "dimension": "Gobernanza y liderazgo",
+    "nivel": 1,
+    "respuesta": null,
+    "antecesor": null
+  },
+  {
+    "id":211,
+    "enunciado": "¿Se han identificado líderes clave dentro de su organización o externos para guiar los esfuerzos orientados hacia la transformación digital?",
+    "dimension": "Gobernanza y liderazgo",
+    "nivel": 2,
+    "respuesta": null,
+    "antecesor": 21
+  },
+  {
+    "id": 2111,
+    "enunciado": "¿Se ha designado presupuesto para las iniciativas de transformación digital y se identifican roles y responsabilidades?",
+    "dimension": "Gobernanza y liderazgo",
+    "nivel": 3,
+    "respuesta": null,
+    "antecesor": 211
+  },
+  {
+    "id": 21111,
+    "enunciado": "¿En el presupuesto estratégico de la organización se cuenta con un ítem destinado para el área de Transformación digital?",
+    "dimension": "Gobernanza y liderazgo",
+    "nivel": 4,
+    "respuesta": null,
+    "antecesor": 2111
+  },
+  {
+    "id": 211111,
+    "enunciado": "¿Se identifica una oficina o área de transformación digital con sus roles, responsabilidades;  política documentada, socializada y asumida por el equipo corporativo de la organización?",
+    "dimension": "Gobernanza y liderazgo",
+    "nivel": 5,
+    "respuesta": null,
+    "antecesor": 21111
+  },
+ {
+    "id":212,
+    "enunciado": "¿La organización cuenta con planes de acción orientados al cumplimiento de los objetivos de transformación digital?",
+    "dimension": "Gobernanza y liderazgo",
+    "nivel": 2,
+    "respuesta": null,
+    "antecesor": 21
+  },
+  {
+    "id": 2121,
+    "enunciado": "¿En la organización se están ejecutando esfuerzos organizados en proyectos orientados a la Transformación Digital?",
+    "dimension": "Gobernanza y liderazgo",
+    "nivel": 3,
+    "respuesta": null,
+    "antecesor": 212
+  },
+  {
+    "id": 21211,
+    "enunciado": "¿Se identifican KPIs sobre los proyectos o iniciativas orientados a monitorear el cumplimiento de los objetivos de transformación digital?",
+    "dimension": "Gobernanza y liderazgo",
+    "nivel": 4,
+    "respuesta": null,
+    "antecesor": 2121
+  },
+  {
+    "id": 2122,
+    "enunciado": "¿Se definen indicadores, métricas y objetivos digitales para toda la empresa?",
+    "dimension": "Gobernanza y liderazgo",
+    "nivel": 3,
+    "respuesta": null,
+    "antecesor": 212
+  },
+  {
+    "id": 21221,
+    "enunciado": "¿Se revisan periódicamente los objetivos de transformación digital?",
+    "dimension": "Gobernanza y liderazgo",
+    "nivel": 4,
+    "respuesta": null,
+    "antecesor": 2122
+  },
+  {
+    "id": 212111,
+    "enunciado": "¿Se generan acciones de mejoramiento sobre la oficina/área de transformación digital a partir de los KPIs evaluados?",
+    "dimension": "Gobernanza y liderazgo",
+    "nivel": 5,
+    "respuesta": null,
+    "antecesor": 21211 
+  },
+   {
+    "id": 22,
+    "enunciado": "¿Los líderes de la organización están interesados en un cambio orientado a la transformación digital?",
+    "dimension": "Gobernanza y liderazgo",
+    "nivel": 1,
+    "respuesta": null,
+    "antecesor": null
+  },
+  {
+    "id":221,
+    "enunciado": "¿Los líderes de la organización incentivan el empoderamiento y confianza en los equipos para el logro de los resultados?",
+    "dimension": "Gobernanza y liderazgo",
+    "nivel": 2,
+    "respuesta": null,
+    "antecesor": 22
+  },
+  {
+    "id": 2211,
+    "enunciado": "¿La organización comienza a trabajar en alcanzar una estructura de liderazgo distribuido y fomentar el trabajo colaborativo?",
+    "dimension": "Gobernanza y liderazgo",
+    "nivel": 3,
+    "respuesta": null,
+    "antecesor": 221
+  },
+  {
+    "id": 22111,
+    "enunciado": "¿La organización cuenta con equipos multifuncionales bajo la guía de lideres facultativos?",
+    "dimension": "Gobernanza y liderazgo",
+    "nivel": 4,
+    "respuesta": null,
+    "antecesor": 2211
+  },
+  {
+    "id": 221111,
+    "enunciado": "¿Los líderes son expertos en relaciones, manejo de células y autónomos en la toma de decisiones?",
+    "dimension": "Gobernanza y liderazgo",
+    "nivel": 5,
+    "respuesta": null,
+    "antecesor": 22111
+  },
+  {
+    "id": 31,
+    "enunciado": "¿Cuentan con herramientas que permitan el almacenamiento estructurado de datos?",
     "dimension": "Tecnología",
     "nivel": 1,
     "respuesta": null,
     "antecesor": null
   },
   {
-    "id": 121,
-    "enunciado": "La organización cuenta con estrategias de backup, cifrado de equipos, inventario de activos",
+    "id":311,
+    "enunciado": "¿La organización cuenta con un plan de gestión de datos e incluye la definición de herramientas y tecnologías específicas para el manejo de los datos?",
     "dimension": "Tecnología",
     "nivel": 2,
     "respuesta": null,
-    "antecesor": 12
+    "antecesor": 31
   },
   {
-    "id": 1211,
-    "enunciado": "La organización cuenta con una politica de seguridad de la información, personal y herramientas para su cumplimiento",
+    "id": 3111,
+    "enunciado": "¿Se están implementado tecnologías analíticas para facilitar la recolección y compartición de datos a través de las funciones?",
     "dimension": "Tecnología",
     "nivel": 3,
     "respuesta": null,
-    "antecesor": 121
+    "antecesor": 311
   },
   {
-    "id": 1212,
-    "enunciado": "Se cuenta con responsabilidades y roles de seguridad de la información definidos",
-    "dimension": "Tecnología",
-    "nivel": 3,
-    "respuesta": null,
-    "antecesor": 121
-  },
-  {
-    "id": 12111,
-    "enunciado": "La organización realiza actividades de monitoreo y control sobre las herramientas de seguridad orientadas a datos, acceso y activos tecnologícos",
+    "id": 31111,
+    "enunciado": "¿Los resultados del análisis de datos guían posibles acciones y decisiones estratégicas?",
     "dimension": "Tecnología",
     "nivel": 4,
     "respuesta": null,
-    "antecesor": 1211
+    "antecesor": 3111
   },
   {
-    "id": 121111,
-    "enunciado": "La organización cuenta una sólida estrategia de ciberseguridad que soporte los objetivos estratégicos de la organización protegiendo sus sistemas y datos de posibles amenazas y ataques cibernéticos.",
+    "id": 311111,
+    "enunciado": "¿Las tecnologías como el análisis avanzado de datos respaldan los procesos de innovación en toda la empresa, desde el desarrollo de nuevos servicios hasta la garantía del servicio y la atención al cliente?",
     "dimension": "Tecnología",
     "nivel": 5,
     "respuesta": null,
-    "antecesor": 12111
+    "antecesor": 31111
+  },
+  {
+    "id": 32,
+    "enunciado": "¿Los equipos de su organización cuentan con un antivirus actualizado y los empleados cuentan con usuario y contraseña para ingresar a los equipos?",
+    "dimension": "Tecnología",
+    "nivel": 1,
+    "respuesta": null,
+    "antecesor": null
+  },
+{
+    "id": 321,
+    "enunciado": "¿La organización cuenta con estrategias de backup, cifrado e inventario de activos?",
+    "dimension": "Tecnología",
+    "nivel": 2,
+    "respuesta": null,
+    "antecesor": 32
+  },
+{
+    "id": 3211,
+    "enunciado": "¿La organización cuenta con una política de seguridad de la información, personal y herramientas para su cumplimiento?",
+    "dimension": "Tecnología",
+    "nivel": 3,
+    "respuesta": null,
+    "antecesor": 321
+  },
+{
+    "id": 3212,
+    "enunciado": "¿La organización cuenta con responsabilidades y roles de seguridad de la información definidos?",
+    "dimension": "Tecnología",
+    "nivel": 3,
+    "respuesta": null,
+    "antecesor": 321
+  },
+{
+    "id": 32111,
+    "enunciado": "¿La organización realiza actividades de monitoreo y control sobre las herramientas de seguridad orientadas a datos, acceso y activos tecnológicos?",
+    "dimension": "Tecnología",
+    "nivel": 4,
+    "respuesta": null,
+    "antecesor": 3211
+  },
+{
+    "id": 321111,
+    "enunciado": "¿La organización cuenta una sólida estrategia de ciberseguridad que soporta los objetivos estratégicos de la organización protegiendo sus sistemas y datos, de posibles amenazas y ataques cibernéticos?",
+    "dimension": "Tecnología",
+    "nivel": 5,
+    "respuesta": null,
+    "antecesor": 32111
+  },
+{
+    "id": 33,
+    "enunciado": "¿La organización cuenta con iniciativas orientadas a la transformación de la tecnología?",
+    "dimension": "Tecnología",
+    "nivel": 1,
+    "respuesta": null,
+    "antecesor": null
+  },
+{
+    "id": 331,
+    "enunciado": "¿La organización cuenta con un responsable o área de tecnología encargada?",
+    "dimension": "Tecnología",
+    "nivel": 2,
+    "respuesta": null,
+    "antecesor": 33
+  },
+{
+    "id": 3311,
+    "enunciado": "¿El área de tecnología cuenta con indicadores orientados a evaluar el cumplimiento de los  objetivos de TI?",
+    "dimension": "Tecnología",
+    "nivel": 3,
+    "respuesta": null,
+    "antecesor": 331
+  },
+{
+    "id": 33111,
+    "enunciado": "¿La estrategia de TI esta alineada con la estrategia del negocio maximizando su inversión'",
+    "dimension": "Tecnología",
+    "nivel": 4,
+    "respuesta": null,
+    "antecesor": 3311
+  },
+{
+    "id": 331111,
+    "enunciado": "¿La organización cuenta con un departamento de tecnología alineado con la transformación digital y los objetivos estratégicos?",
+    "dimension": "Tecnología",
+    "nivel": 5,
+    "respuesta": null,
+    "antecesor": 33111
+  },
+   {
+    "id": 34,
+    "enunciado": "¿En la organización se usan herramientas de gestión colaborativa?",
+    "dimension": "Tecnología",
+    "nivel": 1,
+    "respuesta": null,
+    "antecesor": null
+  },
+  {
+    "id":341,
+    "enunciado": "¿La organización cuenta con herramientas que permitan la videoconferencia y uso compartido de pantalla?",
+    "dimension": "Tecnología",
+    "nivel": 2,
+    "respuesta": null,
+    "antecesor": 34
+  },
+  {
+    "id": 3411,
+    "enunciado": "¿Se usa tecnología que permita la colaboración en tiempo real entre los colaboradores, independientemente de su ubicación geográfica?",
+    "dimension": "Tecnología",
+    "nivel": 3,
+    "respuesta": null,
+    "antecesor": 341
+  },
+  {
+    "id": 34111,
+    "enunciado": "¿Las herramientas colaborativas usadas en la organización cuentan con integración a herramientas de análisis, seguimiento de datos y uso con el fin de generar indicadores de uso y apropiación?",
+    "dimension": "Tecnología",
+    "nivel": 4,
+    "respuesta": null,
+    "antecesor": 3411
+  },
+  {
+    "id": 341111,
+    "enunciado": "¿La gestión colaborativa adoptada por la organización impulsa a que la organización sea mas productiva y competitiva?",
+    "dimension": "Tecnología",
+    "nivel": 5,
+    "respuesta": null,
+    "antecesor": 34111
+  },
+   {
+    "id": 41,
+    "enunciado": "¿La organización cuenta con procesos definidos y documentados?",
+    "dimension": "Procesos",
+    "nivel": 1,
+    "respuesta": null,
+    "antecesor": null
+  },
+  {
+    "id":411,
+    "enunciado": "¿Han comenzado esfuerzos orientados a la evaluación y digitalización de los procesos clave de la organización?",
+    "dimension": "Procesos",
+    "nivel": 2,
+    "respuesta": null,
+    "antecesor": 41
+  },
+  {
+    "id": 4111,
+    "enunciado": "¿En la organización se está implementando automatización de procesos end-to-end para soportar servicios digitales?",
+    "dimension": "Procesos",
+    "nivel": 3,
+    "respuesta": null,
+    "antecesor": 411
+  },
+  {
+    "id": 41111,
+    "enunciado": "¿En la organización está siendo usada la automatización de procesos con procesamiento de datos en tiempo real para tomar decisiones de forma proactiva?",
+    "dimension": "Procesos",
+    "nivel": 4,
+    "respuesta": null,
+    "antecesor": 4111
+  },
+  {
+    "id": 411111,
+    "enunciado": "¿En la organización la automatización impulsa un rendimiento superior comparada con otros pares de la industria?",
+    "dimension": "Procesos",
+    "nivel": 5,
+    "respuesta": null,
+    "antecesor": 41111
+  },
+  {
+    "id":421,
+    "enunciado": "¿En la organización se han identificado iniciativas para actualizar los procesos del negocio que soportan servicios digitales?",
+    "dimension": "Procesos",
+    "nivel": 2,
+    "respuesta": null,
+    "antecesor": 41
+  },
+  {
+    "id": 4211,
+    "enunciado": "¿Se están diseñando e implementando procesos y políticas para soportar mejor los servicios digitales en algunas áreas de la organización?",
+    "dimension": "Procesos",
+    "nivel": 3,
+    "respuesta": null,
+    "antecesor": 421
+  },
+  {
+    "id": 42111,
+    "enunciado": "¿En la organización los servicios digitales y tradicionales comparten procesos y se cuenta con métricas e indicadores clave (KPIs) específicos?",
+    "dimension": "Procesos",
+    "nivel": 4,
+    "respuesta": null,
+    "antecesor": 4211
+  },
+  {
+    "id": 421111,
+    "enunciado": "¿En la organización los procesos son maduros y comienzan a producir innovaciones en productos y servicios digitales?",
+    "dimension": "Procesos",
+    "nivel": 5,
+    "respuesta": null,
+    "antecesor": 42111
+  },
+  {
+    "id":431,
+    "enunciado": "¿En la organización se han identificado los procesos que son críticos para la satisfacción del cliente.?",
+    "dimension": "Procesos",
+    "nivel": 2,
+    "respuesta": null,
+    "antecesor": 41
+  },
+  {
+    "id": 4311,
+    "enunciado": "¿En la organización se cuenta con indicadores en los procesos que interactúan con los clientes, orientados a evaluar si el proceso esta diseñado para satisfacer las necesidades y expectativas del cliente.?",
+    "dimension": "Procesos",
+    "nivel": 3,
+    "respuesta": null,
+    "antecesor": 431
+  },
+  {
+    "id": 43111,
+    "enunciado": "¿A partir de la evaluación de los indicadores se han realizado rediseño de procesos incluyendo nuevas tecnologías y/o la creación de nuevos procedimientos que permiten mejorar la experiencia del cliente?",
+    "dimension": "Procesos",
+    "nivel": 4,
+    "respuesta": null,
+    "antecesor": 4311
+  },
+  {
+    "id": 431111,
+    "enunciado": "¿En la organización Los procesos están centrados en el cliente de tal manera que se refleja aumento de ventas, retención de clientes y disminución en tiempos de respuesta al cliente?",
+    "dimension": "Procesos",
+    "nivel": 5,
+    "respuesta": null,
+    "antecesor": 43111
+  },
+  {
+    "id": 51,
+    "enunciado": "¿La organización cuenta con información almacenada y clasificada de sus clientes?",
+    "dimension": "Cliente",
+    "nivel": 1,
+    "respuesta": null,
+    "antecesor": null
+  },
+  {
+    "id":511,
+    "enunciado": "¿En la organización se ha identificado la necesidad de contar con una visión omnicanal?",
+    "dimension": "Cliente",
+    "nivel": 2,
+    "respuesta": null,
+    "antecesor": 51
+  },
+  {
+    "id": 5111,
+    "enunciado": "¿En la organización una visión omnicanal está en ejecución en todas las operaciones orientadas al cliente?",
+    "dimension": "Cliente",
+    "nivel": 3,
+    "respuesta": null,
+    "antecesor": 511
+  },
+  {
+    "id": 51111,
+    "enunciado": "¿En la organización el cliente participa activamente en el diseño de nuevos productos/servicios a través de plataformas de innovación abierta?",
+    "dimension": "Cliente",
+    "nivel": 4,
+    "respuesta": null,
+    "antecesor": 5111
+  },
+  {
+    "id": 511111,
+    "enunciado": "¿En la organización nuevos servicios digitales están siendo desarrollados a partir de un conocimiento profundo del cliente y son integrados completamente desde el comienzo, a través de todos los puntos de contacto?",
+    "dimension": "Cliente",
+    "nivel": 5,
+    "respuesta": null,
+    "antecesor": 51111
+  },
+  {
+    "id":521,
+    "enunciado": "¿La organización cuenta con canales digitales integrados en los procesos de comunicación y servicio de la compañía?",
+    "dimension": "Cliente",
+    "nivel": 2,
+    "respuesta": null,
+    "antecesor": 51
+  },
+  {
+    "id": 5211,
+    "enunciado": "¿Los productos y servicios digitales están integrados en nuestras interfaces comerciales y procesos comerciales y crean un impacto perceptible en la experiencia del cliente?",
+    "dimension": "Cliente",
+    "nivel": 3,
+    "respuesta": null,
+    "antecesor": 521
+  },
+  {
+    "id": 52111,
+    "enunciado": "¿En la organización la experiencia del cliente y el uso de datos se recopilan y utilizan activamente para asistir la atención al cliente y las mejoras de servicios.?",
+    "dimension": "Cliente",
+    "nivel": 4,
+    "respuesta": null,
+    "antecesor": 5211
+  },
+  {
+    "id": 521111,
+    "enunciado": "¿La organización cuenta con comunicación digital personalizada con el cliente?",
+    "dimension": "Cliente",
+    "nivel": 5,
+    "respuesta": null,
+    "antecesor": 52111
+  },
+  {
+    "id": 53,
+    "enunciado": "¿En la organización se ha considerado la personalización de sus productos/servicios por parte de los clientes?",
+    "dimension": "Cliente",
+    "nivel": 1,
+    "respuesta": null,
+    "antecesor": null
+  },
+  {
+    "id":531,
+    "enunciado": "¿En la organización se han identificado iniciativas y requerimientos para expandir la interacción con los clientes más allá de aplicaciones básicas basadas en autosoporte?",
+    "dimension": "Cliente",
+    "nivel": 2,
+    "respuesta": null,
+    "antecesor": 53
+  },
+  {
+    "id": 5311,
+    "enunciado": "¿En la organización se están implementando nuevas características en las herramientas digitales para incentivar la participación del cliente como configurador de productos y servicios basados en web?",
+    "dimension": "Cliente",
+    "nivel": 3,
+    "respuesta": null,
+    "antecesor": 531
+  },
+  {
+    "id": 53111,
+    "enunciado": "¿En la organización las herramientas digitales y los sistemas están habilitando la personalización de servicios incluyendo productos de terceros?",
+    "dimension": "Cliente",
+    "nivel": 4,
+    "respuesta": null,
+    "antecesor": 5311
+  },
+  {
+    "id": 531111,
+    "enunciado": "¿En la organización se están usando precios dinámicos para maximizar el valor del cliente mediante la completa personalización y flexibilidad de los productos/servicios?",
+    "dimension": "Cliente",
+    "nivel": 5,
+    "respuesta": null,
+    "antecesor": 53111
+  },
+   {
+    "id": 61,
+    "enunciado": "¿En la organización los empleados están familiarizados con la tecnología o productos digitales existentes?",
+    "dimension": "Cultura",
+    "nivel": 1,
+    "respuesta": null,
+    "antecesor": null
+  },
+  {
+    "id":611,
+    "enunciado": "¿En la organización se cuenta con trabajo flexible y móvil habilitado por la tecnología digital que posee?",
+    "dimension": "Cultura",
+    "nivel": 2,
+    "respuesta": null,
+    "antecesor": 61
+  },
+  {
+    "id": 6111,
+    "enunciado": "¿En la organización la gerencia tiene una comunicación continua acerca de la estrategia digital y los avances en su implementación?",
+    "dimension": "Cultura",
+    "nivel": 3,
+    "respuesta": null,
+    "antecesor": 611
+  },
+  {
+    "id": 61111,
+    "enunciado": "¿La organización cuenta con una orientación hacia la agilidad contando con una estructura plana, permitiendo la autogestión y teniendo al cliente como centro de sus objetivos?",
+    "dimension": "Cultura",
+    "nivel": 4,
+    "respuesta": null,
+    "antecesor": 6111
+  },
+  {
+    "id": 611111,
+    "enunciado": "¿La organización es flexible y se adapta fácilmente a los cambios en el mercado de una manera más ágil que sus competidores priorizando la experiencia del cliente?",
+    "dimension": "Cultura",
+    "nivel": 5,
+    "respuesta": null,
+    "antecesor": 61111
+  },
+  {
+    "id": 62,
+    "enunciado": "¿La dirección considera al empleado como clave del éxito de la transformación digital?",
+    "dimension": "Cultura",
+    "nivel": 1,
+    "respuesta": null,
+    "antecesor": null
+  },
+  {
+    "id":621,
+    "enunciado": "¿Nuestro modelo de organización capacita y fomenta la colaboración multidisciplinaria?",
+    "dimension": "Cultura",
+    "nivel": 2,
+    "respuesta": null,
+    "antecesor": 62
+  },
+  {
+    "id": 6211,
+    "enunciado": "¿En la organización se permite a los empleados ejercer un rol de liderazgo para tomar decisiones significativas de forma transparente?",
+    "dimension": "Cultura",
+    "nivel": 3,
+    "respuesta": null,
+    "antecesor": 621
+  },
+  {
+    "id": 62111,
+    "enunciado": "¿La organización el personal tiene un alto compromiso y empoderamiento para moverse de forma rápida y ágil en la consecución de los objetivos digitales de la empresa?",
+    "dimension": "Cultura",
+    "nivel": 4,
+    "respuesta": null,
+    "antecesor": 6211
+  },
+   {
+    "id": 63,
+    "enunciado": "¿Los líderes de la organización alientan a los empleados a proponer nuevas ideas o soluciones en las diferentes situaciones del día a día?",
+    "dimension": "Cultura",
+    "nivel": 1,
+    "respuesta": null,
+    "antecesor": null
+  },
+  {
+    "id":631,
+    "enunciado": "¿En la organización se toman riesgos medidos para permitir la innovación?",
+    "dimension": "Cultura",
+    "nivel": 2,
+    "respuesta": null,
+    "antecesor": 63
+  },
+  {
+    "id": 6311,
+    "enunciado": "¿En la organización los empleados contribuyen regularmente con ideas para productos digitales?",
+    "dimension": "Cultura",
+    "nivel": 3,
+    "respuesta": null,
+    "antecesor": 631
+  },
+  {
+    "id": 63111,
+    "enunciado": "¿Se han aplicado mejoras sobre los productos y servicios de la organización a partir de las actividades de innovación de los colaboradores?",
+    "dimension": "Cultura",
+    "nivel": 4,
+    "respuesta": null,
+    "antecesor": 6311
+  },
+  {
+    "id": 631111,
+    "enunciado": "¿La organización se centra en la innovación digital y todos los empleados ejecutan la estrategia digital?",
+    "dimension": "Cultura",
+    "nivel": 5,
+    "respuesta": null,
+    "antecesor": 63111
+  },
+  {
+    "id": 64,
+    "enunciado": "¿En la organización se cuenta con iniciativas orientadas a  la innovación.?",
+    "dimension": "Cultura",
+    "nivel": 1,
+    "respuesta": null,
+    "antecesor": null
+  },
+  {
+    "id":641,
+    "enunciado": "¿En la organización se cuenta con indicadores claves de desempeño (KPI) orientados a medir  los objetivos de la innovación en la organización?",
+    "dimension": "Cultura",
+    "nivel": 2,
+    "respuesta": null,
+    "antecesor": 64
+  },
+  {
+    "id": 6411,
+    "enunciado": "¿Se monitorean los indicadores de éxito definidos y se identifican oportunidades de mejora sobre los objetivos de la innovación en la organización?",
+    "dimension": "Cultura",
+    "nivel": 3,
+    "respuesta": null,
+    "antecesor": 641
+  },
+  {
+    "id": 64111,
+    "enunciado": "¿Se aplican mejoras sobre la estrategia de innovación y/o transformación digital de la organización?",
+    "dimension": "Cultura",
+    "nivel": 4,
+    "respuesta": null,
+    "antecesor": 6411
+  },
+   {
+    "id": 71,
+    "enunciado": "¿En la organización se ha identificado la necesidad de desarrollar competencias digitales y se está definiendo un plan general para ello?",
+    "dimension": "Gente y Habilidades",
+    "nivel": 1,
+    "respuesta": null,
+    "antecesor": null
+  },
+  {
+    "id":711,
+    "enunciado": "¿En la organización las competencias digitales son evaluadas como criterio importante en el reclutamiento?",
+    "dimension": "Gente y Habilidades",
+    "nivel": 2,
+    "respuesta": null,
+    "antecesor": 71
+  },
+  {
+    "id": 7111,
+    "enunciado": "¿En la organización la experiencia digital es un componente central en el desarrollo de los empleados?",
+    "dimension": "Gente y Habilidades",
+    "nivel": 3,
+    "respuesta": null,
+    "antecesor": 711
+  },
+  {
+    "id": 71111,
+    "enunciado": "¿En la organización se han creado nuevos perfiles de trabajo para empleados con experiencia en temas centrales digitales?",
+    "dimension": "Gente y Habilidades",
+    "nivel": 4,
+    "respuesta": null,
+    "antecesor": 7111
+  },
+  {
+    "id": 711111,
+    "enunciado": "¿Las competencias digitales están embebidas en toda la organización y hace la diferencia entre los competidores?",
+    "dimension": "Gente y Habilidades",
+    "nivel": 5,
+    "respuesta": null,
+    "antecesor": 71111
+  },
+  {
+    "id":721,
+    "enunciado": "¿ La organización apoya el desarrollo de sus colaboradores fortaleciendo sus habilidades y competencias digitales  con programas de formación estándar?",
+    "dimension": "Gente y Habilidades",
+    "nivel": 2,
+    "respuesta": null,
+    "antecesor": 71
+  },
+  {
+    "id": 7211,
+    "enunciado": "¿En la organización  se están adaptando esquemas de compensación y formación para alinearse a la estrategia digital?",
+    "dimension": "Gente y Habilidades",
+    "nivel": 3,
+    "respuesta": null,
+    "antecesor": 721
+  },
+  {
+    "id": 72111,
+    "enunciado": "¿En la organización está en marcha una estrategia de desarrollo de personal bien definida, incluso para entrenar, externalizar, o adquirir competencias digitales?",
+    "dimension": "Gente y Habilidades",
+    "nivel": 4,
+    "respuesta": null,
+    "antecesor": 7211
+  },
+  {
+    "id": 721111,
+    "enunciado": "¿En la organización las competencias digitales están bien desarrolladas y se forman continuamente asociaciones para acceder a nuevas competencias?",
+    "dimension": "Gente y Habilidades",
+    "nivel": 5,
+    "respuesta": null,
+    "antecesor": 72111
   }
 ]

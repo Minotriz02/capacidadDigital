@@ -18,7 +18,7 @@ function Pregunta({ pregunta, respuesta, handleRespuesta }) {
           disabled={respondido}
           onClick={() => handleSeleccion(true)}
         >
-          Sí
+          Si
         </button>
         <button
           className={`opcion ${respuesta === false ? "no seleccionado" : ""}`}
