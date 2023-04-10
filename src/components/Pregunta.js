@@ -11,17 +11,21 @@ function Pregunta({ pregunta, respuesta, handleRespuesta }) {
 
   return (
     <div className={`pregunta ${pregunta.dimension}`}>
-      <h5>{pregunta.enunciado}</h5>
+      <p>{pregunta.enunciado}</p>
       <div className="opciones">
         <button
-          className={`opcion ${respuesta === true ? "seleccionado" : ""}`}
+          className={` btn ${
+            respuesta === true ? "btn-success" : "btn-outline-primary"
+          }`}
           disabled={respondido}
           onClick={() => handleSeleccion(true)}
         >
           Si
         </button>
         <button
-          className={`opcion ${respuesta === false ? "no seleccionado" : ""}`}
+          className={` btn ${
+            respuesta === false ? "btn-danger" : "btn-outline-primary"
+          }`}
           disabled={respondido}
           onClick={() => handleSeleccion(false)}
         >

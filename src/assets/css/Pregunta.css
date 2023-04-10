@@ -18,34 +18,3 @@
     gap: 30px;
   }
   
-  .opcion {
-    padding: 0.5rem 1rem;
-    border: 1px solid #ccc;
-    border-radius: 0.25rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-  }
-  
-  .opcion:hover {
-    background-color: #eee;
-  }
-  
-  .opcion.seleccionado {
-    background-color: #28a745;
-    color: #fff;
-    border-color: #28a745;
-  }
-  
-  .opcion.seleccionado:hover {
-    background-color: #218838;
-  }
-  .opcion.no {
-    background-color: #dc3545;
-    color: #fff;
-    border-color: #dc3545;
-  }
-  
-  .opcion.no:hover {
-    background-color: #c82333;
-  }
-  

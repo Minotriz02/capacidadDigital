@@ -125,7 +125,7 @@
     "dimension": "Gobernanza y liderazgo",
     "nivel": 5,
     "respuesta": null,
-    "antecesor": 21211 
+    "antecesor": [21211,21221] 
   },
    {
     "id": 22,
@@ -245,7 +245,7 @@
     "dimension": "Tecnología",
     "nivel": 4,
     "respuesta": null,
-    "antecesor": 3211
+    "antecesor": [3211,3212]
   },
 {
     "id": 321111,
@@ -589,7 +589,7 @@
     "dimension": "Cultura",
     "nivel": 5,
     "respuesta": null,
-    "antecesor": 61111
+    "antecesor": [61111, 62111]
   },
   {
     "id": 62,
@@ -661,7 +661,7 @@
     "dimension": "Cultura",
     "nivel": 5,
     "respuesta": null,
-    "antecesor": 63111
+    "antecesor": [63111, 64111]
   },
   {
     "id": 64,

@@ -11,6 +11,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import Accordion from "react-bootstrap/Accordion";
 import { Radar } from "react-chartjs-2";
 
 ChartJS.register(
@@ -32,6 +33,8 @@ function Formulario() {
   const [cliente, setCliente] = useState(0);
   const [cultura, setCultura] = useState(0);
   const [gente, setGente] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [nivel, setNivel] = useState("");
   const [resultShow, setResultShow] = useState(false);
 
   const preguntasPorDimension = preguntas.reduce((obj, pregunta) => {
@@ -40,11 +43,31 @@ function Formulario() {
     return obj;
   }, {});
 
+  const preguntasPorDimensionYNivel = preguntas.reduce((obj, pregunta) => {
+    obj[pregunta.dimension] = obj[pregunta.dimension] || {};
+    obj[pregunta.dimension][pregunta.nivel] = obj[pregunta.dimension][
+      pregunta.nivel
+    ] || {
+      total: 0,
+      respondidas: 0,
+    };
+    obj[pregunta.dimension][pregunta.nivel].total++;
+    if (respuestas[pregunta.id]) {
+      obj[pregunta.dimension][pregunta.nivel].respondidas++;
+    }
+    return obj;
+  }, {});
+
   const preguntasFiltradas = preguntas.filter((pregunta) => {
     if (!pregunta.antecesor) return true;
-    const antecesor = preguntas.find((p) => p.id === pregunta.antecesor);
-    const respuestaAntecesor = respuestas[antecesor.id];
-    return respuestaAntecesor === true;
+    const antecesores = Array.isArray(pregunta.antecesor)
+      ? pregunta.antecesor
+      : [pregunta.antecesor];
+    return antecesores.some((id) => {
+      const antecesor = preguntas.find((p) => p.id === id);
+      const respuestaAntecesor = respuestas[antecesor.id];
+      return respuestaAntecesor === true;
+    });
   });
 
   const handleRespuesta = (id, respuesta) => {
@@ -66,7 +89,7 @@ function Formulario() {
     ],
     datasets: [
       {
-        label: "Puntaje",
+        label: "Porcentaje",
         data: [
           estrategia,
           tecnologia,
@@ -84,16 +107,28 @@ function Formulario() {
   };
 
   const options = {
-    legend: {
-      labels: {
-        fontColor: "white", // color del texto de las leyendas
+    plugins: {
+      legend: {
+        labels: {
+          color: "white",
+        },
       },
-      display: true,
-      position: "bottom",
-      align: "center",
-      reverse: false,
-      backgroundColor: "black", // color de fondo de las leyendas
-      onClick: (e) => {},
+    },
+    scales: {
+      r: {
+        grid: {
+          color: "white",
+        },
+        suggestedMin: 0,
+        suggestedMax: 100,
+        pointLabels: {
+          color: "white",
+        },
+        ticks: {
+          color: "white",
+          backdropColor: "transparent",
+        },
+      },
     },
   };
 
@@ -104,103 +139,94 @@ function Formulario() {
     setFormularioComplete(todasRespondidas);
   }, [respuestas]);
 
-  // useEffect(() => {
-  //   console.log("Tecnologia: ", tecnologia);
-  //   console.log("Estrategia: ", estrategia);
-  //   console.log("Gobernanza y liderazgo: ", gobernanza);
-  // }, [tecnologia, estrategia, gobernanza]);
+  useEffect(() => {
+    const porcentajeTotal =
+      (estrategia +
+        tecnologia +
+        gobernanza +
+        procesos +
+        cliente +
+        cultura +
+        gente) /
+      7;
+    if (porcentajeTotal < 15) setNivel("Incipiente");
+    else if (porcentajeTotal >= 15 && porcentajeTotal < 25) setNivel("Inicial");
+    else if (porcentajeTotal >= 25 && porcentajeTotal < 45)
+      setNivel("En desarrollo");
+    else if (porcentajeTotal >= 45 && porcentajeTotal < 60)
+      setNivel("Establecido");
+    else if (porcentajeTotal >= 60 && porcentajeTotal < 85)
+      setNivel("Avanzado");
+    else if (porcentajeTotal >= 85) setNivel("Digital");
+    setTotal(porcentajeTotal);
+  }, [estrategia]);
 
   return (
-    <div className="container pt-4 col-xxl-8 text-light">
+    <div className="container pt-4 col-xxl-8 text-light mb-4">
       <h1 className="text-center">Evaluación de capacidad digital</h1>
       {!resultShow ? (
-        <div>
+        <div className="d-flex flex-column align-items-center">
           {Object.entries(preguntasPorDimension).map(
             ([dimension, preguntas]) => (
-              <div key={dimension} className="card mb-4 bg-dark">
-                <div className="card-header">{dimension}</div>
-                <div className="card-body">
-                  <form>
-                    {preguntasFiltradas
-                      .filter((pregunta) => pregunta.dimension === dimension)
-                      .map((pregunta) => (
-                        <Pregunta
-                          key={pregunta.id}
-                          pregunta={pregunta}
-                          respuesta={respuestas[pregunta.id]}
-                          handleRespuesta={handleRespuesta}
-                        />
-                      ))}
-                  </form>
-                </div>
-              </div>
+              <Accordion defaultActiveKey={dimension} className="w-100">
+                  <Accordion.Item key={dimension} className="card mb-4 bg-dark w-100">
+                    <Accordion.Header className="card-header">{dimension}</Accordion.Header>
+                    <Accordion.Body className="card-body">
+                      <form>
+                        {preguntasFiltradas
+                          .filter(
+                            (pregunta) => pregunta.dimension === dimension
+                          )
+                          .map((pregunta) => (
+                            <Pregunta
+                              key={pregunta.id}
+                              pregunta={pregunta}
+                              respuesta={respuestas[pregunta.id]}
+                              handleRespuesta={handleRespuesta}
+                            />
+                          ))}
+                      </form>
+                    </Accordion.Body>
+                  </Accordion.Item>
+              </Accordion>
             )
           )}
           <button
-            className="btn btn-primary"
+            className="btn btn-primary text-white w-25 mb-4"
             disabled={!formularioComplete}
             onClick={() => {
-              var estrategiaCount = 0;
-              var gobernanzaCount = 0;
-              var tecnologiaCount = 0;
-              var procesosCount = 0;
-              var clienteCount = 0;
-              var culturaCount = 0;
-              var genteCount = 0;
-              preguntasFiltradas.map((pregunta) => {
-                pregunta.respuesta = respuestas[pregunta.id];
-                if (
-                  pregunta.dimension === "Estrategia" &&
-                  respuestas[pregunta.id] === true
-                ) {
-                  estrategiaCount++;
-                }
+              // Recorrer cada dimensión
+              Object.keys(preguntasPorDimensionYNivel).forEach((dimension) => {
+                const niveles = preguntasPorDimensionYNivel[dimension];
+                var porcentajeDimension = 0;
+                // Recorrer cada nivel dentro de la dimensión
+                Object.keys(niveles).forEach((nivel) => {
+                  const totalPreguntas = niveles[nivel].total;
+                  const totalRespondidas = niveles[nivel].respondidas;
+                  const porcentajeNivel =
+                    0.2 * (totalRespondidas / totalPreguntas);
+                  porcentajeDimension += porcentajeNivel;
+                });
+                porcentajeDimension = porcentajeDimension * 100;
+                console.log(`Dimension ${dimension}: ${porcentajeDimension}`);
+                if (dimension === "Estrategia")
+                  setEstrategia(porcentajeDimension);
 
-                if (
-                  pregunta.dimension === "Tecnología" &&
-                  respuestas[pregunta.id] === true
-                ) {
-                  tecnologiaCount++;
-                }
+                if (dimension === "Tecnología")
+                  setTecnologia(porcentajeDimension);
 
-                if (
-                  pregunta.dimension === "Gobernanza y liderazgo" &&
-                  respuestas[pregunta.id] === true
-                ) {
-                  gobernanzaCount++;
-                }
-                if (
-                  pregunta.dimension === "Procesos" &&
-                  respuestas[pregunta.id] === true
-                ) {
-                  procesosCount++;
-                }
-                if (
-                  pregunta.dimension === "Cliente" &&
-                  respuestas[pregunta.id] === true
-                ) {
-                  clienteCount++;
-                }
-                if (
-                  pregunta.dimension === "Cultura" &&
-                  respuestas[pregunta.id] === true
-                ) {
-                  culturaCount++;
-                }
-                if (
-                  pregunta.dimension === "Gente y Habilidades" &&
-                  respuestas[pregunta.id] === true
-                ) {
-                  genteCount++;
-                }
+                if (dimension === "Gobernanza y liderazgo")
+                  setGobernanza(porcentajeDimension);
+
+                if (dimension === "Procesos") setProcesos(porcentajeDimension);
+
+                if (dimension === "Cliente") setCliente(porcentajeDimension);
+
+                if (dimension === "Cultura") setCultura(porcentajeDimension);
+
+                if (dimension === "Gente y Habilidades")
+                  setGente(porcentajeDimension);
               });
-              setEstrategia(estrategiaCount);
-              setTecnologia(tecnologiaCount);
-              setGobernanza(gobernanzaCount);
-              setProcesos(procesosCount);
-              setCliente(clienteCount);
-              setCultura(culturaCount);
-              setGente(genteCount);
               setResultShow(true);
             }}
           >
@@ -212,10 +238,15 @@ function Formulario() {
           <div className="card mb-4 bg-dark">
             <div className="card-header">Resultados</div>
             <div
-              className="card-body align-self-center"
+              className="card-body align-self-center d-flex align-items-center"
               style={{ height: "80vh" }}
             >
-              <Radar data={data} style={{ height: "100%" }} options={options} />
+              <Radar options={options} data={data} style={{ height: "100%" }} />
+              <div className="d-flex flex-column align-items-center">
+                <p>Tu nivel actual es:</p>
+                <h1>{nivel}</h1>
+                <p>Promedio del porcentaje fue: {total.toFixed(2)}%</p>
+              </div>
             </div>
           </div>
         </div>
