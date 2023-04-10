@@ -409,7 +409,7 @@
   },
   {
     "id":431,
-    "enunciado": "¿En la organización se han identificado los procesos que son críticos para la satisfacción del cliente.?",
+    "enunciado": "¿En la organización se han identificado los procesos que son críticos para la satisfacción del cliente?",
     "dimension": "Procesos",
     "nivel": 2,
     "respuesta": null,
@@ -417,7 +417,7 @@
   },
   {
     "id": 4311,
-    "enunciado": "¿En la organización se cuenta con indicadores en los procesos que interactúan con los clientes, orientados a evaluar si el proceso esta diseñado para satisfacer las necesidades y expectativas del cliente.?",
+    "enunciado": "¿En la organización se cuenta con indicadores en los procesos que interactúan con los clientes, orientados a evaluar si el proceso esta diseñado para satisfacer las necesidades y expectativas del cliente?",
     "dimension": "Procesos",
     "nivel": 3,
     "respuesta": null,
@@ -433,7 +433,7 @@
   },
   {
     "id": 431111,
-    "enunciado": "¿En la organización Los procesos están centrados en el cliente de tal manera que se refleja aumento de ventas, retención de clientes y disminución en tiempos de respuesta al cliente?",
+    "enunciado": "¿En la organización los procesos están centrados en el cliente de tal manera que se refleja aumento de ventas, retención de clientes y disminución en tiempos de respuesta al cliente?",
     "dimension": "Procesos",
     "nivel": 5,
     "respuesta": null,
@@ -497,7 +497,7 @@
   },
   {
     "id": 52111,
-    "enunciado": "¿En la organización la experiencia del cliente y el uso de datos se recopilan y utilizan activamente para asistir la atención al cliente y las mejoras de servicios.?",
+    "enunciado": "¿En la organización la experiencia del cliente y el uso de datos se recopilan y utilizan activamente para asistir la atención al cliente y las mejoras de servicios?",
     "dimension": "Cliente",
     "nivel": 4,
     "respuesta": null,
@@ -617,7 +617,7 @@
   },
   {
     "id": 62111,
-    "enunciado": "¿La organización el personal tiene un alto compromiso y empoderamiento para moverse de forma rápida y ágil en la consecución de los objetivos digitales de la empresa?",
+    "enunciado": "¿En la organización el personal tiene un alto compromiso y empoderamiento para moverse de forma rápida y ágil en la consecución de los objetivos digitales de la empresa?",
     "dimension": "Cultura",
     "nivel": 4,
     "respuesta": null,
@@ -665,7 +665,7 @@
   },
   {
     "id": 64,
-    "enunciado": "¿En la organización se cuenta con iniciativas orientadas a  la innovación.?",
+    "enunciado": "¿En la organización se cuenta con iniciativas orientadas a  la innovación?",
     "dimension": "Cultura",
     "nivel": 1,
     "respuesta": null,
@@ -673,7 +673,7 @@
   },
   {
     "id":641,
-    "enunciado": "¿En la organización se cuenta con indicadores claves de desempeño (KPI) orientados a medir  los objetivos de la innovación en la organización?",
+    "enunciado": "¿En la organización se cuenta con indicadores claves de desempeño (KPI) orientados a medir  los objetivos de la innovación?",
     "dimension": "Cultura",
     "nivel": 2,
     "respuesta": null,
@@ -737,7 +737,7 @@
   },
   {
     "id":721,
-    "enunciado": "¿ La organización apoya el desarrollo de sus colaboradores fortaleciendo sus habilidades y competencias digitales  con programas de formación estándar?",
+    "enunciado": "¿La organización apoya el desarrollo de sus colaboradores fortaleciendo sus habilidades y competencias digitales  con programas de formación estándar?",
     "dimension": "Gente y Habilidades",
     "nivel": 2,
     "respuesta": null,

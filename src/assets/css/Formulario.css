@@ -30,4 +30,15 @@
   .btn-primary.focus {
     box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
   }
+
+  .accordion-button {
+    background-color: #182541 !important;
+    color: #ffffff !important;
+  }
+
+  
+  
+
+  
+  
   

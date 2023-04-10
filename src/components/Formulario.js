@@ -168,10 +168,10 @@ function Formulario() {
         <div className="d-flex flex-column align-items-center">
           {Object.entries(preguntasPorDimension).map(
             ([dimension, preguntas]) => (
-              <Accordion defaultActiveKey={dimension} className="w-100">
-                  <Accordion.Item key={dimension} className="card mb-4 bg-dark w-100">
-                    <Accordion.Header className="card-header">{dimension}</Accordion.Header>
-                    <Accordion.Body className="card-body">
+              <Accordion defaultActiveKey={"Estrategia"} className="w-100 show">
+                  <Accordion.Item key={dimension} eventKey={dimension} className="mb-4 bg-dark w-100">
+                    <Accordion.Header className="bg-dark text-light">{dimension}</Accordion.Header>
+                    <Accordion.Body className="text-light">
                       <form>
                         {preguntasFiltradas
                           .filter(
