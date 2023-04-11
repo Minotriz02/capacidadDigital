@@ -156,6 +156,7 @@ function Formulario() {
         cultura +
         gente) /
       7;
+    setTotal(porcentajeTotal);
     if (porcentajeTotal < 15) setNivel("Incipiente");
     else if (porcentajeTotal >= 15 && porcentajeTotal < 25) setNivel("Inicial");
     else if (porcentajeTotal >= 25 && porcentajeTotal < 45)
@@ -165,8 +166,7 @@ function Formulario() {
     else if (porcentajeTotal >= 60 && porcentajeTotal < 85)
       setNivel("Avanzado");
     else if (porcentajeTotal >= 85) setNivel("Digital");
-    setTotal(porcentajeTotal);
-  }, [estrategia]);
+  }, [estrategia, tecnologia, gobernanza,procesos, cliente,cultura, gente]);
 
   return (
     <div className="container pt-4 col-xxl-8 text-light mb-4">
@@ -199,9 +199,9 @@ function Formulario() {
                           : genteLogo
                       }
                       alt={`img ${dimension}`}
-                      style={{maxWidth:"35px"}}
+                      style={{ maxWidth: "35px" }}
                       className="me-3"
-                    />   
+                    />
                     {dimension}
                   </Accordion.Header>
                   <Accordion.Body className="text-light">
