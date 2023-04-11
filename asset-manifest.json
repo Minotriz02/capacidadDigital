@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.6af232a8.css",
-    "main.js": "/static/js/main.fc1e9d23.js",
-    "static/media/procesos.svg": "/static/media/procesos.23c7c43de66889ec87993c28c785df80.svg",
-    "static/media/gobernanza.svg": "/static/media/gobernanza.1b87e6959843600b2eaf2da727b108d9.svg",
-    "static/media/gente.svg": "/static/media/gente.bfa67249720c65dbf1cab39745078442.svg",
-    "static/media/tecnologia.svg": "/static/media/tecnologia.15a875b3d175e469f8e77b1d60d20b04.svg",
-    "static/media/cultura.svg": "/static/media/cultura.806c54573ad12506d0163d9320c71f35.svg",
-    "static/media/cliente.svg": "/static/media/cliente.4a3065424768527764c797193ba4fcbc.svg",
-    "static/media/estrategia.svg": "/static/media/estrategia.5c5e4cc7ecfab8fa89cd09f4478e51d0.svg",
-    "index.html": "/index.html",
-    "main.6af232a8.css.map": "/static/css/main.6af232a8.css.map",
-    "main.fc1e9d23.js.map": "/static/js/main.fc1e9d23.js.map"
+    "main.css": "/capacidadDigital/static/css/main.6af232a8.css",
+    "main.js": "/capacidadDigital/static/js/main.ac0cabcb.js",
+    "static/media/procesos.svg": "/capacidadDigital/static/media/procesos.23c7c43de66889ec87993c28c785df80.svg",
+    "static/media/gobernanza.svg": "/capacidadDigital/static/media/gobernanza.1b87e6959843600b2eaf2da727b108d9.svg",
+    "static/media/gente.svg": "/capacidadDigital/static/media/gente.bfa67249720c65dbf1cab39745078442.svg",
+    "static/media/tecnologia.svg": "/capacidadDigital/static/media/tecnologia.15a875b3d175e469f8e77b1d60d20b04.svg",
+    "static/media/cultura.svg": "/capacidadDigital/static/media/cultura.806c54573ad12506d0163d9320c71f35.svg",
+    "static/media/cliente.svg": "/capacidadDigital/static/media/cliente.4a3065424768527764c797193ba4fcbc.svg",
+    "static/media/estrategia.svg": "/capacidadDigital/static/media/estrategia.5c5e4cc7ecfab8fa89cd09f4478e51d0.svg",
+    "index.html": "/capacidadDigital/index.html",
+    "main.6af232a8.css.map": "/capacidadDigital/static/css/main.6af232a8.css.map",
+    "main.ac0cabcb.js.map": "/capacidadDigital/static/js/main.ac0cabcb.js.map"
   },
   "entrypoints": [
     "static/css/main.6af232a8.css",
-    "static/js/main.fc1e9d23.js"
+    "static/js/main.ac0cabcb.js"
   ]
 }
