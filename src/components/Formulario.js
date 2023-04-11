@@ -170,7 +170,7 @@ function Formulario() {
 
   return (
     <div className="container pt-4 col-xxl-8 text-light mb-4">
-      <h1 className="text-center">Evaluación de capacidad digital</h1>
+      <h1 className="text-center">Evaluación de Capacidad Digital</h1>
       {!resultShow ? (
         <div className="d-flex flex-column align-items-center">
           {Object.entries(preguntasPorDimension).map(
