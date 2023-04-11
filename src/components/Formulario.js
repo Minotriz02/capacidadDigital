@@ -13,6 +13,13 @@ import {
 } from "chart.js";
 import Accordion from "react-bootstrap/Accordion";
 import { Radar } from "react-chartjs-2";
+import clienteLogo from "../assets/logos/cliente.svg";
+import culturaLogo from "../assets/logos/cultura.svg";
+import estrategiaLogo from "../assets/logos/estrategia.svg";
+import genteLogo from "../assets/logos/gente.svg";
+import gobernanzaLogo from "../assets/logos/gobernanza.svg";
+import procesosLogo from "../assets/logos/procesos.svg";
+import tecnologiaLogo from "../assets/logos/tecnologia.svg";
 
 ChartJS.register(
   RadialLinearScale,
@@ -169,25 +176,49 @@ function Formulario() {
           {Object.entries(preguntasPorDimension).map(
             ([dimension, preguntas]) => (
               <Accordion defaultActiveKey={"Estrategia"} className="w-100 show">
-                  <Accordion.Item key={dimension} eventKey={dimension} className="mb-4 bg-dark w-100">
-                    <Accordion.Header className="bg-dark text-light">{dimension}</Accordion.Header>
-                    <Accordion.Body className="text-light">
-                      <form>
-                        {preguntasFiltradas
-                          .filter(
-                            (pregunta) => pregunta.dimension === dimension
-                          )
-                          .map((pregunta) => (
-                            <Pregunta
-                              key={pregunta.id}
-                              pregunta={pregunta}
-                              respuesta={respuestas[pregunta.id]}
-                              handleRespuesta={handleRespuesta}
-                            />
-                          ))}
-                      </form>
-                    </Accordion.Body>
-                  </Accordion.Item>
+                <Accordion.Item
+                  key={dimension}
+                  eventKey={dimension}
+                  className="mb-4 bg-dark w-100"
+                >
+                  <Accordion.Header className="bg-dark text-light">
+                    <img
+                      src={
+                        dimension === "Estrategia"
+                          ? estrategiaLogo
+                          : dimension === "Gobernanza y liderazgo"
+                          ? gobernanzaLogo
+                          : dimension === "Tecnología"
+                          ? tecnologiaLogo
+                          : dimension === "Procesos"
+                          ? procesosLogo
+                          : dimension === "Cliente"
+                          ? clienteLogo
+                          : dimension === "Cultura"
+                          ? culturaLogo
+                          : genteLogo
+                      }
+                      alt={`img ${dimension}`}
+                      style={{maxWidth:"35px"}}
+                      className="me-3"
+                    />   
+                    {dimension}
+                  </Accordion.Header>
+                  <Accordion.Body className="text-light">
+                    <form>
+                      {preguntasFiltradas
+                        .filter((pregunta) => pregunta.dimension === dimension)
+                        .map((pregunta) => (
+                          <Pregunta
+                            key={pregunta.id}
+                            pregunta={pregunta}
+                            respuesta={respuestas[pregunta.id]}
+                            handleRespuesta={handleRespuesta}
+                          />
+                        ))}
+                    </form>
+                  </Accordion.Body>
+                </Accordion.Item>
               </Accordion>
             )
           )}
@@ -208,7 +239,6 @@ function Formulario() {
                   porcentajeDimension += porcentajeNivel;
                 });
                 porcentajeDimension = porcentajeDimension * 100;
-                console.log(`Dimension ${dimension}: ${porcentajeDimension}`);
                 if (dimension === "Estrategia")
                   setEstrategia(porcentajeDimension);
 
