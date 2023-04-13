@@ -1,36 +1,60 @@
 import { useState } from "react";
 import "../assets/css/Pregunta.css";
+import { Button } from "react-bootstrap";
 
 function Pregunta({ pregunta, respuesta, handleRespuesta }) {
-  const [respondido, setRespondido] = useState(false);
+  const [selected, setSelected] = useState(null);
 
   const handleSeleccion = (respuesta) => {
-    setRespondido(true);
+    setSelected(respuesta);
     handleRespuesta(pregunta.id, respuesta);
+  };
+
+  const resetRespuesta = () => {
+    setSelected(null);
+    handleRespuesta(pregunta.id, null);
   };
 
   return (
     <div className={`pregunta ${pregunta.dimension}`}>
       <p>{pregunta.enunciado}</p>
       <div className="opciones">
-        <button
-          className={` btn ${
-            respuesta === true ? "btn-success" : "btn-outline-primary"
+        <Button
+          className={`btn ${
+            selected === true
+              ? "btn-success"
+              : respuesta === true
+              ? "btn-outline-success text-white"
+              : "btn-outline-primary text-white"
           }`}
-          disabled={respondido}
-          onClick={() => handleSeleccion(true)}
+          onClick={() => {
+            if (selected === true) {
+              resetRespuesta();
+            } else {
+              handleSeleccion(true);
+            }
+          }}
         >
           Si
-        </button>
-        <button
-          className={` btn ${
-            respuesta === false ? "btn-danger" : "btn-outline-primary"
+        </Button>
+        <Button
+          className={`btn ${
+            selected === false
+              ? "btn-danger"
+              : respuesta === false
+              ? "btn-outline-danger text-white"
+              : "btn-outline-primary text-white"
           }`}
-          disabled={respondido}
-          onClick={() => handleSeleccion(false)}
+          onClick={() => {
+            if (selected === false) {
+              resetRespuesta();
+            } else {
+              handleSeleccion(false);
+            }
+          }}
         >
           No
-        </button>
+        </Button>
       </div>
     </div>
   );

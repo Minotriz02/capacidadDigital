@@ -117,22 +117,22 @@ function Formulario() {
     plugins: {
       legend: {
         labels: {
-          color: "white",
+          color: "black",
         },
       },
     },
     scales: {
       r: {
         grid: {
-          color: "white",
+          color: "black",
         },
         suggestedMin: 0,
         suggestedMax: 100,
         pointLabels: {
-          color: "white",
+          color: "black",
         },
         ticks: {
-          color: "white",
+          color: "black",
           backdropColor: "transparent",
         },
       },
@@ -169,19 +169,19 @@ function Formulario() {
   }, [estrategia, tecnologia, gobernanza,procesos, cliente,cultura, gente]);
 
   return (
-    <div className="container pt-4 col-xxl-8 text-light mb-4">
+    <div className="container pt-4 col-xxl-8 mb-4">
       <h1 className="text-center">Evaluación de Capacidad Digital</h1>
       {!resultShow ? (
         <div className="d-flex flex-column align-items-center">
           {Object.entries(preguntasPorDimension).map(
-            ([dimension, preguntas]) => (
-              <Accordion defaultActiveKey={"Estrategia"} className="w-100 show">
+            ([dimension, preguntas],index) => (
+              <Accordion defaultActiveKey={"Estrategia"} className="w-100 show" key={index}>
                 <Accordion.Item
                   key={dimension}
                   eventKey={dimension}
-                  className="mb-4 bg-dark w-100"
+                  className="mb-4 w-100"
                 >
-                  <Accordion.Header className="bg-dark text-light">
+                  <Accordion.Header className="">
                     <img
                       src={
                         dimension === "Estrategia"
@@ -204,7 +204,7 @@ function Formulario() {
                     />
                     {dimension}
                   </Accordion.Header>
-                  <Accordion.Body className="text-light">
+                  <Accordion.Body className="">
                     <form>
                       {preguntasFiltradas
                         .filter((pregunta) => pregunta.dimension === dimension)
@@ -223,7 +223,7 @@ function Formulario() {
             )
           )}
           <button
-            className="btn btn-primary text-white w-25 mb-4"
+            className="btn btn-primary w-25 mb-4"
             disabled={!formularioComplete}
             onClick={() => {
               // Recorrer cada dimensión
@@ -265,7 +265,7 @@ function Formulario() {
         </div>
       ) : (
         <div>
-          <div className="card mb-4 bg-dark">
+          <div className="card mb-4">
             <div className="card-header">Resultados</div>
             <div
               className="card-body align-self-center d-flex align-items-center"
