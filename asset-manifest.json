@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/capacidadDigital/static/css/main.6af232a8.css",
-    "main.js": "/capacidadDigital/static/js/main.fce298fd.js",
-    "static/media/procesos.svg": "/capacidadDigital/static/media/procesos.23c7c43de66889ec87993c28c785df80.svg",
-    "static/media/gobernanza.svg": "/capacidadDigital/static/media/gobernanza.1b87e6959843600b2eaf2da727b108d9.svg",
-    "static/media/gente.svg": "/capacidadDigital/static/media/gente.bfa67249720c65dbf1cab39745078442.svg",
-    "static/media/tecnologia.svg": "/capacidadDigital/static/media/tecnologia.15a875b3d175e469f8e77b1d60d20b04.svg",
-    "static/media/cultura.svg": "/capacidadDigital/static/media/cultura.806c54573ad12506d0163d9320c71f35.svg",
-    "static/media/cliente.svg": "/capacidadDigital/static/media/cliente.4a3065424768527764c797193ba4fcbc.svg",
-    "static/media/estrategia.svg": "/capacidadDigital/static/media/estrategia.5c5e4cc7ecfab8fa89cd09f4478e51d0.svg",
+    "main.css": "/capacidadDigital/static/css/main.68665710.css",
+    "main.js": "/capacidadDigital/static/js/main.d4294e68.js",
+    "static/media/procesos.svg": "/capacidadDigital/static/media/procesos.0749e603e5d9c61b1d5b2468b7985ab6.svg",
+    "static/media/gobernanza.svg": "/capacidadDigital/static/media/gobernanza.830f80ca6ae77b2017eddd67afc0c651.svg",
+    "static/media/gente.svg": "/capacidadDigital/static/media/gente.5d80d7a2bc7a40afb5c9db5508334a5e.svg",
+    "static/media/tecnologia.svg": "/capacidadDigital/static/media/tecnologia.21a30b2eb718cfacdeeeca26f2b28c09.svg",
+    "static/media/cultura.svg": "/capacidadDigital/static/media/cultura.d8f1f7b278a6465c33aa3ed87f47a70c.svg",
+    "static/media/cliente.svg": "/capacidadDigital/static/media/cliente.374eea3590203e63d52f9b8f593b739a.svg",
+    "static/media/estrategia.svg": "/capacidadDigital/static/media/estrategia.b45b33e394e6787399be7d3ce8a6dab2.svg",
     "index.html": "/capacidadDigital/index.html",
-    "main.6af232a8.css.map": "/capacidadDigital/static/css/main.6af232a8.css.map",
-    "main.fce298fd.js.map": "/capacidadDigital/static/js/main.fce298fd.js.map"
+    "main.68665710.css.map": "/capacidadDigital/static/css/main.68665710.css.map",
+    "main.d4294e68.js.map": "/capacidadDigital/static/js/main.d4294e68.js.map"
   },
   "entrypoints": [
-    "static/css/main.6af232a8.css",
-    "static/js/main.fce298fd.js"
+    "static/css/main.68665710.css",
+    "static/js/main.d4294e68.js"
   ]
 }
