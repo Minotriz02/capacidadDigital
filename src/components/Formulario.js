@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import preguntas from "../assets/json/preguntas.json";
 import Pregunta from "./Pregunta";
 import "../assets/css/Formulario.css";
@@ -166,7 +166,46 @@ function Formulario() {
     else if (porcentajeTotal >= 60 && porcentajeTotal < 85)
       setNivel("Avanzado");
     else if (porcentajeTotal >= 85) setNivel("Digital");
-  }, [estrategia, tecnologia, gobernanza,procesos, cliente,cultura, gente]);
+  }, [estrategia, tecnologia, gobernanza, procesos, cliente, cultura, gente]);
+
+  const hiddenElements = useRef([]);
+
+  useEffect(() => {
+    if (!resultShow) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add("show-news");
+            }, 200 * (index + 1));
+          }
+        });
+      });
+      hiddenElements.current.forEach((element) => {
+        observer.observe(element);
+      });
+      return () => {
+        observer.disconnect();
+      };
+    }
+  }, []);
+
+  useEffect(() => {
+    if (resultShow) {
+      setTimeout(() => {
+        // Asignar una clase diferente después de 2 segundos
+        document.getElementById("porcentaje").classList.add("show-news");
+      }, 200);
+      setTimeout(() => {
+        // Asignar una clase diferente después de 2 segundos
+        document.getElementById("nivel-actual").classList.add("show-news");
+      }, 600);
+      setTimeout(() => {
+        // Asignar una clase diferente después de 2 segundos
+        document.getElementById("nivel").classList.add("show-news");
+      }, 1000);
+    }
+  }, [resultShow]);
 
   return (
     <div className="container pt-4 col-xxl-8 mb-4">
@@ -174,8 +213,13 @@ function Formulario() {
       {!resultShow ? (
         <div className="d-flex flex-column align-items-center">
           {Object.entries(preguntasPorDimension).map(
-            ([dimension, preguntas],index) => (
-              <Accordion defaultActiveKey={"Estrategia"} className="w-100 show" key={index}>
+            ([dimension, preguntas], index) => (
+              <Accordion
+                defaultActiveKey={"Estrategia"}
+                className="w-100 show hidden-news"
+                key={index}
+                ref={(element) => (hiddenElements.current[index] = element)}
+              >
                 <Accordion.Item
                   key={dimension}
                   eventKey={dimension}
@@ -273,9 +317,9 @@ function Formulario() {
             >
               <Radar options={options} data={data} style={{ height: "100%" }} />
               <div className="d-flex flex-column align-items-center">
-                <p>Tu nivel actual es:</p>
-                <h1>{nivel}</h1>
-                <p>Promedio del porcentaje fue: {total.toFixed(2)}%</p>
+                <p id="nivel-actual" className="hidden-news">Tu nivel actual es:</p>
+                <h1 id="nivel" className="hidden-news">{nivel}</h1>
+                <p id="porcentaje" className="hidden-news">Promedio del porcentaje fue: {total.toFixed(2)}%</p>
               </div>
             </div>
           </div>

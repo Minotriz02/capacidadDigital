@@ -1,22 +1,30 @@
 .card {
-    border: none;
-    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
-  }
-  
-  .card-header {
-    background-color: #f8f9fa;
-    font-weight: bold;
-  }
-  
-  .form-check {
-    margin: 10px 0;
-  }
-  
-  .form-check-label {
-    margin-left: 10px;
-  }
-  
+  border: none;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+}
 
-  
-  
-  
+.card-header {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+.form-check {
+  margin: 10px 0;
+}
+
+.form-check-label {
+  margin-left: 10px;
+}
+
+.hidden-news {
+  opacity: 0 !important;
+  filter: blur(5px) !important;
+  transform: translateX(-100%) !important;
+  transition: all 1s !important;
+}
+
+.show-news {
+  filter: blur(0) !important;
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import "../assets/css/Pregunta.css";
 import { Button } from "react-bootstrap";
 
@@ -15,8 +15,26 @@ function Pregunta({ pregunta, respuesta, handleRespuesta }) {
     handleRespuesta(pregunta.id, null);
   };
 
+  const hiddenElement = useRef(null);
+
+ useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('show-pregunta');
+                    }, 100);
+                }
+            });
+        });
+
+        observer.observe(hiddenElement.current);
+        return () => {
+            observer.disconnect();
+        };
+    }, []);
   return (
-    <div className={`pregunta ${pregunta.dimension}`}>
+    <div className={`pregunta hidden-pregunta ${pregunta.dimension}`} ref={hiddenElement}>
       <p>{pregunta.enunciado}</p>
       <div className="opciones">
         <Button

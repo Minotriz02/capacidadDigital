@@ -17,4 +17,13 @@
     margin-top: 1rem;
     gap: 30px;
   }
+
+  .hidden-pregunta {
+    opacity: 0 !important;
+    transition: all 0.5s !important;
+  }
+  
+  .show-pregunta {
+    opacity: 1 !important;
+  }
   
