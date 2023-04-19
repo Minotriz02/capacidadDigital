@@ -28,3 +28,51 @@
   transform: translateX(0) !important;
   opacity: 1 !important;
 }
+
+.Gobernanza .accordion-button:not(.collapsed) {
+  background-color: #96c279 !important;
+}
+
+.Gobernanza .accordion-button:is(.collapsed) {
+  background-color: #c4e2b0 !important;
+}
+
+.Estrategia .accordion-button:not(.collapsed) {
+  background-color: #97cdfc !important;
+}
+
+.Estrategia .accordion-button:is(.collapsed) {
+  background-color: #c5e0f8 !important;
+}
+
+.Tecnología .accordion-button:not(.collapsed) {
+  background-color: #fcb53b !important;
+}
+
+.Tecnología .accordion-button:is(.collapsed) {
+  background-color: #fdce7c !important;
+}
+
+.Procesos .accordion-button:not(.collapsed) {
+  background-color: #6cb8f3 !important;
+}
+
+.Procesos .accordion-button:is(.collapsed) {
+  background-color: #a5d5fa !important;
+}
+
+.Cultura .accordion-button:not(.collapsed) {
+  background-color: #9f9ff1 !important;
+}
+
+.Cultura .accordion-button:is(.collapsed) {
+  background-color: #d4d4f5 !important;
+}
+
+.Gente .accordion-button:not(.collapsed) {
+  background-color: #a9db72 !important;
+}
+
+.Gente .accordion-button:is(.collapsed) {
+  background-color: #d0ebb3 !important;
+}

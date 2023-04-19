@@ -20,6 +20,7 @@ import genteLogo from "../assets/logos/gente.svg";
 import gobernanzaLogo from "../assets/logos/gobernanza.svg";
 import procesosLogo from "../assets/logos/procesos.svg";
 import tecnologiaLogo from "../assets/logos/tecnologia.svg";
+import { ProgressBar } from "react-bootstrap";
 
 ChartJS.register(
   RadialLinearScale,
@@ -41,6 +42,14 @@ function Formulario() {
   const [cultura, setCultura] = useState(0);
   const [gente, setGente] = useState(0);
   const [total, setTotal] = useState(0);
+  const [proximoEstrategia, setProximoEstrategia] = useState(0);
+  const [proximoGobernanza, setProximoGobernanza] = useState(0);
+  const [proximoTecnologia, setProximoTecnologia] = useState(0);
+  const [proximoProcesos, setProximoProcesos] = useState(0);
+  const [proximoCliente, setProximoCliente] = useState(0);
+  const [proximoCultura, setProximoCultura] = useState(0);
+  const [proximoGente, setProximoGente] = useState(0);
+  const [proximoTotal, setProximoTotal] = useState(0);
   const [nivel, setNivel] = useState("");
   const [resultShow, setResultShow] = useState(false);
 
@@ -57,13 +66,35 @@ function Formulario() {
     ] || {
       total: 0,
       respondidas: 0,
+      respondidasFalse: 0,
     };
     obj[pregunta.dimension][pregunta.nivel].total++;
     if (respuestas[pregunta.id]) {
       obj[pregunta.dimension][pregunta.nivel].respondidas++;
+    } else if (respuestas[pregunta.id] === false) {
+      obj[pregunta.dimension][pregunta.nivel].respondidasFalse++;
     }
     return obj;
   }, {});
+
+  function preguntasPorcentajeRespondidasPorDimension(dimension) {
+    const preguntasEnDimension = preguntas.filter(
+      (pregunta) => pregunta.dimension === dimension
+    );
+    let respondidas = 0;
+    for (const pregunta of preguntasEnDimension) {
+      if (respuestas[pregunta.id] || respuestas[pregunta.id] === false) {
+        respondidas++;
+      }
+    }
+    const porcentaje =
+      (respondidas /
+        preguntasFiltradas.filter(
+          (pregunta) => pregunta.dimension === dimension
+        ).length) *
+      100;
+    return porcentaje;
+  }
 
   const preguntasFiltradas = preguntas.filter((pregunta) => {
     if (!pregunta.antecesor) return true;
@@ -96,7 +127,7 @@ function Formulario() {
     ],
     datasets: [
       {
-        label: "Porcentaje",
+        label: "Estado Actual",
         data: [
           estrategia,
           tecnologia,
@@ -109,6 +140,21 @@ function Formulario() {
         backgroundColor: "rgba(255, 99, 132, 0.2)",
         borderColor: "rgba(255, 99, 132, 1)",
         borderWidth: 1,
+      },
+      {
+        label: "Estado Objetivo",
+        data: [
+          proximoEstrategia,
+          proximoTecnologia,
+          proximoGobernanza,
+          proximoProcesos,
+          proximoCliente,
+          proximoCultura,
+          proximoGente,
+        ],
+        backgroundColor: "rgba(53, 162, 235, 0)",
+        borderColor: "rgba(53, 162, 235, 1)",
+        borderWidth: 3,
       },
     ],
   };
@@ -225,7 +271,20 @@ function Formulario() {
                   eventKey={dimension}
                   className="mb-4 w-100"
                 >
-                  <Accordion.Header className="">
+                  <ProgressBar
+                    variant={
+                      preguntasPorcentajeRespondidasPorDimension(dimension) ===
+                      100
+                        ? "success"
+                        : preguntasPorcentajeRespondidasPorDimension(
+                            dimension
+                          ) <= 50
+                        ? "danger"
+                        : "primary"
+                    }
+                    now={preguntasPorcentajeRespondidasPorDimension(dimension)}
+                  ></ProgressBar>
+                  <Accordion.Header className={dimension.split(" ")[0]}>
                     <img
                       src={
                         dimension === "Estrategia"
@@ -274,37 +333,65 @@ function Formulario() {
               Object.keys(preguntasPorDimensionYNivel).forEach((dimension) => {
                 const niveles = preguntasPorDimensionYNivel[dimension];
                 var porcentajeDimension = 0;
+                var porcentajeProximaDimension = 0;
                 // Recorrer cada nivel dentro de la dimensión
                 Object.keys(niveles).forEach((nivel) => {
                   const totalPreguntas = niveles[nivel].total;
                   const totalRespondidas = niveles[nivel].respondidas;
+                  const totalRespondidasConFalse =
+                    niveles[nivel].respondidas +
+                    niveles[nivel].respondidasFalse;
                   const porcentajeNivel =
                     0.2 * (totalRespondidas / totalPreguntas);
+                  const porcentajeProximoNivel =
+                    0.2 * (totalRespondidasConFalse / totalPreguntas);
                   porcentajeDimension += porcentajeNivel;
+                  porcentajeProximaDimension += porcentajeProximoNivel;
                 });
                 porcentajeDimension = porcentajeDimension * 100;
-                if (dimension === "Estrategia")
+                porcentajeProximaDimension = porcentajeProximaDimension * 100;
+                if (dimension === "Estrategia") {
                   setEstrategia(porcentajeDimension);
+                  setProximoEstrategia(porcentajeProximaDimension);
+                }
 
-                if (dimension === "Tecnología")
+                if (dimension === "Tecnología") {
                   setTecnologia(porcentajeDimension);
+                  setProximoTecnologia(porcentajeProximaDimension);
+                }
 
-                if (dimension === "Gobernanza y liderazgo")
+                if (dimension === "Gobernanza y liderazgo") {
                   setGobernanza(porcentajeDimension);
+                  setProximoGobernanza(porcentajeProximaDimension);
+                }
+                if (dimension === "Procesos") {
+                  setProcesos(porcentajeDimension);
+                  setProximoProcesos(porcentajeProximaDimension);
+                }
 
-                if (dimension === "Procesos") setProcesos(porcentajeDimension);
+                if (dimension === "Cliente") {
+                  setCliente(porcentajeDimension);
+                  setProximoCliente(porcentajeProximaDimension);
+                }
 
-                if (dimension === "Cliente") setCliente(porcentajeDimension);
+                if (dimension === "Cultura") {
+                  setCultura(porcentajeDimension);
+                  setProximoCultura(porcentajeProximaDimension);
+                }
 
-                if (dimension === "Cultura") setCultura(porcentajeDimension);
-
-                if (dimension === "Gente y Habilidades")
+                if (dimension === "Gente y Habilidades") {
                   setGente(porcentajeDimension);
+                  setProximoGente(porcentajeProximaDimension);
+                }
               });
               setResultShow(true);
+              console.log(
+                "preguntasPorDimensionYNivel",
+                preguntasPorDimensionYNivel
+              );
             }}
           >
-            Enviar respuestas
+            Ver Nivel de Madurez Actual
           </button>
         </div>
       ) : (
@@ -312,14 +399,30 @@ function Formulario() {
           <div className="card mb-4">
             <div className="card-header">Resultados</div>
             <div
-              className="card-body align-self-center d-flex align-items-center"
-              style={{ height: "80vh" }}
+              className="card-body align-self-center d-flex align-items-center flex-column flex-xl-row"
+              style={{ height: "auto" }}
             >
-              <Radar options={options} data={data} style={{ height: "100%" }} />
+              <Radar
+                options={options}
+                data={data}
+                style={{ height: "auto" }}
+                className=""
+              />
               <div className="d-flex flex-column align-items-center">
-                <p id="nivel-actual" className="hidden-news">Tu nivel actual es:</p>
-                <h1 id="nivel" className="hidden-news">{nivel}</h1>
-                <p id="porcentaje" className="hidden-news">Promedio del porcentaje fue: {total.toFixed(2)}%</p>
+                <p id="nivel-actual" className="hidden-news">
+                  Tu nivel actual es:
+                </p>
+                <h1 id="nivel" className="hidden-news">
+                  {nivel}
+                </h1>
+                <p id="porcentaje" className="hidden-news">
+                  Promedio del porcentaje fue: {total.toFixed(2)}%
+                </p>
+                <button
+                  className="btn btn-primary mb-4"
+                >
+                  Obtener hoja de ruta
+                </button>
               </div>
             </div>
           </div>
