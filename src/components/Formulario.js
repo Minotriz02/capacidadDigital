@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import preguntas from "../assets/json/preguntas.json";
+import descripcionNivel from "../assets/json/textoNiveles.json";
 import Pregunta from "./Pregunta";
 import "../assets/css/Formulario.css";
 import {
@@ -20,7 +21,7 @@ import genteLogo from "../assets/logos/gente.svg";
 import gobernanzaLogo from "../assets/logos/gobernanza.svg";
 import procesosLogo from "../assets/logos/procesos.svg";
 import tecnologiaLogo from "../assets/logos/tecnologia.svg";
-import { ProgressBar } from "react-bootstrap";
+import { Col, ProgressBar } from "react-bootstrap";
 
 ChartJS.register(
   RadialLinearScale,
@@ -52,6 +53,7 @@ function Formulario() {
   const [proximoTotal, setProximoTotal] = useState(0);
   const [nivel, setNivel] = useState("");
   const [resultShow, setResultShow] = useState(false);
+  const [showRuta, setShowRuta] = useState(false);
 
   const preguntasPorDimension = preguntas.reduce((obj, pregunta) => {
     obj[pregunta.dimension] = obj[pregunta.dimension] || [];
@@ -116,6 +118,35 @@ function Formulario() {
   };
 
   const data = {
+    labels: [
+      "Estrategia",
+      "Tecnología",
+      "Gobernanza y liderazgo",
+      "Procesos",
+      "Cliente",
+      "Cultura",
+      "Gente y Habilidades",
+    ],
+    datasets: [
+      {
+        label: "Estado Actual",
+        data: [
+          estrategia,
+          tecnologia,
+          gobernanza,
+          procesos,
+          cliente,
+          cultura,
+          gente,
+        ],
+        backgroundColor: "rgba(255, 99, 132, 0.2)",
+        borderColor: "rgba(255, 99, 132, 1)",
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const dataRuta = {
     labels: [
       "Estrategia",
       "Tecnología",
@@ -250,6 +281,10 @@ function Formulario() {
         // Asignar una clase diferente después de 2 segundos
         document.getElementById("nivel").classList.add("show-news");
       }, 1000);
+      setTimeout(() => {
+        // Asignar una clase diferente después de 2 segundos
+        document.getElementById("descripcion").classList.add("show-news");
+      }, 200);
     }
   }, [resultShow]);
 
@@ -400,14 +435,16 @@ function Formulario() {
             <div className="card-header">Resultados</div>
             <div
               className="card-body align-self-center d-flex align-items-center flex-column flex-xl-row"
-              style={{ height: "auto" }}
+         
             >
-              <Radar
-                options={options}
-                data={data}
-                style={{ height: "auto" }}
-                className=""
-              />
+              <Col>
+                <Radar
+                  options={options}
+                  data={showRuta ? dataRuta : data}
+                  className=""
+                />
+              </Col>
+              <Col>
               <div className="d-flex flex-column align-items-center">
                 <p id="nivel-actual" className="hidden-news">
                   Tu nivel actual es:
@@ -418,12 +455,22 @@ function Formulario() {
                 <p id="porcentaje" className="hidden-news">
                   Promedio del porcentaje fue: {total.toFixed(2)}%
                 </p>
-                <button
-                  className="btn btn-primary mb-4"
-                >
-                  Obtener hoja de ruta
-                </button>
+                <p id="descripcion" className="hidden-news">
+                  {descripcionNivel.find((d) => d.nivel === nivel).descripcion}
+                </p>
+                {!showRuta && (
+                  <button
+                    className="btn btn-primary mb-4"
+                    onClick={() => {
+                      setShowRuta(true);
+                    }}
+                  >
+                    Obtener hoja de ruta
+                  </button>
+                )}
               </div>
+              </Col>
+              
             </div>
           </div>
         </div>
