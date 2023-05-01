@@ -1,7 +1,9 @@
 {
   "files": {
     "main.css": "/capacidadDigital/static/css/main.44a42c84.css",
-    "main.js": "/capacidadDigital/static/js/main.5dd473d3.js",
+    "main.js": "/capacidadDigital/static/js/main.38f9bd8c.js",
+    "static/js/703.ec340d7c.chunk.js": "/capacidadDigital/static/js/703.ec340d7c.chunk.js",
+    "static/js/541.1457867c.chunk.js": "/capacidadDigital/static/js/541.1457867c.chunk.js",
     "static/media/procesos.svg": "/capacidadDigital/static/media/procesos.0749e603e5d9c61b1d5b2468b7985ab6.svg",
     "static/media/gobernanza.svg": "/capacidadDigital/static/media/gobernanza.830f80ca6ae77b2017eddd67afc0c651.svg",
     "static/media/gente.svg": "/capacidadDigital/static/media/gente.5d80d7a2bc7a40afb5c9db5508334a5e.svg",
@@ -11,10 +13,12 @@
     "static/media/estrategia.svg": "/capacidadDigital/static/media/estrategia.b45b33e394e6787399be7d3ce8a6dab2.svg",
     "index.html": "/capacidadDigital/index.html",
     "main.44a42c84.css.map": "/capacidadDigital/static/css/main.44a42c84.css.map",
-    "main.5dd473d3.js.map": "/capacidadDigital/static/js/main.5dd473d3.js.map"
+    "main.38f9bd8c.js.map": "/capacidadDigital/static/js/main.38f9bd8c.js.map",
+    "703.ec340d7c.chunk.js.map": "/capacidadDigital/static/js/703.ec340d7c.chunk.js.map",
+    "541.1457867c.chunk.js.map": "/capacidadDigital/static/js/541.1457867c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.44a42c84.css",
-    "static/js/main.5dd473d3.js"
+    "static/js/main.38f9bd8c.js"
   ]
 }
