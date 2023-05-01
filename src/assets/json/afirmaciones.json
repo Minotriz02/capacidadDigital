@@ -1,10 +1,386 @@
 [
   {
-    "afirmacion": "¿La organización cuenta con un plan estratégico que incluya una estrategia digital?",
-    "idPregunta": 11
+    "idPregunta": 11,
+    "afirmacion": "Defina un plan estratégico incluyendo una estrategia digital"
+    },
+  {
+     "idPregunta": 111,
+     "afirmacion": "Alinee la estrategia digital de la organización con los modelos operativos y de negocios existentes"
+     },
+  {
+    "idPregunta": 1111,
+    "afirmacion": "Considere invertir en la integración y desarrollo de capacidades para habilitar y/o acelerar y reducir los costos de la creación de servicios digitales"
   },
   {
-    "afirmacion": "¿La organización cuenta con un plan estratégico que incluya una estrategia digital?",
-    "idPregunta": 11
+    "idPregunta": 11111,
+    "afirmacion": "Busque implementar los nuevos modelos de negocio con elementos completamente digitales"
+  },
+  {
+    "idPregunta": 111111,
+    "afirmacion": "Busque que los ingresos por negocios digitales le permitan una inversión constante en nuevas iniciativas digitales"
+   },
+  {
+    "idPregunta": 21,
+    "afirmacion": "Defina objetivos en transformación digital"
+  },
+  {
+    "idPregunta":211,
+    "afirmacion": "Identifique líderes para guiar los esfuerzos orientados hacia la transformación digital"
+  },
+  {
+    "idPregunta": 2111,
+    "afirmacion": "Designe presupuesto para las iniciativas de transformación digital e identifique roles y responsabilidades"
+  },
+  {
+    "idPregunta": 21111,
+    "afirmacion": "Designe en el presupuesto estratégico de la organización un ítem espécifico para el área de Transformación digital"
+  },
+  {
+    "idPregunta": 211111,
+    "afirmacion": "Establezca una oficina o área de transformación digital con sus roles y responsabilidades;  documente y socialice la política de trasnformación digital"
+  },
+  {
+    "idPregunta":212,
+    "afirmacion": "Establezca planes de acción orientados al cumplimiento de los objetivos de transformación digital"
+  },
+  {
+    "idPregunta": 2121,
+    "afirmacion": "Establezca proyectos orientados a la Transformación Digital"
+  },
+  {
+    "idPregunta": 21211,
+    "afirmacion": "Defina KPIs sobre los proyectos o iniciativas de la organización orientados a monitorear el cumplimiento de los objetivos de transformación digital"
+  },
+  {
+    "idPregunta": 2122,
+    "afirmacion": "Defina indicadores, métricas y objetivos digitales para toda la empresa"
+  },
+  {
+    "idPregunta": 21221,
+    "afirmacion": "Revise periódicamente los objetivos de transformación digital"
+  },
+  {
+    "idPregunta": 212111,
+    "afirmacion": "Identifique acciones de mejoramiento sobre la oficina/área de transformación digital a partir de los resultados de los KPIs evaluados"
+  },
+  {
+    "idPregunta": 22,
+    "afirmacion": "Motive el interés de los líderes en la transformación digital"
+  },
+  {
+    "idPregunta":221,
+    "afirmacion": "Desde los líderes de la organización incentiven el empoderamiento y confianza en los equipos para el logro de los resultados"
+  },
+  {
+    "idPregunta": 2211,
+    "afirmacion": "Comience a trabajar en alcanzar una estructura de liderazgo distribuido y fomentar el trabajo colaborativo"
+  },
+  {
+    "idPregunta": 22111,
+    "afirmacion": "Establezcan equipos multifuncionales bajo la guía de lideres facultativos"
+  },
+  {
+    "idPregunta": 221111,
+    "afirmacion": "Busque que los líderes sean expertos en relaciones, manejo de células y tengan autonomía en la toma de decisiones"
+  },
+  {
+    "idPregunta": 31,
+    "afirmacion": "Obtenga herramientas que permitan el almacenamiento estructurado de datos"
+  },
+  {
+    "idPregunta":311,
+    "afirmacion": "Defina un plan de gestión de datos e incluya la definición de herramientas y tecnologías específicas para el manejo de los mismos"
+  },
+  {
+    "idPregunta": 3111,
+    "afirmacion": "Implemente tecnologías analíticas que faciliten la recolección y compartición de datos a través de las funciones"
+  },
+  {
+    "idPregunta": 31111,
+    "afirmacion": "Revise resultados de los análisis de datos para la toma decisiones y acciones estratégicas"
+  },
+  {
+    "idPregunta": 311111,
+    "afirmacion": "Respalde los procesos de innovación de la organización en tecnologías que permitan el análisis avanzados de datos"
+  },
+  {
+    "idPregunta": 32,
+    "afirmacion": "Implemente y/o verifique que todos los equipos de su organización cuenten con un antivirus actualizado y que los empleados cuenten con usuario y contraseña para ingresar a los equipos"
+  },
+  {
+    "idPregunta": 321,
+    "afirmacion": "Establezca estrategias de backup, cifrado e inventario de activos"
+  },
+  {
+    "idPregunta": 3211,
+    "afirmacion": "Defina una política de seguridad de la información, personal y herramientas para su cumplimiento"
+  },
+  {
+    "idPregunta": 3212,
+    "afirmacion": "Defina responsabilidades y roles de seguridad de la información"
+  },
+  {
+    "idPregunta": 32111,
+    "afirmacion": "Realice monitoreo y control sobre las herramientas de seguridad orientadas a datos, acceso y activos tecnológicos"
+  },
+  {
+    "idPregunta": 321111,
+    "afirmacion": "Defina una estrategia sólida de ciberseguridad que soporte los objetivos estratégicos de la organización protegiendo sus sistemas y datos, de posibles amenazas y ataques cibernéticos"
+  },
+  {
+    "idPregunta": 33,
+    "afirmacion": "Defina iniciativas orientadas a la transformación de la tecnología"
+  },
+  {
+    "idPregunta": 331,
+    "afirmacion": "Defina un responsable o establezca un área encargada de la tecnología"
+  },
+  {
+    "idPregunta": 3311,
+    "afirmacion": "Defina en el área de tecnología  indicadores orientados a evaluar el cumplimiento de los  objetivos de TI"
+  },
+  {
+    "idPregunta": 33111,
+    "afirmacion": "Alinee la estrategia de TI con la estrategia del negocio"
+  },
+  {
+    "idPregunta": 331111,
+    "afirmacion": "Alinee el departamento de tecnología con la transformación digital y los objetivos estratégicos"
+  },
+  {
+    "idPregunta": 34,
+    "afirmacion": "Implemente herramientas de gestión colaborativa"
+  },
+  {
+    "idPregunta":341,
+    "afirmacion": "Implemente herramientas que permitan la videoconferencia y uso compartido de pantalla"
+  },
+  {
+    "idPregunta": 3411,
+    "afirmacion": "Implemente tecnologías que permitan la colaboración en tiempo real entre los colaboradores, independientemente de su ubicación geográfica"
+  },
+  {
+    "idPregunta": 34111,
+    "afirmacion": "Integre Las herramientas colaborativas usadas en la organización con herramientas de análisis, seguimiento de datos y uso con el fin de generar indicadores de uso y apropiación"
+  },
+  {
+    "idPregunta": 341111,
+    "afirmacion": "Impulse la productividad y competitividad de la organización por medio de la gestión colaborativa"
+  },
+  {
+    "idPregunta": 41,
+    "afirmacion": "Defina y documente los procesos de la organización"
+  },
+  {
+    "idPregunta":411,
+    "afirmacion": "Inicie la evaluación y digitalización de los procesos clave de la organización"
+  },
+  {
+    "idPregunta": 4111,
+    "afirmacion": "Inicie con la automatización de procesos end-to-end para soportar servicios digitales"
+  },
+  {
+    "idPregunta": 41111,
+    "afirmacion": "Implememte la automatización de procesos con procesamiento de datos en tiempo real para tomar decisiones de forma proactiva"
+  },
+  {
+    "idPregunta": 411111,
+    "afirmacion": "Busque que la automatización impulse un rendimiento superior en la organización"
+  },
+  {
+    "idPregunta":421,
+    "afirmacion": "Identifique iniciativas para actualizar los procesos del negocio que soportan servicios digitales"
+  },
+  {
+    "idPregunta": 4211,
+    "afirmacion": "Diseñe e implemente procesos y políticas para soportar mejor los servicios digitales"
+  },
+  {
+    "idPregunta": 42111,
+    "afirmacion": "Comparta procesos entre los servicios digitales y tradicionales y defina métricas e indicadores clave (KPIs) específicos"
+  },
+  {
+    "idPregunta": 421111,
+    "afirmacion": "Busque la madurez en los procesos  y comience a producir innovaciones en productos y servicios digitales"
+  },
+  {
+    "idPregunta":431,
+    "afirmacion": "Identifique los procesos que son críticos para la satisfacción del cliente"
+  },
+  {
+    "idPregunta": 4311,
+    "afirmacion": "Defina en los procesos que interactúan con los clientes, indicadores orientados a evaluar si el proceso esta diseñado para satisfacer las necesidades y expectativas del cliente"
+  },
+  {
+    "idPregunta": 43111,
+    "afirmacion": "Rediseñe procesos incluyendo nuevas tecnologías y/o la creación de nuevos procedimientos que permiten mejorar la experiencia del cliente a partir del resultado de los indicadores evaluados"
+  },
+  {
+    "idPregunta": 431111,
+    "afirmacion": "Busque que los procesos esten centrados en el cliente de tal manera que se refleje aumento de ventas, retención de clientes y disminución en tiempos de respuesta al cliente"
+  },
+  {
+    "idPregunta": 51,
+    "afirmacion": "Almacene y clasifique la información de sus clientes"
+  },
+  {
+    "idPregunta":511,
+    "afirmacion": "Revise si la organización requiere contar con una visión omnicanal"
+  },
+  {
+    "idPregunta": 5111,
+    "afirmacion": "Inicie la implementación de la omnicanalidad en todas las operaciones orientadas al cliente"
+  },
+  {
+    "idPregunta": 51111,
+    "afirmacion": "Involucra al cliente en el diseño de nuevos productos/servicios a través de plataformas de innovación abierta"
+  },
+  {
+    "idPregunta": 511111,
+    "afirmacion": "Desarrolle nuevos servicios digitales  a partir del conocimiento profundo del cliente e integrelo desde el comienzo, a través de todos los puntos de contacto"
+  },
+  {
+    "idPregunta":521,
+    "afirmacion": "Integre los canales digitales en los procesos de comunicación y servicio de la compañía"
+  },
+  {
+    "idPregunta": 5211,
+    "afirmacion": "Integre los productos y servicios digitales en las interfaces y procesos comerciales de la organización"
+  },
+  {
+    "idPregunta": 52111,
+    "afirmacion": "Recopile información sobre la experiencia del cliente y usela para asistir la atención al cliente y la mejora de los servicios"
+  },
+  {
+    "idPregunta": 521111,
+    "afirmacion": "Implemente la comunicación digital personalizada con el cliente"
+  },
+  {
+    "idPregunta": 53,
+    "afirmacion": "Considere la personalización de sus productos/servicios por parte de los clientes"
+  },
+  {
+    "idPregunta":531,
+    "afirmacion": "Identifique iniciativas y requerimientos para expandir la interacción con los clientes más allá de aplicaciones básicas basadas en autosoporte"
+  },
+  {
+    "idPregunta": 5311,
+    "afirmacion": "Implemente nuevas características en las herramientas digitales para incentivar la participación del cliente como configurador de productos y servicios basados en web"
+  },
+  {
+    "idPregunta": 53111,
+    "afirmacion": "Habilite la personalización de servicios incluyendo productos de terceros y usando  las herramientas digitales y los sistemas"
+  },
+  {
+    "idPregunta": 531111,
+    "afirmacion": "Considere la implementación del uso de precios dinámicos para maximizar el valor del cliente mediante la completa personalización y flexibilidad de los productos/servicios"
+  },
+  {
+    "idPregunta": 61,
+    "afirmacion": "Familiarice a los empleados con la tecnología o productos digitales existentes"
+  },
+  {
+    "idPregunta":611,
+    "afirmacion": "Permita el trabajo flexible y móvil habilitado por la tecnología digital que posee"
+  },
+  {
+    "idPregunta": 6111,
+    "afirmacion": "Establezca desde la gerencia una comunicación continua acerca de la estrategia digital y los avances en su implementación"
+  },
+  {
+    "idPregunta": 61111,
+    "afirmacion": "Desarrolle una orientación hacia la agilidad contando con una estructura plana, permitiendo la autogestión y teniendo al cliente como centro de sus objetivos"
+  },
+  {
+    "idPregunta": 611111,
+    "afirmacion": "Desarrolle la flexibilidad en la organización adaptandose fácilmente a los cambios del mercado de una manera más ágil y priorizando la experiencia del cliente"
+  },
+  {
+    "idPregunta": 62,
+    "afirmacion": "Identifique al  empleado como clave del éxito de la transformación digital"
+  },
+  {
+    "idPregunta":621,
+    "afirmacion": "Capacite y fomente la colaboración multidisciplinaria"
+  },
+  {
+    "idPregunta": 6211,
+    "afirmacion": "Permita a los empleados ejercer un rol de liderazgo para tomar decisiones significativas de forma transparente"
+  },
+  {
+    "idPregunta": 62111,
+    "afirmacion": "Desarrolle en el personal el compromiso y empoderamiento para moverse de forma rápida y ágil en la consecución de los objetivos digitales de la empresa"
+  },
+  {
+    "idPregunta": 63,
+    "afirmacion": "Promueva que los líderes de la organización alienten a los empleados a proponer nuevas ideas o soluciones en las diferentes situaciones del día a día"
+  },
+  {
+    "idPregunta":631,
+    "afirmacion": "Tome riesgos medidos que permitan la innovación"
+  },
+  {
+    "idPregunta": 6311,
+    "afirmacion": "Aliente a los empleados para que contribuyan regularmente con ideas para productos digitales"
+  },
+  {
+    "idPregunta": 63111,
+    "afirmacion": "Aplique mejoras en los productos y servicios de la organización a partir de las actividades de innovación de los colaboradores"
+  },
+  {
+    "idPregunta": 631111,
+    "afirmacion": "Busque que la innovación digital sea el centro de la organización  y que todos los empleados ejecuten la estrategia digital"
+  },
+  {
+    "idPregunta": 64,
+    "afirmacion": "Defina iniciativas orientadas a  la innovación"
+  },
+  {
+    "idPregunta":641,
+    "afirmacion": "Defina indicadores claves de desempeño (KPI) orientados a medir  los objetivos de la innovación"
+  },
+  {
+    "idPregunta": 6411,
+    "afirmacion": "Monitoree los indicadores de éxito previamente definidos e dentifique oportunidades de mejora sobre los objetivos de innovación en la organización"
+  },
+  {
+    "idPregunta": 64111,
+    "afirmacion": "Aplique mejoras sobre la estrategia de innovación y/o transformación digital de la organización"
+  },
+  {
+    "idPregunta": 71,
+    "afirmacion": "Identifique necesidades de desarrollo en competencias digitales y defina un plan general para ello"
+  },
+  {
+    "idPregunta":711,
+    "afirmacion": "Incluya las competencias digitales como criterio importante en el reclutamiento"
+  },
+  {
+    "idPregunta": 7111,
+    "afirmacion": "Considere la experiencia digital como un componente central en el desarrollo de los empleados"
+  },
+  {
+    "idPregunta": 71111,
+    "afirmacion": "Considere la creación de nuevos perfiles de trabajo para empleados con experiencia en temas centrales digitales"
+  },
+  {
+    "idPregunta": 711111,
+    "afirmacion": "Promueva que las competencias digitales sean embebidas en toda la organización de tal manera que sea una diferencia entre los competidores"
+  },
+  {
+    "idPregunta":721,
+    "afirmacion": "Apoye el desarrollo de sus colaboradores fortaleciendo sus habilidades y competencias digitales  con programas de formación estándar"
+  },
+  {
+    "idPregunta": 7211,
+    "afirmacion": "Adapte esquemas de compensación y formación que se alineen a la estrategia digital"
+  },
+  {
+    "idPregunta": 72111,
+    "afirmacion": "Ponga en marcha una estrategia de desarrollo de personal, para entrenar, externalizar, o adquirir competencias digitales"
+  },
+  {
+    "idPregunta": 721111,
+    "afirmacion": "Fortalezca las competencias digitales y forme asociaciones para acceder a nuevas competencias"
   }
 ]

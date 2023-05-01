@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import preguntas from "../assets/json/preguntas.json";
 import descripcionNivel from "../assets/json/textoNiveles.json";
+import afirmaciones from "../assets/json/afirmaciones.json";
 import Pregunta from "./Pregunta";
 import "../assets/css/Formulario.css";
 import {
@@ -21,7 +22,14 @@ import genteLogo from "../assets/logos/gente.svg";
 import gobernanzaLogo from "../assets/logos/gobernanza.svg";
 import procesosLogo from "../assets/logos/procesos.svg";
 import tecnologiaLogo from "../assets/logos/tecnologia.svg";
-import { Col, ProgressBar } from "react-bootstrap";
+import { Col, ListGroup, ProgressBar, Row, Table } from "react-bootstrap";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
+import html2pdf from "html2pdf.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
 
 ChartJS.register(
   RadialLinearScale,
@@ -31,6 +39,8 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 function Formulario() {
   const [respuestas, setRespuestas] = useState({});
@@ -54,6 +64,7 @@ function Formulario() {
   const [nivel, setNivel] = useState("");
   const [resultShow, setResultShow] = useState(false);
   const [showRuta, setShowRuta] = useState(false);
+  let preguntasNegativas = [];
 
   const preguntasPorDimension = preguntas.reduce((obj, pregunta) => {
     obj[pregunta.dimension] = obj[pregunta.dimension] || [];
@@ -75,6 +86,10 @@ function Formulario() {
       obj[pregunta.dimension][pregunta.nivel].respondidas++;
     } else if (respuestas[pregunta.id] === false) {
       obj[pregunta.dimension][pregunta.nivel].respondidasFalse++;
+      preguntasNegativas.push({
+        idPregunta: pregunta.id,
+        dimension: pregunta.dimension,
+      });
     }
     return obj;
   }, {});
@@ -211,6 +226,7 @@ function Formulario() {
         ticks: {
           color: "black",
           backdropColor: "transparent",
+          stepSize:20
         },
       },
     },
@@ -246,6 +262,7 @@ function Formulario() {
   }, [estrategia, tecnologia, gobernanza, procesos, cliente, cultura, gente]);
 
   const hiddenElements = useRef([]);
+  const tableRef = useRef(null);
 
   useEffect(() => {
     if (!resultShow) {
@@ -288,8 +305,60 @@ function Formulario() {
     }
   }, [resultShow]);
 
+  useEffect(() => {
+    if (showRuta && tableRef.current) {
+      tableRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [showRuta]);
+
+  const handleDownloadPDF = () => {
+    //Preguntas
+    const preguntasSeleccionadas = Object.entries(respuestas)
+      .filter(([id, respuesta]) => preguntas.some((p) => p.id === parseInt(id)))
+      .map(([id]) => {
+        const pregunta = preguntas.find((p) => p.id === parseInt(id));
+        return {
+          id: pregunta.id,
+          enunciado: pregunta.enunciado,
+          respuesta: respuestas[id],
+        };
+      });
+
+    // Crea un array con las filas de la tabla
+    const rows = preguntasSeleccionadas.map((p) => [
+      p.enunciado,
+      p.respuesta ? "si" : "no",
+    ]);
+    console.log(rows);
+
+    // Define la estructura del documento PDF
+    const docDefinition = {
+      content: [
+        { text: "Respuestas", style: "header" },
+        { table: { body: [["Pregunta", "Respuesta"], ...rows] } },
+      ],
+      styles: {
+        header: { fontSize: 18, bold: true, margin: [0, 0, 0, 10] },
+      },
+    };
+
+    // Genera el documento PDF y lo descarga
+    pdfMake.createPdf(docDefinition).download("respuestas.pdf");
+
+    //Resultado
+    const input = document.getElementById("my-pdf-content");
+    const options = {
+      margin: 0,
+      filename: "resultados.pdf",
+      image: { type: "jpeg", quality: 1 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: "in", format: "letter", orientation: "landscape" },
+    };
+    html2pdf().from(input).set(options).save();
+  };
+
   return (
-    <div className="container pt-4 col-xxl-8 mb-4">
+    <div className="container pt-4 col-xxl-8 mb-4" id="my-pdf-content">
       <h1 className="text-center">Evaluación de Capacidad Digital</h1>
       {!resultShow ? (
         <div className="d-flex flex-column align-items-center">
@@ -420,57 +489,312 @@ function Formulario() {
                 }
               });
               setResultShow(true);
-              console.log(
-                "preguntasPorDimensionYNivel",
-                preguntasPorDimensionYNivel
-              );
+              console.log(respuestas);
+              console.log(preguntasNegativas);
             }}
           >
-            Ver Nivel de Madurez Actual
+            Ver Diagnóstico
           </button>
         </div>
       ) : (
         <div>
           <div className="card mb-4">
             <div className="card-header">Resultados</div>
-            <div
-              className="card-body align-self-center d-flex align-items-center flex-column flex-xl-row"
-         
-            >
-              <Col>
-                <Radar
-                  options={options}
-                  data={showRuta ? dataRuta : data}
-                  className=""
-                />
-              </Col>
-              <Col>
-              <div className="d-flex flex-column align-items-center">
-                <p id="nivel-actual" className="hidden-news">
-                  Tu nivel actual es:
-                </p>
-                <h1 id="nivel" className="hidden-news">
-                  {nivel}
-                </h1>
-                <p id="porcentaje" className="hidden-news">
-                  Promedio del porcentaje fue: {total.toFixed(2)}%
-                </p>
-                <p id="descripcion" className="hidden-news">
-                  {descripcionNivel.find((d) => d.nivel === nivel).descripcion}
-                </p>
-                {!showRuta && (
-                  <button
-                    className="btn btn-primary mb-4"
-                    onClick={() => {
-                      setShowRuta(true);
-                    }}
-                  >
-                    Obtener hoja de ruta
-                  </button>
-                )}
-              </div>
-              </Col>
-              
+            <div className="card-body">
+              <Row className="align-items-center">
+                <Col>
+                  <Radar
+                    options={options}
+                    data={showRuta ? dataRuta : data}
+                    className=""
+                  />
+                </Col>
+                <Col>
+                  <div className="d-flex flex-column align-items-center">
+                    <p id="nivel-actual" className="hidden-news">
+                      Tu nivel actual es:
+                    </p>
+                    <h1 id="nivel" className="hidden-news">
+                      {nivel}
+                    </h1>
+                    <p id="porcentaje" className="hidden-news">
+                      Promedio del porcentaje fue: {total.toFixed(2)}%
+                    </p>
+                    <p id="descripcion" className="hidden-news">
+                      {
+                        descripcionNivel.find((d) => d.nivel === nivel)
+                          .descripcion
+                      }
+                    </p>
+                    {!showRuta && (
+                      <button
+                        className="btn btn-primary mb-4"
+                        onClick={() => {
+                          setShowRuta(true);
+                        }}
+                      >
+                        Obtener hoja de ruta
+                      </button>
+                    )}
+                  </div>
+                </Col>
+              </Row>
+              {showRuta && (
+                <Row>
+                  <Col>
+                    <Table striped bordered hover ref={tableRef}>
+                      <thead>
+                        <tr>
+                          <th>Capacidad</th>
+                          <th>% Actual</th>
+                          <th>% Objetivo</th>
+                          <th>Pautas</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Estrategia</td>
+                          <td>{estrategia}</td>
+                          <td>{proximoEstrategia}</td>
+                          <td>
+                            <ListGroup
+                              as="ol"
+                              numbered
+                              variant="flush"
+                              className="bg-transparent"
+                            >
+                              {preguntasNegativas
+                                .filter(
+                                  (pregunta) =>
+                                    pregunta.dimension === "Estrategia"
+                                )
+                                .map((pregunta, i) => {
+                                  const recomendacion = afirmaciones.find(
+                                    (r) => r.idPregunta === pregunta.idPregunta
+                                  );
+                                  return (
+                                    <ListGroup.Item
+                                      key={i}
+                                      as="li"
+                                      className="bg-transparent"
+                                    >
+                                      {recomendacion.afirmacion}
+                                    </ListGroup.Item>
+                                  );
+                                })}
+                            </ListGroup>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Tecnología</td>
+                          <td>{tecnologia}</td>
+                          <td>{proximoTecnologia}</td>
+                          <td>
+                            <ListGroup
+                              as="ol"
+                              numbered
+                              variant="flush"
+                              className="bg-transparent"
+                            >
+                              {preguntasNegativas
+                                .filter(
+                                  (pregunta) =>
+                                    pregunta.dimension === "Tecnología"
+                                )
+                                .map((pregunta, i) => {
+                                  const recomendacion = afirmaciones.find(
+                                    (r) => r.idPregunta === pregunta.idPregunta
+                                  );
+                                  return (
+                                    <ListGroup.Item
+                                      key={i}
+                                      as="li"
+                                      className="bg-transparent"
+                                    >
+                                      {recomendacion.afirmacion}
+                                    </ListGroup.Item>
+                                  );
+                                })}
+                            </ListGroup>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Gobernanza y Liderazgo</td>
+                          <td>{gobernanza}</td>
+                          <td>{proximoGobernanza}</td>
+                          <td>
+                            <ListGroup
+                              as="ol"
+                              numbered
+                              variant="flush"
+                              className="bg-transparent"
+                            >
+                              {preguntasNegativas
+                                .filter(
+                                  (pregunta) =>
+                                    pregunta.dimension ===
+                                    "Gobernanza y liderazgo"
+                                )
+                                .map((pregunta, i) => {
+                                  const recomendacion = afirmaciones.find(
+                                    (r) => r.idPregunta === pregunta.idPregunta
+                                  );
+                                  return (
+                                    <ListGroup.Item
+                                      key={i}
+                                      as="li"
+                                      className="bg-transparent"
+                                    >
+                                      {recomendacion.afirmacion}
+                                    </ListGroup.Item>
+                                  );
+                                })}
+                            </ListGroup>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Procesos</td>
+                          <td>{procesos}</td>
+                          <td>{proximoProcesos}</td>
+                          <td>
+                            <ListGroup
+                              as="ol"
+                              numbered
+                              variant="flush"
+                              className="bg-transparent"
+                            >
+                              {preguntasNegativas
+                                .filter(
+                                  (pregunta) =>
+                                    pregunta.dimension === "Procesos"
+                                )
+                                .map((pregunta, i) => {
+                                  const recomendacion = afirmaciones.find(
+                                    (r) => r.idPregunta === pregunta.idPregunta
+                                  );
+                                  return (
+                                    <ListGroup.Item
+                                      key={i}
+                                      as="li"
+                                      className="bg-transparent"
+                                    >
+                                      {recomendacion.afirmacion}
+                                    </ListGroup.Item>
+                                  );
+                                })}
+                            </ListGroup>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Cliente</td>
+                          <td>{cliente}</td>
+                          <td>{proximoCliente}</td>
+                          <td>
+                            <ListGroup
+                              as="ol"
+                              numbered
+                              variant="flush"
+                              className="bg-transparent"
+                            >
+                              {preguntasNegativas
+                                .filter(
+                                  (pregunta) => pregunta.dimension === "Cliente"
+                                )
+                                .map((pregunta, i) => {
+                                  const recomendacion = afirmaciones.find(
+                                    (r) => r.idPregunta === pregunta.idPregunta
+                                  );
+                                  return (
+                                    <ListGroup.Item
+                                      key={i}
+                                      as="li"
+                                      className="bg-transparent"
+                                    >
+                                      {recomendacion.afirmacion}
+                                    </ListGroup.Item>
+                                  );
+                                })}
+                            </ListGroup>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Gente y Habilidades</td>
+                          <td>{gente}</td>
+                          <td>{proximoGente}</td>
+                          <td>
+                            <ListGroup
+                              as="ol"
+                              numbered
+                              variant="flush"
+                              className="bg-transparent"
+                            >
+                              {preguntasNegativas
+                                .filter(
+                                  (pregunta) =>
+                                    pregunta.dimension === "Gente y Habilidades"
+                                )
+                                .map((pregunta, i) => {
+                                  const recomendacion = afirmaciones.find(
+                                    (r) => r.idPregunta === pregunta.idPregunta
+                                  );
+                                  return (
+                                    <ListGroup.Item
+                                      key={i}
+                                      as="li"
+                                      className="bg-transparent"
+                                    >
+                                      {recomendacion.afirmacion}
+                                    </ListGroup.Item>
+                                  );
+                                })}
+                            </ListGroup>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Cultura</td>
+                          <td>{cultura}</td>
+                          <td>{proximoCultura}</td>
+                          <td>
+                            <ListGroup
+                              as="ol"
+                              numbered
+                              variant="flush"
+                              className="bg-transparent"
+                            >
+                              {preguntasNegativas
+                                .filter(
+                                  (pregunta) => pregunta.dimension === "Cultura"
+                                )
+                                .map((pregunta, i) => {
+                                  const recomendacion = afirmaciones.find(
+                                    (r) => r.idPregunta === pregunta.idPregunta
+                                  );
+                                  return (
+                                    <ListGroup.Item
+                                      key={i}
+                                      as="li"
+                                      className="bg-transparent"
+                                    >
+                                      {recomendacion.afirmacion}
+                                    </ListGroup.Item>
+                                  );
+                                })}
+                            </ListGroup>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </Table>
+                  </Col>
+                </Row>
+              )}
+              {showRuta && (
+                <button className="btn btn-primary" onClick={handleDownloadPDF}>
+                  <span className="me-2">
+                    <FontAwesomeIcon icon={faDownload} />
+                  </span>
+                  Descargar PDF
+                </button>
+              )}
             </div>
           </div>
         </div>
