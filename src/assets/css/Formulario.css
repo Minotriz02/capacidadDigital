@@ -76,3 +76,9 @@
 .Gente .accordion-button:is(.collapsed) {
   background-color: #d0ebb3 !important;
 }
+
+.porcentaje{
+  position: relative;
+  top: 41%;
+  left: 4%;
+}   

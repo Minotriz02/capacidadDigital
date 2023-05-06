@@ -14,7 +14,7 @@ import {
   Legend,
 } from "chart.js";
 import Accordion from "react-bootstrap/Accordion";
-import { Radar } from "react-chartjs-2";
+import { Radar, Doughnut } from "react-chartjs-2";
 import clienteLogo from "../assets/logos/cliente.svg";
 import culturaLogo from "../assets/logos/cultura.svg";
 import estrategiaLogo from "../assets/logos/estrategia.svg";
@@ -30,6 +30,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
+import DoughnutChart from "./DoughnutChart";
 
 ChartJS.register(
   RadialLinearScale,
@@ -226,7 +227,7 @@ function Formulario() {
         ticks: {
           color: "black",
           backdropColor: "transparent",
-          stepSize:20
+          stepSize: 20
         },
       },
     },
@@ -378,13 +379,13 @@ function Formulario() {
                   <ProgressBar
                     variant={
                       preguntasPorcentajeRespondidasPorDimension(dimension) ===
-                      100
+                        100
                         ? "success"
                         : preguntasPorcentajeRespondidasPorDimension(
-                            dimension
-                          ) <= 50
-                        ? "danger"
-                        : "primary"
+                          dimension
+                        ) <= 50
+                          ? "danger"
+                          : "primary"
                     }
                     now={preguntasPorcentajeRespondidasPorDimension(dimension)}
                   ></ProgressBar>
@@ -394,16 +395,16 @@ function Formulario() {
                         dimension === "Estrategia"
                           ? estrategiaLogo
                           : dimension === "Gobernanza y liderazgo"
-                          ? gobernanzaLogo
-                          : dimension === "Tecnología"
-                          ? tecnologiaLogo
-                          : dimension === "Procesos"
-                          ? procesosLogo
-                          : dimension === "Cliente"
-                          ? clienteLogo
-                          : dimension === "Cultura"
-                          ? culturaLogo
-                          : genteLogo
+                            ? gobernanzaLogo
+                            : dimension === "Tecnología"
+                              ? tecnologiaLogo
+                              : dimension === "Procesos"
+                                ? procesosLogo
+                                : dimension === "Cliente"
+                                  ? clienteLogo
+                                  : dimension === "Cultura"
+                                    ? culturaLogo
+                                    : genteLogo
                       }
                       alt={`img ${dimension}`}
                       style={{ maxWidth: "35px" }}
@@ -526,19 +527,33 @@ function Formulario() {
                           .descripcion
                       }
                     </p>
-                    {!showRuta && (
-                      <button
-                        className="btn btn-primary mb-4"
-                        onClick={() => {
-                          setShowRuta(true);
-                        }}
-                      >
-                        Obtener hoja de ruta
-                      </button>
-                    )}
+
                   </div>
                 </Col>
               </Row>
+              <Row>
+                <Col className="d-flex justify-content-between">
+                  <DoughnutChart percentage={estrategia} title="Estrategia" />
+                  <DoughnutChart percentage={tecnologia} title="Tecnología" />
+                  <DoughnutChart percentage={gobernanza} title="Gobernanza y liderazgo" />
+                  <DoughnutChart percentage={procesos} title="Procesos" />
+                  <DoughnutChart percentage={cliente} title="Cliente" />
+                  <DoughnutChart percentage={cultura} title="Culltura" />
+                  <DoughnutChart percentage={gente} title="Gente y habilidades" />
+                </Col>
+              </Row>
+              {!showRuta && (
+                <Row className="justify-content-center">
+                  <button
+                    className="btn btn-primary mb-4 col-auto"
+                    onClick={() => {
+                      setShowRuta(true);
+                    }}
+                  >
+                    Obtener hoja de ruta
+                  </button>
+                </Row>
+              )}
               {showRuta && (
                 <Row>
                   <Col>
