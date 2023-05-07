@@ -14,7 +14,7 @@ import {
   Legend,
 } from "chart.js";
 import Accordion from "react-bootstrap/Accordion";
-import { Radar, Doughnut } from "react-chartjs-2";
+import { Radar } from "react-chartjs-2";
 import clienteLogo from "../assets/logos/cliente.svg";
 import culturaLogo from "../assets/logos/cultura.svg";
 import estrategiaLogo from "../assets/logos/estrategia.svg";
@@ -22,15 +22,23 @@ import genteLogo from "../assets/logos/gente.svg";
 import gobernanzaLogo from "../assets/logos/gobernanza.svg";
 import procesosLogo from "../assets/logos/procesos.svg";
 import tecnologiaLogo from "../assets/logos/tecnologia.svg";
-import { Col, ListGroup, ProgressBar, Row, Table } from "react-bootstrap";
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
+import {
+  Col,
+  ListGroup,
+  ProgressBar,
+  Row,
+  Table,
+  Modal,
+  Button,
+} from "react-bootstrap";
 import html2pdf from "html2pdf.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import DoughnutChart from "./DoughnutChart";
+import GaugeChart from "react-gauge-chart";
+import ReactSpeedometer from "react-d3-speedometer";
 
 ChartJS.register(
   RadialLinearScale,
@@ -61,10 +69,17 @@ function Formulario() {
   const [proximoCliente, setProximoCliente] = useState(0);
   const [proximoCultura, setProximoCultura] = useState(0);
   const [proximoGente, setProximoGente] = useState(0);
-  const [proximoTotal, setProximoTotal] = useState(0);
   const [nivel, setNivel] = useState("");
   const [resultShow, setResultShow] = useState(false);
   const [showRuta, setShowRuta] = useState(false);
+  const [showModal, setShowModal] = useState(true);
+  const [orgName, setOrgName] = useState("");
+
+  const handleClose = () => {
+    const input = document.getElementById("org-name-input");
+    setOrgName(input.value);
+    setShowModal(false);
+  };
   let preguntasNegativas = [];
 
   const preguntasPorDimension = preguntas.reduce((obj, pregunta) => {
@@ -155,8 +170,8 @@ function Formulario() {
           cultura,
           gente,
         ],
-        backgroundColor: "rgba(255, 99, 132, 0.2)",
-        borderColor: "rgba(255, 99, 132, 1)",
+        backgroundColor: "rgba(50, 168, 82, 0.2)",
+        borderColor: "rgba(50, 168, 82, 1)",
         borderWidth: 1,
       },
     ],
@@ -184,8 +199,8 @@ function Formulario() {
           cultura,
           gente,
         ],
-        backgroundColor: "rgba(255, 99, 132, 0.2)",
-        borderColor: "rgba(255, 99, 132, 1)",
+        backgroundColor: "rgba(50, 168, 82, 0.2)",
+        borderColor: "rgba(50, 168, 82, 1)",
         borderWidth: 1,
       },
       {
@@ -227,7 +242,7 @@ function Formulario() {
         ticks: {
           color: "black",
           backdropColor: "transparent",
-          stepSize: 20
+          stepSize: 20,
         },
       },
     },
@@ -287,10 +302,10 @@ function Formulario() {
 
   useEffect(() => {
     if (resultShow) {
-      setTimeout(() => {
-        // Asignar una clase diferente después de 2 segundos
-        document.getElementById("porcentaje").classList.add("show-news");
-      }, 200);
+      // setTimeout(() => {
+      //   // Asignar una clase diferente después de 2 segundos
+      //   document.getElementById("porcentaje").classList.add("show-news");
+      // }, 200);
       setTimeout(() => {
         // Asignar una clase diferente después de 2 segundos
         document.getElementById("nivel-actual").classList.add("show-news");
@@ -361,6 +376,24 @@ function Formulario() {
   return (
     <div className="container pt-4 col-xxl-8 mb-4" id="my-pdf-content">
       <h1 className="text-center">Evaluación de Capacidad Digital</h1>
+      <Modal show={showModal} onHide={handleClose} backdrop="static">
+        <Modal.Header>
+          <Modal.Title>Ayudanos con el nombre de tu organización</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>Ingresa el nombre de tu organización</p>
+          <input
+            type="text"
+            placeholder="Completa este campo"
+            id="org-name-input"
+          />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose}>
+            Aceptar
+          </Button>
+        </Modal.Footer>
+      </Modal>
       {!resultShow ? (
         <div className="d-flex flex-column align-items-center">
           {Object.entries(preguntasPorDimension).map(
@@ -379,13 +412,13 @@ function Formulario() {
                   <ProgressBar
                     variant={
                       preguntasPorcentajeRespondidasPorDimension(dimension) ===
-                        100
+                      100
                         ? "success"
                         : preguntasPorcentajeRespondidasPorDimension(
-                          dimension
-                        ) <= 50
-                          ? "danger"
-                          : "primary"
+                            dimension
+                          ) <= 50
+                        ? "danger"
+                        : "primary"
                     }
                     now={preguntasPorcentajeRespondidasPorDimension(dimension)}
                   ></ProgressBar>
@@ -395,16 +428,16 @@ function Formulario() {
                         dimension === "Estrategia"
                           ? estrategiaLogo
                           : dimension === "Gobernanza y liderazgo"
-                            ? gobernanzaLogo
-                            : dimension === "Tecnología"
-                              ? tecnologiaLogo
-                              : dimension === "Procesos"
-                                ? procesosLogo
-                                : dimension === "Cliente"
-                                  ? clienteLogo
-                                  : dimension === "Cultura"
-                                    ? culturaLogo
-                                    : genteLogo
+                          ? gobernanzaLogo
+                          : dimension === "Tecnología"
+                          ? tecnologiaLogo
+                          : dimension === "Procesos"
+                          ? procesosLogo
+                          : dimension === "Cliente"
+                          ? clienteLogo
+                          : dimension === "Cultura"
+                          ? culturaLogo
+                          : genteLogo
                       }
                       alt={`img ${dimension}`}
                       style={{ maxWidth: "35px" }}
@@ -500,17 +533,35 @@ function Formulario() {
       ) : (
         <div>
           <div className="card mb-4">
-            <div className="card-header">Resultados</div>
+            <div className="card-header">
+              Resultados de la organización {orgName}
+            </div>
             <div className="card-body">
               <Row className="align-items-center">
-                <Col>
+                <Col className="col-12">
+                  <h2>{orgName}</h2>
+                </Col>
+              </Row>
+              <Row className="align-items-center">
+                <Col className="col-6">
                   <Radar
                     options={options}
                     data={showRuta ? dataRuta : data}
                     className=""
                   />
                 </Col>
-                <Col>
+                <Col className="col-6">
+                  <GaugeChart
+                    id="gauge-chart2"
+                    nrOfLevels={6}
+                    percent={total.toFixed(2) / 100}
+                    colors={["#1c67e8", "#bff593"]}
+                    textColor="#000000"
+                    cornerRadius={0}
+                    arcPadding={0}
+                    needleColor="#6ae65a"
+                    needleBaseColor="#6ae65a"
+                  />
                   <div className="d-flex flex-column align-items-center">
                     <p id="nivel-actual" className="hidden-news">
                       Tu nivel actual es:
@@ -518,16 +569,9 @@ function Formulario() {
                     <h1 id="nivel" className="hidden-news">
                       {nivel}
                     </h1>
-                    <p id="porcentaje" className="hidden-news">
+                    {/* <p id="porcentaje" className="hidden-news">
                       Promedio del porcentaje fue: {total.toFixed(2)}%
-                    </p>
-                    <p id="descripcion" className="hidden-news">
-                      {
-                        descripcionNivel.find((d) => d.nivel === nivel)
-                          .descripcion
-                      }
-                    </p>
-
+                    </p> */}
                   </div>
                 </Col>
               </Row>
@@ -535,11 +579,31 @@ function Formulario() {
                 <Col className="d-flex justify-content-between">
                   <DoughnutChart percentage={estrategia} title="Estrategia" />
                   <DoughnutChart percentage={tecnologia} title="Tecnología" />
-                  <DoughnutChart percentage={gobernanza} title="Gobernanza y liderazgo" />
+                  <DoughnutChart
+                    percentage={gobernanza}
+                    title="Gobernanza y liderazgo"
+                  />
                   <DoughnutChart percentage={procesos} title="Procesos" />
                   <DoughnutChart percentage={cliente} title="Cliente" />
                   <DoughnutChart percentage={cultura} title="Culltura" />
-                  <DoughnutChart percentage={gente} title="Gente y habilidades" />
+                  <DoughnutChart
+                    percentage={gente}
+                    title="Gente y habilidades"
+                  />
+                </Col>
+              </Row>
+              <Row className="my-3">
+                <Col>
+                  <p
+                    id="descripcion"
+                    className="hidden-news"
+                    style={{ textAlign: "justify" }}
+                  >
+                    {
+                      descripcionNivel.find((d) => d.nivel === nivel)
+                        .descripcion
+                    }
+                  </p>
                 </Col>
               </Row>
               {!showRuta && (
@@ -556,21 +620,41 @@ function Formulario() {
               )}
               {showRuta && (
                 <Row>
+                  <Col className="col-12">
+                    <h2>Fortalezas y debilidades de la organización</h2>
+                  </Col>
+                  <Col>
+                    <Table striped bordered hover>
+                      <thead>
+                        <tr>
+                          <th>Fortalezas</th>
+                          <th>Debilidades</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr></tr>
+                      </tbody>
+                    </Table>
+                  </Col>
+                </Row>
+              )}
+              {showRuta && (
+                <Row>
                   <Col>
                     <Table striped bordered hover ref={tableRef}>
                       <thead>
                         <tr>
                           <th>Capacidad</th>
-                          <th>% Actual</th>
-                          <th>% Objetivo</th>
-                          <th>Pautas</th>
+                          <th>Estado Actuak</th>
+                          <th>Estado Objetivo</th>
+                          <th>Recomendaciones de Mejora</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <td>Estrategia</td>
-                          <td>{estrategia}</td>
-                          <td>{proximoEstrategia}</td>
+                          <td>{estrategia.toFixed(0)}%</td>
+                          <td>{proximoEstrategia.toFixed(0)}%</td>
                           <td>
                             <ListGroup
                               as="ol"
@@ -602,8 +686,8 @@ function Formulario() {
                         </tr>
                         <tr>
                           <td>Tecnología</td>
-                          <td>{tecnologia}</td>
-                          <td>{proximoTecnologia}</td>
+                          <td>{tecnologia.toFixed(0)}%</td>
+                          <td>{proximoTecnologia.toFixed(0)}%</td>
                           <td>
                             <ListGroup
                               as="ol"
@@ -635,8 +719,8 @@ function Formulario() {
                         </tr>
                         <tr>
                           <td>Gobernanza y Liderazgo</td>
-                          <td>{gobernanza}</td>
-                          <td>{proximoGobernanza}</td>
+                          <td>{gobernanza.toFixed(0)}%</td>
+                          <td>{proximoGobernanza.toFixed(0)}%</td>
                           <td>
                             <ListGroup
                               as="ol"
@@ -669,8 +753,8 @@ function Formulario() {
                         </tr>
                         <tr>
                           <td>Procesos</td>
-                          <td>{procesos}</td>
-                          <td>{proximoProcesos}</td>
+                          <td>{procesos.toFixed(0)}%</td>
+                          <td>{proximoProcesos.toFixed(0)}%</td>
                           <td>
                             <ListGroup
                               as="ol"
@@ -702,8 +786,8 @@ function Formulario() {
                         </tr>
                         <tr>
                           <td>Cliente</td>
-                          <td>{cliente}</td>
-                          <td>{proximoCliente}</td>
+                          <td>{cliente.toFixed(0)}%</td>
+                          <td>{proximoCliente.toFixed(0)}%</td>
                           <td>
                             <ListGroup
                               as="ol"
@@ -734,8 +818,8 @@ function Formulario() {
                         </tr>
                         <tr>
                           <td>Gente y Habilidades</td>
-                          <td>{gente}</td>
-                          <td>{proximoGente}</td>
+                          <td>{gente.toFixed(0)}%</td>
+                          <td>{proximoGente.toFixed(0)}%</td>
                           <td>
                             <ListGroup
                               as="ol"
@@ -767,8 +851,8 @@ function Formulario() {
                         </tr>
                         <tr>
                           <td>Cultura</td>
-                          <td>{cultura}</td>
-                          <td>{proximoCultura}</td>
+                          <td>{cultura.toFixed(0)}%</td>
+                          <td>{proximoCultura.toFixed(0)}%</td>
                           <td>
                             <ListGroup
                               as="ol"
