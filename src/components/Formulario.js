@@ -39,6 +39,7 @@ import pdfFonts from "pdfmake/build/vfs_fonts";
 import DoughnutChart from "./DoughnutChart";
 import GaugeChart from "react-gauge-chart";
 import ReactSpeedometer from "react-d3-speedometer";
+import html2canvas from "html2canvas";
 
 ChartJS.register(
   RadialLinearScale,
@@ -362,542 +363,591 @@ function Formulario() {
     pdfMake.createPdf(docDefinition).download("respuestas.pdf");
 
     //Resultado
+    const father = document.getElementById("father");
     const input = document.getElementById("my-pdf-content");
+
     const options = {
-      margin: 0,
+      margin: [0, -500, 0, 0],
       filename: "resultados.pdf",
-      image: { type: "jpeg", quality: 1 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: "in", format: "letter", orientation: "landscape" },
+      html2canvas: {
+        scale: 1.5,
+        userCORS: true,
+        allowTaint: true,
+      },
+      jsPDF: {
+        unit: "px",
+        format: [input.offsetHeight + 800, input.offsetWidth + 1000],
+        orientation: "p",
+      },
     };
-    html2pdf().from(input).set(options).save();
+    html2pdf().from(father).set(options).save();
   };
 
   return (
-    <div className="container pt-4 col-xxl-8 mb-4" id="my-pdf-content">
-      <h1 className="text-center">Evaluación de Capacidad Digital</h1>
-      <Modal show={showModal} onHide={handleClose} backdrop="static">
-        <Modal.Header>
-          <Modal.Title>Ayudanos con el nombre de tu organización</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>Ingresa el nombre de tu organización</p>
-          <input
-            type="text"
-            placeholder="Completa este campo"
-            id="org-name-input"
-          />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
-            Aceptar
-          </Button>
-        </Modal.Footer>
-      </Modal>
-      {!resultShow ? (
-        <div className="d-flex flex-column align-items-center">
-          {Object.entries(preguntasPorDimension).map(
-            ([dimension, preguntas], index) => (
-              <Accordion
-                defaultActiveKey={"Estrategia"}
-                className="w-100 show hidden-news"
-                key={index}
-                ref={(element) => (hiddenElements.current[index] = element)}
-              >
-                <Accordion.Item
-                  key={dimension}
-                  eventKey={dimension}
-                  className="mb-4 w-100"
+    <div className="container pt-4 col-xxl-8 mb-4" id="father">
+      <div id="my-pdf-content">
+        <h1 className="text-center">Evaluación de Capacidad Digital</h1>
+        <Modal show={showModal} onHide={handleClose} backdrop="static">
+          <Modal.Header>
+            <Modal.Title>Ayudanos con el nombre de tu organización</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p>Ingresa el nombre de tu organización</p>
+            <input
+              type="text"
+              placeholder="Completa este campo"
+              id="org-name-input"
+            />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={handleClose}>
+              Aceptar
+            </Button>
+          </Modal.Footer>
+        </Modal>
+        {!resultShow ? (
+          <div className="d-flex flex-column align-items-center">
+            {Object.entries(preguntasPorDimension).map(
+              ([dimension, preguntas], index) => (
+                <Accordion
+                  defaultActiveKey={"Estrategia"}
+                  className="w-100 show hidden-news"
+                  key={index}
+                  ref={(element) => (hiddenElements.current[index] = element)}
                 >
-                  <ProgressBar
-                    variant={
-                      preguntasPorcentajeRespondidasPorDimension(dimension) ===
-                      100
-                        ? "success"
-                        : preguntasPorcentajeRespondidasPorDimension(
-                            dimension
-                          ) <= 50
-                        ? "danger"
-                        : "primary"
-                    }
-                    now={preguntasPorcentajeRespondidasPorDimension(dimension)}
-                  ></ProgressBar>
-                  <Accordion.Header className={dimension.split(" ")[0]}>
-                    <img
-                      src={
-                        dimension === "Estrategia"
-                          ? estrategiaLogo
-                          : dimension === "Gobernanza y liderazgo"
-                          ? gobernanzaLogo
-                          : dimension === "Tecnología"
-                          ? tecnologiaLogo
-                          : dimension === "Procesos"
-                          ? procesosLogo
-                          : dimension === "Cliente"
-                          ? clienteLogo
-                          : dimension === "Cultura"
-                          ? culturaLogo
-                          : genteLogo
+                  <Accordion.Item
+                    key={dimension}
+                    eventKey={dimension}
+                    className="mb-4 w-100"
+                  >
+                    <ProgressBar
+                      variant={
+                        preguntasPorcentajeRespondidasPorDimension(
+                          dimension
+                        ) === 100
+                          ? "success"
+                          : preguntasPorcentajeRespondidasPorDimension(
+                              dimension
+                            ) <= 50
+                          ? "danger"
+                          : "primary"
                       }
-                      alt={`img ${dimension}`}
-                      style={{ maxWidth: "35px" }}
-                      className="me-3"
+                      now={preguntasPorcentajeRespondidasPorDimension(
+                        dimension
+                      )}
+                    ></ProgressBar>
+                    <Accordion.Header className={dimension.split(" ")[0]}>
+                      <img
+                        src={
+                          dimension === "Estrategia"
+                            ? estrategiaLogo
+                            : dimension === "Gobernanza y liderazgo"
+                            ? gobernanzaLogo
+                            : dimension === "Tecnología"
+                            ? tecnologiaLogo
+                            : dimension === "Procesos"
+                            ? procesosLogo
+                            : dimension === "Cliente"
+                            ? clienteLogo
+                            : dimension === "Cultura"
+                            ? culturaLogo
+                            : genteLogo
+                        }
+                        alt={`img ${dimension}`}
+                        style={{ maxWidth: "35px" }}
+                        className="me-3"
+                      />
+                      {dimension}
+                    </Accordion.Header>
+                    <Accordion.Body className="">
+                      <form>
+                        {preguntasFiltradas
+                          .filter(
+                            (pregunta) => pregunta.dimension === dimension
+                          )
+                          .map((pregunta) => (
+                            <Pregunta
+                              key={pregunta.id}
+                              pregunta={pregunta}
+                              respuesta={respuestas[pregunta.id]}
+                              handleRespuesta={handleRespuesta}
+                            />
+                          ))}
+                      </form>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Accordion>
+              )
+            )}
+            <button
+              className="btn btn-primary w-25 mb-4"
+              disabled={!formularioComplete}
+              onClick={() => {
+                // Recorrer cada dimensión
+                Object.keys(preguntasPorDimensionYNivel).forEach(
+                  (dimension) => {
+                    const niveles = preguntasPorDimensionYNivel[dimension];
+                    var porcentajeDimension = 0;
+                    var porcentajeProximaDimension = 0;
+                    // Recorrer cada nivel dentro de la dimensión
+                    Object.keys(niveles).forEach((nivel) => {
+                      const totalPreguntas = niveles[nivel].total;
+                      const totalRespondidas = niveles[nivel].respondidas;
+                      const totalRespondidasConFalse =
+                        niveles[nivel].respondidas +
+                        niveles[nivel].respondidasFalse;
+                      const porcentajeNivel =
+                        0.2 * (totalRespondidas / totalPreguntas);
+                      const porcentajeProximoNivel =
+                        0.2 * (totalRespondidasConFalse / totalPreguntas);
+                      porcentajeDimension += porcentajeNivel;
+                      porcentajeProximaDimension += porcentajeProximoNivel;
+                    });
+                    porcentajeDimension = porcentajeDimension * 100;
+                    porcentajeProximaDimension =
+                      porcentajeProximaDimension * 100;
+                    if (dimension === "Estrategia") {
+                      setEstrategia(porcentajeDimension);
+                      setProximoEstrategia(porcentajeProximaDimension);
+                    }
+
+                    if (dimension === "Tecnología") {
+                      setTecnologia(porcentajeDimension);
+                      setProximoTecnologia(porcentajeProximaDimension);
+                    }
+
+                    if (dimension === "Gobernanza y liderazgo") {
+                      setGobernanza(porcentajeDimension);
+                      setProximoGobernanza(porcentajeProximaDimension);
+                    }
+                    if (dimension === "Procesos") {
+                      setProcesos(porcentajeDimension);
+                      setProximoProcesos(porcentajeProximaDimension);
+                    }
+
+                    if (dimension === "Cliente") {
+                      setCliente(porcentajeDimension);
+                      setProximoCliente(porcentajeProximaDimension);
+                    }
+
+                    if (dimension === "Cultura") {
+                      setCultura(porcentajeDimension);
+                      setProximoCultura(porcentajeProximaDimension);
+                    }
+
+                    if (dimension === "Gente y Habilidades") {
+                      setGente(porcentajeDimension);
+                      setProximoGente(porcentajeProximaDimension);
+                    }
+                  }
+                );
+                setResultShow(true);
+                console.log(respuestas);
+                console.log(preguntasNegativas);
+              }}
+            >
+              Ver Diagnóstico
+            </button>
+          </div>
+        ) : (
+          <div>
+            <div className="card mb-4">
+              <div className="card-header">
+                Resultados de la organización {orgName}
+              </div>
+              <div className="card-body">
+                <Row className="align-items-center">
+                  <Col className="col-12">
+                    <h2>{orgName}</h2>
+                  </Col>
+                </Row>
+                <Row className="align-items-center">
+                  <Col className="col-12 col-md-6">
+                    <Radar
+                      options={options}
+                      data={showRuta ? dataRuta : data}
+                      className=""
                     />
-                    {dimension}
-                  </Accordion.Header>
-                  <Accordion.Body className="">
-                    <form>
-                      {preguntasFiltradas
-                        .filter((pregunta) => pregunta.dimension === dimension)
-                        .map((pregunta) => (
-                          <Pregunta
-                            key={pregunta.id}
-                            pregunta={pregunta}
-                            respuesta={respuestas[pregunta.id]}
-                            handleRespuesta={handleRespuesta}
-                          />
-                        ))}
-                    </form>
-                  </Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
-            )
-          )}
-          <button
-            className="btn btn-primary w-25 mb-4"
-            disabled={!formularioComplete}
-            onClick={() => {
-              // Recorrer cada dimensión
-              Object.keys(preguntasPorDimensionYNivel).forEach((dimension) => {
-                const niveles = preguntasPorDimensionYNivel[dimension];
-                var porcentajeDimension = 0;
-                var porcentajeProximaDimension = 0;
-                // Recorrer cada nivel dentro de la dimensión
-                Object.keys(niveles).forEach((nivel) => {
-                  const totalPreguntas = niveles[nivel].total;
-                  const totalRespondidas = niveles[nivel].respondidas;
-                  const totalRespondidasConFalse =
-                    niveles[nivel].respondidas +
-                    niveles[nivel].respondidasFalse;
-                  const porcentajeNivel =
-                    0.2 * (totalRespondidas / totalPreguntas);
-                  const porcentajeProximoNivel =
-                    0.2 * (totalRespondidasConFalse / totalPreguntas);
-                  porcentajeDimension += porcentajeNivel;
-                  porcentajeProximaDimension += porcentajeProximoNivel;
-                });
-                porcentajeDimension = porcentajeDimension * 100;
-                porcentajeProximaDimension = porcentajeProximaDimension * 100;
-                if (dimension === "Estrategia") {
-                  setEstrategia(porcentajeDimension);
-                  setProximoEstrategia(porcentajeProximaDimension);
-                }
-
-                if (dimension === "Tecnología") {
-                  setTecnologia(porcentajeDimension);
-                  setProximoTecnologia(porcentajeProximaDimension);
-                }
-
-                if (dimension === "Gobernanza y liderazgo") {
-                  setGobernanza(porcentajeDimension);
-                  setProximoGobernanza(porcentajeProximaDimension);
-                }
-                if (dimension === "Procesos") {
-                  setProcesos(porcentajeDimension);
-                  setProximoProcesos(porcentajeProximaDimension);
-                }
-
-                if (dimension === "Cliente") {
-                  setCliente(porcentajeDimension);
-                  setProximoCliente(porcentajeProximaDimension);
-                }
-
-                if (dimension === "Cultura") {
-                  setCultura(porcentajeDimension);
-                  setProximoCultura(porcentajeProximaDimension);
-                }
-
-                if (dimension === "Gente y Habilidades") {
-                  setGente(porcentajeDimension);
-                  setProximoGente(porcentajeProximaDimension);
-                }
-              });
-              setResultShow(true);
-              console.log(respuestas);
-              console.log(preguntasNegativas);
-            }}
-          >
-            Ver Diagnóstico
-          </button>
-        </div>
-      ) : (
-        <div>
-          <div className="card mb-4">
-            <div className="card-header">
-              Resultados de la organización {orgName}
-            </div>
-            <div className="card-body">
-              <Row className="align-items-center">
-                <Col className="col-12">
-                  <h2>{orgName}</h2>
-                </Col>
-              </Row>
-              <Row className="align-items-center">
-                <Col className="col-6">
-                  <Radar
-                    options={options}
-                    data={showRuta ? dataRuta : data}
-                    className=""
-                  />
-                </Col>
-                <Col className="col-6">
-                  <GaugeChart
-                    id="gauge-chart2"
-                    nrOfLevels={6}
-                    percent={total.toFixed(2) / 100}
-                    colors={["#1c67e8", "#bff593"]}
-                    textColor="#000000"
-                    cornerRadius={0}
-                    arcPadding={0}
-                    needleColor="#6ae65a"
-                    needleBaseColor="#6ae65a"
-                  />
-                  <div className="d-flex flex-column align-items-center">
-                    <p id="nivel-actual" className="hidden-news">
-                      Tu nivel actual es:
-                    </p>
-                    <h1 id="nivel" className="hidden-news">
-                      {nivel}
-                    </h1>
-                    {/* <p id="porcentaje" className="hidden-news">
+                  </Col>
+                  <Col className="col-12 col-md-6">
+                    <GaugeChart
+                      id="gauge-chart2"
+                      nrOfLevels={6}
+                      percent={total.toFixed(2) / 100}
+                      colors={["#1c67e8", "#bff593"]}
+                      textColor="#000000"
+                      cornerRadius={0}
+                      arcPadding={0}
+                      needleColor="#6ae65a"
+                      needleBaseColor="#6ae65a"
+                    />
+                    <div className="d-flex flex-column align-items-center">
+                      <p id="nivel-actual" className="hidden-news">
+                        Tu nivel actual es:
+                      </p>
+                      <h1 id="nivel" className="hidden-news">
+                        {nivel}
+                      </h1>
+                      {/* <p id="porcentaje" className="hidden-news">
                       Promedio del porcentaje fue: {total.toFixed(2)}%
                     </p> */}
+                    </div>
+                  </Col>
+                </Row>
+                <div className="d-flex flex-wrap gap-3 justify-content-around">
+                  <div className="">
+                    <DoughnutChart percentage={estrategia} title="Estrategia" />
                   </div>
-                </Col>
-              </Row>
-              <Row>
-                <Col className="d-flex justify-content-between">
-                  <DoughnutChart percentage={estrategia} title="Estrategia" />
-                  <DoughnutChart percentage={tecnologia} title="Tecnología" />
-                  <DoughnutChart
-                    percentage={gobernanza}
-                    title="Gobernanza y liderazgo"
-                  />
-                  <DoughnutChart percentage={procesos} title="Procesos" />
-                  <DoughnutChart percentage={cliente} title="Cliente" />
-                  <DoughnutChart percentage={cultura} title="Culltura" />
-                  <DoughnutChart
-                    percentage={gente}
-                    title="Gente y habilidades"
-                  />
-                </Col>
-              </Row>
-              <Row className="my-3">
-                <Col>
-                  <p
-                    id="descripcion"
-                    className="hidden-news"
-                    style={{ textAlign: "justify" }}
-                  >
-                    {
-                      descripcionNivel.find((d) => d.nivel === nivel)
-                        .descripcion
-                    }
-                  </p>
-                </Col>
-              </Row>
-              {!showRuta && (
-                <Row className="justify-content-center">
+                  <div className="">
+                    <DoughnutChart percentage={tecnologia} title="Tecnología" />
+                  </div>
+                  <div className="">
+                    <DoughnutChart
+                      percentage={gobernanza}
+                      title="Gobernanza y liderazgo"
+                    />
+                  </div>
+                  <div className="">
+                    <DoughnutChart percentage={procesos} title="Procesos" />
+                  </div>
+                  <div className="">
+                    <DoughnutChart percentage={cliente} title="Cliente" />
+                  </div>
+                  <div className="">
+                    <DoughnutChart percentage={cultura} title="Culltura" />
+                  </div>
+                  <div className="">
+                    <DoughnutChart
+                      percentage={gente}
+                      title="Gente y habilidades"
+                    />
+                  </div>
+                </div>
+                <Row className="my-3">
+                  <Col>
+                    <p
+                      id="descripcion"
+                      className="hidden-news"
+                      style={{ textAlign: "justify" }}
+                    >
+                      {
+                        descripcionNivel.find((d) => d.nivel === nivel)
+                          .descripcion
+                      }
+                    </p>
+                  </Col>
+                </Row>
+                {!showRuta && (
+                  <Row className="justify-content-center">
+                    <button
+                      className="btn btn-primary mb-4 col-auto"
+                      onClick={() => {
+                        setShowRuta(true);
+                      }}
+                    >
+                      Obtener hoja de ruta
+                    </button>
+                  </Row>
+                )}
+                {showRuta && (
+                  <Row>
+                    <Col className="2">
+                      <h2>Fortalezas y debilidades de la organización</h2>
+                    </Col>
+                    <Col>
+                      <Table striped bordered hover>
+                        <thead>
+                          <tr>
+                            <th>Fortalezas</th>
+                            <th>Debilidades</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr></tr>
+                        </tbody>
+                      </Table>
+                    </Col>
+                  </Row>
+                )}
+                {showRuta && (
+                  <Row>
+                    <Col>
+                      <p>
+                        La siguiente tabla muestra la hoja de ruta a seguir en
+                        trasformación digital, si la empresa quiere avanzar en
+                        su proceso de madurez.
+                      </p>
+                      <Table striped bordered hover responsive ref={tableRef}>
+                        <thead className="bg-primary text-light">
+                          <tr>
+                            <th>Capacidad</th>
+                            <th>Estado Actual</th>
+                            <th>Estado Objetivo</th>
+                            <th>Recomendaciones de Mejora</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Estrategia</td>
+                            <td>{estrategia.toFixed(0)}%</td>
+                            <td>{proximoEstrategia.toFixed(0)}%</td>
+                            <td>
+                              <ListGroup
+                                as="ol"
+                                numbered
+                                variant="flush"
+                                className="bg-transparent"
+                              >
+                                {preguntasNegativas
+                                  .filter(
+                                    (pregunta) =>
+                                      pregunta.dimension === "Estrategia"
+                                  )
+                                  .map((pregunta, i) => {
+                                    const recomendacion = afirmaciones.find(
+                                      (r) =>
+                                        r.idPregunta === pregunta.idPregunta
+                                    );
+                                    return (
+                                      <ListGroup.Item
+                                        key={i}
+                                        as="li"
+                                        className="bg-transparent"
+                                      >
+                                        {recomendacion.afirmacion}
+                                      </ListGroup.Item>
+                                    );
+                                  })}
+                              </ListGroup>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Tecnología</td>
+                            <td>{tecnologia.toFixed(0)}%</td>
+                            <td>{proximoTecnologia.toFixed(0)}%</td>
+                            <td>
+                              <ListGroup
+                                as="ol"
+                                numbered
+                                variant="flush"
+                                className="bg-transparent"
+                              >
+                                {preguntasNegativas
+                                  .filter(
+                                    (pregunta) =>
+                                      pregunta.dimension === "Tecnología"
+                                  )
+                                  .map((pregunta, i) => {
+                                    const recomendacion = afirmaciones.find(
+                                      (r) =>
+                                        r.idPregunta === pregunta.idPregunta
+                                    );
+                                    return (
+                                      <ListGroup.Item
+                                        key={i}
+                                        as="li"
+                                        className="bg-transparent"
+                                      >
+                                        {recomendacion.afirmacion}
+                                      </ListGroup.Item>
+                                    );
+                                  })}
+                              </ListGroup>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Gobernanza y Liderazgo</td>
+                            <td>{gobernanza.toFixed(0)}%</td>
+                            <td>{proximoGobernanza.toFixed(0)}%</td>
+                            <td>
+                              <ListGroup
+                                as="ol"
+                                numbered
+                                variant="flush"
+                                className="bg-transparent"
+                              >
+                                {preguntasNegativas
+                                  .filter(
+                                    (pregunta) =>
+                                      pregunta.dimension ===
+                                      "Gobernanza y liderazgo"
+                                  )
+                                  .map((pregunta, i) => {
+                                    const recomendacion = afirmaciones.find(
+                                      (r) =>
+                                        r.idPregunta === pregunta.idPregunta
+                                    );
+                                    return (
+                                      <ListGroup.Item
+                                        key={i}
+                                        as="li"
+                                        className="bg-transparent"
+                                      >
+                                        {recomendacion.afirmacion}
+                                      </ListGroup.Item>
+                                    );
+                                  })}
+                              </ListGroup>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Procesos</td>
+                            <td>{procesos.toFixed(0)}%</td>
+                            <td>{proximoProcesos.toFixed(0)}%</td>
+                            <td>
+                              <ListGroup
+                                as="ol"
+                                numbered
+                                variant="flush"
+                                className="bg-transparent"
+                              >
+                                {preguntasNegativas
+                                  .filter(
+                                    (pregunta) =>
+                                      pregunta.dimension === "Procesos"
+                                  )
+                                  .map((pregunta, i) => {
+                                    const recomendacion = afirmaciones.find(
+                                      (r) =>
+                                        r.idPregunta === pregunta.idPregunta
+                                    );
+                                    return (
+                                      <ListGroup.Item
+                                        key={i}
+                                        as="li"
+                                        className="bg-transparent"
+                                      >
+                                        {recomendacion.afirmacion}
+                                      </ListGroup.Item>
+                                    );
+                                  })}
+                              </ListGroup>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Cliente</td>
+                            <td>{cliente.toFixed(0)}%</td>
+                            <td>{proximoCliente.toFixed(0)}%</td>
+                            <td>
+                              <ListGroup
+                                as="ol"
+                                numbered
+                                variant="flush"
+                                className="bg-transparent"
+                              >
+                                {preguntasNegativas
+                                  .filter(
+                                    (pregunta) =>
+                                      pregunta.dimension === "Cliente"
+                                  )
+                                  .map((pregunta, i) => {
+                                    const recomendacion = afirmaciones.find(
+                                      (r) =>
+                                        r.idPregunta === pregunta.idPregunta
+                                    );
+                                    return (
+                                      <ListGroup.Item
+                                        key={i}
+                                        as="li"
+                                        className="bg-transparent"
+                                      >
+                                        {recomendacion.afirmacion}
+                                      </ListGroup.Item>
+                                    );
+                                  })}
+                              </ListGroup>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Gente y Habilidades</td>
+                            <td>{gente.toFixed(0)}%</td>
+                            <td>{proximoGente.toFixed(0)}%</td>
+                            <td>
+                              <ListGroup
+                                as="ol"
+                                numbered
+                                variant="flush"
+                                className="bg-transparent"
+                              >
+                                {preguntasNegativas
+                                  .filter(
+                                    (pregunta) =>
+                                      pregunta.dimension ===
+                                      "Gente y Habilidades"
+                                  )
+                                  .map((pregunta, i) => {
+                                    const recomendacion = afirmaciones.find(
+                                      (r) =>
+                                        r.idPregunta === pregunta.idPregunta
+                                    );
+                                    return (
+                                      <ListGroup.Item
+                                        key={i}
+                                        as="li"
+                                        className="bg-transparent"
+                                      >
+                                        {recomendacion.afirmacion}
+                                      </ListGroup.Item>
+                                    );
+                                  })}
+                              </ListGroup>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Cultura</td>
+                            <td>{cultura.toFixed(0)}%</td>
+                            <td>{proximoCultura.toFixed(0)}%</td>
+                            <td>
+                              <ListGroup
+                                as="ol"
+                                numbered
+                                variant="flush"
+                                className="bg-transparent"
+                              >
+                                {preguntasNegativas
+                                  .filter(
+                                    (pregunta) =>
+                                      pregunta.dimension === "Cultura"
+                                  )
+                                  .map((pregunta, i) => {
+                                    const recomendacion = afirmaciones.find(
+                                      (r) =>
+                                        r.idPregunta === pregunta.idPregunta
+                                    );
+                                    return (
+                                      <ListGroup.Item
+                                        key={i}
+                                        as="li"
+                                        className="bg-transparent"
+                                      >
+                                        {recomendacion.afirmacion}
+                                      </ListGroup.Item>
+                                    );
+                                  })}
+                              </ListGroup>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </Table>
+                    </Col>
+                  </Row>
+                )}
+                {showRuta && (
                   <button
-                    className="btn btn-primary mb-4 col-auto"
-                    onClick={() => {
-                      setShowRuta(true);
-                    }}
+                    className="btn btn-primary"
+                    onClick={handleDownloadPDF}
                   >
-                    Obtener hoja de ruta
+                    <span className="me-2">
+                      <FontAwesomeIcon icon={faDownload} />
+                    </span>
+                    Descargar PDF
                   </button>
-                </Row>
-              )}
-              {showRuta && (
-                <Row>
-                  <Col className="col-12">
-                    <h2>Fortalezas y debilidades de la organización</h2>
-                  </Col>
-                  <Col>
-                    <Table striped bordered hover>
-                      <thead>
-                        <tr>
-                          <th>Fortalezas</th>
-                          <th>Debilidades</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr></tr>
-                      </tbody>
-                    </Table>
-                  </Col>
-                </Row>
-              )}
-              {showRuta && (
-                <Row>
-                  <Col>
-                    <Table striped bordered hover ref={tableRef}>
-                      <thead>
-                        <tr>
-                          <th>Capacidad</th>
-                          <th>Estado Actuak</th>
-                          <th>Estado Objetivo</th>
-                          <th>Recomendaciones de Mejora</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Estrategia</td>
-                          <td>{estrategia.toFixed(0)}%</td>
-                          <td>{proximoEstrategia.toFixed(0)}%</td>
-                          <td>
-                            <ListGroup
-                              as="ol"
-                              numbered
-                              variant="flush"
-                              className="bg-transparent"
-                            >
-                              {preguntasNegativas
-                                .filter(
-                                  (pregunta) =>
-                                    pregunta.dimension === "Estrategia"
-                                )
-                                .map((pregunta, i) => {
-                                  const recomendacion = afirmaciones.find(
-                                    (r) => r.idPregunta === pregunta.idPregunta
-                                  );
-                                  return (
-                                    <ListGroup.Item
-                                      key={i}
-                                      as="li"
-                                      className="bg-transparent"
-                                    >
-                                      {recomendacion.afirmacion}
-                                    </ListGroup.Item>
-                                  );
-                                })}
-                            </ListGroup>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Tecnología</td>
-                          <td>{tecnologia.toFixed(0)}%</td>
-                          <td>{proximoTecnologia.toFixed(0)}%</td>
-                          <td>
-                            <ListGroup
-                              as="ol"
-                              numbered
-                              variant="flush"
-                              className="bg-transparent"
-                            >
-                              {preguntasNegativas
-                                .filter(
-                                  (pregunta) =>
-                                    pregunta.dimension === "Tecnología"
-                                )
-                                .map((pregunta, i) => {
-                                  const recomendacion = afirmaciones.find(
-                                    (r) => r.idPregunta === pregunta.idPregunta
-                                  );
-                                  return (
-                                    <ListGroup.Item
-                                      key={i}
-                                      as="li"
-                                      className="bg-transparent"
-                                    >
-                                      {recomendacion.afirmacion}
-                                    </ListGroup.Item>
-                                  );
-                                })}
-                            </ListGroup>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Gobernanza y Liderazgo</td>
-                          <td>{gobernanza.toFixed(0)}%</td>
-                          <td>{proximoGobernanza.toFixed(0)}%</td>
-                          <td>
-                            <ListGroup
-                              as="ol"
-                              numbered
-                              variant="flush"
-                              className="bg-transparent"
-                            >
-                              {preguntasNegativas
-                                .filter(
-                                  (pregunta) =>
-                                    pregunta.dimension ===
-                                    "Gobernanza y liderazgo"
-                                )
-                                .map((pregunta, i) => {
-                                  const recomendacion = afirmaciones.find(
-                                    (r) => r.idPregunta === pregunta.idPregunta
-                                  );
-                                  return (
-                                    <ListGroup.Item
-                                      key={i}
-                                      as="li"
-                                      className="bg-transparent"
-                                    >
-                                      {recomendacion.afirmacion}
-                                    </ListGroup.Item>
-                                  );
-                                })}
-                            </ListGroup>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Procesos</td>
-                          <td>{procesos.toFixed(0)}%</td>
-                          <td>{proximoProcesos.toFixed(0)}%</td>
-                          <td>
-                            <ListGroup
-                              as="ol"
-                              numbered
-                              variant="flush"
-                              className="bg-transparent"
-                            >
-                              {preguntasNegativas
-                                .filter(
-                                  (pregunta) =>
-                                    pregunta.dimension === "Procesos"
-                                )
-                                .map((pregunta, i) => {
-                                  const recomendacion = afirmaciones.find(
-                                    (r) => r.idPregunta === pregunta.idPregunta
-                                  );
-                                  return (
-                                    <ListGroup.Item
-                                      key={i}
-                                      as="li"
-                                      className="bg-transparent"
-                                    >
-                                      {recomendacion.afirmacion}
-                                    </ListGroup.Item>
-                                  );
-                                })}
-                            </ListGroup>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Cliente</td>
-                          <td>{cliente.toFixed(0)}%</td>
-                          <td>{proximoCliente.toFixed(0)}%</td>
-                          <td>
-                            <ListGroup
-                              as="ol"
-                              numbered
-                              variant="flush"
-                              className="bg-transparent"
-                            >
-                              {preguntasNegativas
-                                .filter(
-                                  (pregunta) => pregunta.dimension === "Cliente"
-                                )
-                                .map((pregunta, i) => {
-                                  const recomendacion = afirmaciones.find(
-                                    (r) => r.idPregunta === pregunta.idPregunta
-                                  );
-                                  return (
-                                    <ListGroup.Item
-                                      key={i}
-                                      as="li"
-                                      className="bg-transparent"
-                                    >
-                                      {recomendacion.afirmacion}
-                                    </ListGroup.Item>
-                                  );
-                                })}
-                            </ListGroup>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Gente y Habilidades</td>
-                          <td>{gente.toFixed(0)}%</td>
-                          <td>{proximoGente.toFixed(0)}%</td>
-                          <td>
-                            <ListGroup
-                              as="ol"
-                              numbered
-                              variant="flush"
-                              className="bg-transparent"
-                            >
-                              {preguntasNegativas
-                                .filter(
-                                  (pregunta) =>
-                                    pregunta.dimension === "Gente y Habilidades"
-                                )
-                                .map((pregunta, i) => {
-                                  const recomendacion = afirmaciones.find(
-                                    (r) => r.idPregunta === pregunta.idPregunta
-                                  );
-                                  return (
-                                    <ListGroup.Item
-                                      key={i}
-                                      as="li"
-                                      className="bg-transparent"
-                                    >
-                                      {recomendacion.afirmacion}
-                                    </ListGroup.Item>
-                                  );
-                                })}
-                            </ListGroup>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Cultura</td>
-                          <td>{cultura.toFixed(0)}%</td>
-                          <td>{proximoCultura.toFixed(0)}%</td>
-                          <td>
-                            <ListGroup
-                              as="ol"
-                              numbered
-                              variant="flush"
-                              className="bg-transparent"
-                            >
-                              {preguntasNegativas
-                                .filter(
-                                  (pregunta) => pregunta.dimension === "Cultura"
-                                )
-                                .map((pregunta, i) => {
-                                  const recomendacion = afirmaciones.find(
-                                    (r) => r.idPregunta === pregunta.idPregunta
-                                  );
-                                  return (
-                                    <ListGroup.Item
-                                      key={i}
-                                      as="li"
-                                      className="bg-transparent"
-                                    >
-                                      {recomendacion.afirmacion}
-                                    </ListGroup.Item>
-                                  );
-                                })}
-                            </ListGroup>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </Table>
-                  </Col>
-                </Row>
-              )}
-              {showRuta && (
-                <button className="btn btn-primary" onClick={handleDownloadPDF}>
-                  <span className="me-2">
-                    <FontAwesomeIcon icon={faDownload} />
-                  </span>
-                  Descargar PDF
-                </button>
-              )}
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }

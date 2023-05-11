@@ -49,10 +49,10 @@ const DoughnutChart = ({ percentage, title }) => {
   };
 
   return (
-    <div style={{ maxWidth: "13%" }} className="text-center">
+    <div style={{ maxWidth: "" }} className="text-center">
       <h6 className="porcentaje">{percentage.toFixed(0)}%</h6>
-      <Doughnut data={data} options={options} />
-      <h6 style={{color: title === "Estrategia" ? "#6dba5f" : title === "Tecnología" ? "#f59827" : title === "Gobernanza y liderazgo" ? "#2e27f5" : title === "Procesos" ? "#27d9f5" : title === "Cliente" ? "#f5d927" : title === "Culltura" ? "#7927f5" : "#2c7830"}}>{title}</h6>
+      <Doughnut data={data} options={options} style={{ maxWidth:"150px", width:"150px"}}/>
+      <h6 style={{color: title === "Estrategia" ? "#6dba5f" : title === "Tecnología" ? "#f59827" : title === "Gobernanza y liderazgo" ? "#2e27f5" : title === "Procesos" ? "#27d9f5" : title === "Cliente" ? "#f5d927" : title === "Culltura" ? "#7927f5" : "#2c7830", maxWidth:"150px", width:"150px"}}>{title}</h6>
     </div>
   );
 };
