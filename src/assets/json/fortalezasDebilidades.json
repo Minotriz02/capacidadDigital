@@ -1,0 +1,212 @@
+[
+  {
+    "dimension": "Estrategia",
+    "nivel": "Inicial",
+    "fortaleza": "La organización cuenta con un plan estratégico que considera una estrategia digital",
+    "debilidad": "La organización  no cuenta con un plan estratégico que que incluya una estrategia digital"
+  },
+  {
+    "dimension": "Estrategia",
+    "nivel": "En Desarrollo",
+    "fortaleza": "La organización cuenta con una estrategia digital que influye en los modelos operativos y/o negocios",
+    "debilidad": "La organización no cuenta con una estrategia digital que influya en los modelos operativos y/o de negocio"
+  },
+  {
+    "dimension": "Estrategia",
+    "nivel": "Establecido",
+    "fortaleza": "La organización cuenta con inversiones orientadas a la integración y desarrollo de capacidades para la reducción de costos en la creación de servicios digitales",
+    "debilidad": "No se tiene inversiones en integración y desarrollo de capacidades para habilitar, acelerar y reducir los costos de la creación de servicios digitales"
+  },
+  {
+    "dimension": "Estrategia",
+    "nivel": "Avanzado",
+    "fortaleza": "La organización esta implementando nuevos modelos de negocios con elementos completamente digitales",
+    "debilidad": "Los nuevos modelos de negocio no se estan implementando con elementos completamente digitales"
+  },
+  {
+    "dimension": "Estrategia",
+    "nivel": "Digital",
+    "fortaleza": "Los ingresos generados a partir de los negocios digitales de la organización son invertidos constantemente en nuevas iniciativas digitales",
+    "debilidad": "Los ingresos generados a partir de los negocios digitales no se estan reinvirtiendo en nuevas iniciativas digitales"
+  },
+  {
+    "dimension": "Gobernanza y liderazgo",
+    "nivel": "Inicial",
+    "fortaleza": "La organización cuenta con objetivos definidos y líderes interesados en transformación digital",
+    "debilidad": "La organización no cuenta con objetivos definidos y/o líderes en transformación digital"
+  },
+  {
+    "dimension": "Gobernanza y liderazgo",
+    "nivel": "En Desarrollo",
+    "fortaleza": "La organización esta ejecutando planes de acción para el cumplimiento de los objetivos y  cuenta con líderes que empoderan y guían la transformación digital",
+    "debilidad": "La organización no cuenta con planes para el cumplimiento de los objetivos o líderes que empoderen y guíen la transformación digital."
+  },
+  {
+    "dimension": "Gobernanza y liderazgo",
+    "nivel": "Establecido",
+    "fortaleza": "La organización esta asignando presupuesto para las iniciativas en transformación digital, ha iniciado esfuerzos en prode contar con un liderazgo distribuido y fomenta el trabajo colaborativo",
+    "debilidad": "La organización no esta designando presupuesto para las iniciativas en transformación digital y/o no ha iniciado esfuerzos en pro del liderazgo distribuido"
+  },
+  {
+    "dimension": "Gobernanza y liderazgo",
+    "nivel": "Avanzado",
+    "fortaleza": "La organización cuenta con presupuesto para la transformación digital,  maneja indicadores en los proyectos que le permiten monitorear el cumplimiento de los objetivos en transformación digital y los líderes facultan a sus colaboradores",
+    "debilidad": "La organización no esta designando presupuesto para las iniciativas en transformación digital y/o no ha iniciado esfuerzos en pro del liderazgo distribuido"
+  },
+  {
+    "dimension": "Gobernanza y liderazgo",
+    "nivel": "Digital",
+    "fortaleza": "La organización cuenta con  una oficina o área de transformación digital sólidamente constituida con roles, responsabilidades y con una pólitica documentada que esta siendo asumida por el equipo corporativo de la organización",
+    "debilidad": "La organización no tiene una oficina o área de transformación digital solidamente constituida con sus roles y responsabilidades  y no cuenta con planes de mejoramiento sobre la misma a partir de los indicadores evaluados"
+  },
+  {
+    "dimension": "Tecnología",
+    "nivel": "Inicial",
+    "fortaleza": "",
+    "debilidad": ""
+  },
+  {
+    "dimension": "Tecnología",
+    "nivel": "En Desarrollo",
+    "fortaleza": "",
+    "debilidad": ""
+  },
+  {
+    "dimension": "Tecnología",
+    "nivel": "Establecido",
+    "fortaleza": "",
+    "debilidad": ""
+  },
+  {
+    "dimension": "Tecnología",
+    "nivel": "Avanzado",
+    "fortaleza": "",
+    "debilidad": ""
+  },
+  {
+    "dimension": "Tecnología",
+    "nivel": "Digital",
+    "fortaleza": "",
+    "debilidad": ""
+  },
+  {
+    "dimension": "Procesos",
+    "nivel": "Inicial",
+    "fortaleza": "La organización cuenta con procesos definidos y documentados",
+    "debilidad": "La organización no cuenta con procesos definidos y documentados"
+  },
+  {
+    "dimension": "Procesos",
+    "nivel": "En Desarrollo",
+    "fortaleza": "La organización esta evaluando y digitalizando los procesos claves de la organización y ha identificado los procesos críticos que soportan los servicios digitales y la satisfacción del cliente",
+    "debilidad": "La organización no está ejecutando iniciativas orientadas a la evaluación y digitalización de los procesos claves de la organización y/o no ha identificado los procesos críticos para soportar servicios digitales y la satisfacción del cliente"
+  },
+  {
+    "dimension": "Procesos",
+    "nivel": "Establecido",
+    "fortaleza": "La organización esta implementando la automatización de procesos end-to-end como también esta diseñando e implementado procesos y politicas para soportar los servicios digitales",
+    "debilidad": "La organización no esta implementado la automatización de procesos end-to-end  o procesos y politicas para soportar los servicios digitales"
+  },
+  {
+    "dimension": "Procesos",
+    "nivel": "Avanzado",
+    "fortaleza": "La organización esta tomando decisiones basados en el procesamiento de los datos y los procesos cuentan con indicadores claves",
+    "debilidad": "La organización no esta tomando decisiones basados en el procesamiento de los datos y/o los procesos no cuentan con indicadores claves"
+  },
+  {
+    "dimension": "Procesos",
+    "nivel": "Digital",
+    "fortaleza": "La organización tiene procesos maduros, automatizados y centrados en el cliente que generan innovaciones en productos y servicios digitales",
+    "debilidad": "A pesar de la automatización de los procesos aún no se cuenta un nivel de madurez que permita la iinovación en productos y servicios digitales y/o los procesos no estan centrados en el cliente"
+  },
+  {
+    "dimension": "Cliente",
+    "nivel": "Inicial",
+    "fortaleza": "",
+    "debilidad": ""
+  },
+  {
+    "dimension": "Cliente",
+    "nivel": "En Desarrollo",
+    "fortaleza": "",
+    "debilidad": ""
+  },
+  {
+    "dimension": "Cliente",
+    "nivel": "Establecido",
+    "fortaleza": "",
+    "debilidad": ""
+  },
+  {
+    "dimension": "Cliente",
+    "nivel": "Avanzado",
+    "fortaleza": "",
+    "debilidad": ""
+  },
+  {
+    "dimension": "Cliente",
+    "nivel": "Digital",
+    "fortaleza": "",
+    "debilidad": ""
+  },
+  {
+    "dimension": "Cultura",
+    "nivel": "Inicial",
+    "fortaleza": "",
+    "debilidad": ""
+  },
+  {
+    "dimension": "Cultura",
+    "nivel": "En Desarrollo",
+    "fortaleza": "",
+    "debilidad": ""
+  },
+  {
+    "dimension": "Cultura",
+    "nivel": "Establecido",
+    "fortaleza": "",
+    "debilidad": ""
+  },
+  {
+    "dimension": "Cultura",
+    "nivel": "Avanzado",
+    "fortaleza": "",
+    "debilidad": ""
+  },
+  {
+    "dimension": "Cultura",
+    "nivel": "Digital",
+    "fortaleza": "",
+    "debilidad": ""
+  },
+  {
+    "dimension": "Gente y Habilidades",
+    "nivel": "Inicial",
+    "fortaleza": "La organización cuenta con un plan de acción orientado a desarrollar las competencias digitales de sus colaboradores",
+    "debilidad": "La organización no ha identificado como necesidad el desarrollo de las competencias digitales de sus colaboradores y no cuenta con un plan de acción para ello"
+  },
+  {
+    "dimension": "Gente y Habilidades",
+    "nivel": "En Desarrollo",
+    "fortaleza": "La organización esta evaluando las competencias digitales como criterio importante en el reclutamiento y esta apoyando el fortalecimiento de las habilidades y competencias digitales de sus colaboradores con programas de formación estándar",
+    "debilidad": "La organización no evalúa las competencias digitales  en el reclutamiento o no cuenta con programas de formación estándar para el fortalecimiento de las habilidades y competencias digitales de sus colaboradores "
+  },
+  {
+    "dimension": "Gente y Habilidades",
+    "nivel": "Establecido",
+    "fortaleza": "La organización reconoce la experiencia digital como un componente central en el desarrollo de sus colaboradores y esta adaptando esquemas de compensación y formación que le permiten el alineamiento con la estrategia digital",
+    "debilidad": "La organización no cuenta con esquemas de compensación y formación de sus colaboradores que les permitan el alineamiento con la estrategia digital"
+  },
+  {
+    "dimension": "Gente y Habilidades",
+    "nivel": "Avanzado",
+    "fortaleza": "La organización ha definido nuevos perfiles de trabajo para empleados con experiencia en temas digitales y esta ejecutando una estrategia de desarrollo para entrenar, externalizar o adquirir competencias digitales",
+    "debilidad": "La organización no cuenta con una estrategia de desarrollo para entrenar, externalizar o adquirir competencias digitales ni ha llegado a definir nuevos perfiles de trabajo para empleados con experiencia en temas digitales"
+  },
+  {
+    "dimension": "Gente y Habilidades",
+    "nivel": "Digital",
+    "fortaleza": "En la organización las competencias digitales estan presentes en sus colaboradores convirtiendose en factor diferenciador de la competencia y cuentan con asociaciones que permiten acceder a nuevas competencias",
+    "debilidad": "Las competencias digitales no estan embebidas en toda la organización ni cuentan con asociaciones que permiten acceder a nuevas competencias"
+  }
+]

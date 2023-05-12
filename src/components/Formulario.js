@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import preguntas from "../assets/json/preguntas.json";
 import descripcionNivel from "../assets/json/textoNiveles.json";
 import afirmaciones from "../assets/json/afirmaciones.json";
+import fortalezaDebilidades from "../assets/json/fortalezasDebilidades.json";
 import Pregunta from "./Pregunta";
 import "../assets/css/Formulario.css";
 import {
@@ -381,6 +382,47 @@ function Formulario() {
     html2pdf().from(father).set(options).save();
   };
 
+  const getFortalezaAndDebilidades = () => {
+    const nuevoArreglo = [];
+
+    fortalezaDebilidades.forEach((objeto) => {
+      let porcentajeTotal = 0;
+      objeto.dimension === "Estrategia"
+        ? (porcentajeTotal = estrategia)
+        : objeto.dimension === "Gobernanza y liderazgo"
+        ? (porcentajeTotal = gobernanza)
+        : objeto.dimension === "Procesos"
+        ? (porcentajeTotal = procesos)
+        : objeto.dimension === "Gente y Habilidades"
+        ? (porcentajeTotal = gente)
+        : (porcentajeTotal = 0);
+      let nivel = "";
+
+      if (porcentajeTotal <= 10) nivel = "Incipiente";
+      else if (porcentajeTotal > 10 && porcentajeTotal <= 20) nivel = "Inicial";
+      else if (porcentajeTotal > 20 && porcentajeTotal <= 40)
+        nivel = "En desarrollo";
+      else if (porcentajeTotal > 40 && porcentajeTotal <= 60)
+        nivel = "Establecido";
+      else if (porcentajeTotal > 60 && porcentajeTotal <= 80)
+        nivel = "Avanzado";
+      else if (porcentajeTotal > 81) nivel = "Digital";
+
+      const fortaleza = 2; /* Obtener la fortaleza correspondiente al nivel y dimensión */
+      const debilidad = 2; /* Obtener la debilidad correspondiente al nivel y dimensión */
+
+      const objetoModificado = {
+        dimension: objeto.dimension,
+        nivel: nivel,
+        fortaleza: fortaleza,
+        debilidad: debilidad,
+      };
+
+      nuevoArreglo.push(objetoModificado);
+    });
+    console.log(nuevoArreglo);
+  };
+
   return (
     <div className="container pt-4 col-xxl-8 mb-4" id="father">
       <div id="my-pdf-content">
@@ -641,6 +683,7 @@ function Formulario() {
                       className="btn btn-primary mb-4 col-auto"
                       onClick={() => {
                         setShowRuta(true);
+                        getFortalezaAndDebilidades();
                       }}
                     >
                       Obtener hoja de ruta
@@ -649,10 +692,10 @@ function Formulario() {
                 )}
                 {showRuta && (
                   <Row>
-                    <Col className="2">
+                    <Col className="col-12">
                       <h2>Fortalezas y debilidades de la organización</h2>
                     </Col>
-                    <Col>
+                    <Col className="col-12">
                       <Table striped bordered hover>
                         <thead>
                           <tr>
@@ -661,7 +704,14 @@ function Formulario() {
                           </tr>
                         </thead>
                         <tbody>
-                          <tr></tr>
+                          <tr>
+                            <td>FDF</td>
+                            <td>FS</td>
+                          </tr>
+                          <tr>
+                            <td>F</td>
+                            <td>FFFDS</td>
+                          </tr>
                         </tbody>
                       </Table>
                     </Col>
