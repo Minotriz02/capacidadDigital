@@ -38,8 +38,6 @@ import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import DoughnutChart from "./DoughnutChart";
 import GaugeChart from "react-gauge-chart";
-import ReactSpeedometer from "react-d3-speedometer";
-import html2canvas from "html2canvas";
 
 ChartJS.register(
   RadialLinearScale,
@@ -267,15 +265,15 @@ function Formulario() {
         gente) /
       7;
     setTotal(porcentajeTotal);
-    if (porcentajeTotal < 15) setNivel("Incipiente");
-    else if (porcentajeTotal >= 15 && porcentajeTotal < 25) setNivel("Inicial");
-    else if (porcentajeTotal >= 25 && porcentajeTotal < 45)
+    if (porcentajeTotal <= 10) setNivel("Incipiente");
+    else if (porcentajeTotal > 10 && porcentajeTotal <= 20) setNivel("Inicial");
+    else if (porcentajeTotal > 20 && porcentajeTotal <= 40)
       setNivel("En desarrollo");
-    else if (porcentajeTotal >= 45 && porcentajeTotal < 60)
+    else if (porcentajeTotal > 40 && porcentajeTotal <= 60)
       setNivel("Establecido");
-    else if (porcentajeTotal >= 60 && porcentajeTotal < 85)
+    else if (porcentajeTotal > 60 && porcentajeTotal <= 80)
       setNivel("Avanzado");
-    else if (porcentajeTotal >= 85) setNivel("Digital");
+    else if (porcentajeTotal > 81) setNivel("Digital");
   }, [estrategia, tecnologia, gobernanza, procesos, cliente, cultura, gente]);
 
   const hiddenElements = useRef([]);
