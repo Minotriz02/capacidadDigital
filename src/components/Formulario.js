@@ -276,7 +276,7 @@ function Formulario() {
     if (porcentajeTotal <= 10) setNivel("Incipiente");
     else if (porcentajeTotal > 10 && porcentajeTotal <= 20) setNivel("Inicial");
     else if (porcentajeTotal > 20 && porcentajeTotal <= 40)
-      setNivel("En desarrollo");
+      setNivel("En Desarrollo");
     else if (porcentajeTotal > 40 && porcentajeTotal <= 60)
       setNivel("Establecido");
     else if (porcentajeTotal > 60 && porcentajeTotal <= 80)
@@ -375,7 +375,9 @@ function Formulario() {
     };
 
     // Genera el documento PDF y lo descarga
-    pdfMake.createPdf(docDefinition).download("Respuestas del Informe Madurez Digital.pdf");
+    pdfMake
+      .createPdf(docDefinition)
+      .download("Respuestas del Informe Madurez Digital.pdf");
 
     //Resultado
     const father = document.getElementById("father");
@@ -407,21 +409,27 @@ function Formulario() {
       texto: "",
     };
 
-    let nivel = "";
+    let nivelDimension = "";
 
-    if (porcentaje <= 10) nivel = "Incipiente";
-    else if (porcentaje > 10 && porcentaje <= 20) nivel = "Inicial";
-    else if (porcentaje > 20 && porcentaje <= 40) nivel = "En Desarrollo";
-    else if (porcentaje > 40 && porcentaje <= 60) nivel = "Establecido";
-    else if (porcentaje > 60 && porcentaje <= 80) nivel = "Avanzado";
-    else if (porcentaje > 81) nivel = "Digital";
+    if (porcentaje <= 10) nivelDimension = "Incipiente";
+    else if (porcentaje > 10 && porcentaje <= 20) nivelDimension = "Inicial";
+    else if (porcentaje > 20 && porcentaje <= 40)
+      nivelDimension = "En Desarrollo";
+    else if (porcentaje > 40 && porcentaje <= 60)
+      nivelDimension = "Establecido";
+    else if (porcentaje > 60 && porcentaje <= 80) nivelDimension = "Avanzado";
+    else if (porcentaje > 81) nivelDimension = "Digital";
 
-    tempDimension.nivel = nivel;
+    tempDimension.nivel = nivelDimension;
 
     porcentaje <= total
       ? (tempDimension.debilidad = true)
       : (tempDimension.fortaleza = true);
 
+    if (tempDimension.fortaleza && tempDimension.nivel === nivel)
+      tempDimension.fortaleza = false;
+    if (tempDimension.debilidad && tempDimension.nivel === nivel)
+      tempDimension.debilidad = false;
     let tempArray = fortalezaDebilidades.filter(
       (e) =>
         e.dimension === tempDimension.dimension &&
@@ -768,7 +776,9 @@ function Formulario() {
                 {showRuta && (
                   <Row>
                     <Col className="col-12">
-                      <h2 className="text-center">Fortalezas y debilidades de la organización</h2>
+                      <h2 className="text-center">
+                        Fortalezas y debilidades de la organización
+                      </h2>
                     </Col>
                     <Col className="col-12">
                       <Table striped bordered responsive>
