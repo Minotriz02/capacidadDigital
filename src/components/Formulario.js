@@ -74,6 +74,13 @@ function Formulario() {
   const [showRuta, setShowRuta] = useState(false);
   const [showModal, setShowModal] = useState(true);
   const [orgName, setOrgName] = useState("");
+  const [arrayDimension, setArrayDimension] = useState([]);
+
+  // crea un nuevo objeto `Date`
+  var today = new Date();
+
+  // obtener la fecha de hoy en formato `MM/DD/YYYY`
+  var now = today.toLocaleDateString("en-US");
 
   const handleClose = () => {
     const input = document.getElementById("org-name-input");
@@ -325,7 +332,16 @@ function Formulario() {
     if (showRuta && tableRef.current) {
       tableRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [showRuta]);
+    setArrayDimension([]); // Reiniciar el estado arrayDimension
+    identifyDimension("Estrategia", estrategia);
+    identifyDimension("Gobernanza y liderazgo", gobernanza);
+    identifyDimension("Tecnología", tecnologia);
+    identifyDimension("Procesos", procesos);
+    identifyDimension("Cliente", cliente);
+    identifyDimension("Gente y Habilidades", gente);
+    identifyDimension("Cultura", cultura);
+    console.log(arrayDimension);
+  }, [showRuta, setArrayDimension]);
 
   const handleDownloadPDF = () => {
     //Preguntas
@@ -343,14 +359,14 @@ function Formulario() {
     // Crea un array con las filas de la tabla
     const rows = preguntasSeleccionadas.map((p) => [
       p.enunciado,
-      p.respuesta ? "si" : "no",
+      p.respuesta ? "Si" : "No",
     ]);
     console.log(rows);
 
     // Define la estructura del documento PDF
     const docDefinition = {
       content: [
-        { text: "Respuestas", style: "header" },
+        { text: "Preguntas y Respuestas", style: "header" },
         { table: { body: [["Pregunta", "Respuesta"], ...rows] } },
       ],
       styles: {
@@ -359,7 +375,7 @@ function Formulario() {
     };
 
     // Genera el documento PDF y lo descarga
-    pdfMake.createPdf(docDefinition).download("respuestas.pdf");
+    pdfMake.createPdf(docDefinition).download("Respuestas del Informe Madurez Digital.pdf");
 
     //Resultado
     const father = document.getElementById("father");
@@ -367,7 +383,7 @@ function Formulario() {
 
     const options = {
       margin: [0, -500, 0, 0],
-      filename: "resultados.pdf",
+      filename: "Informe Madurez Digital.pdf",
       html2canvas: {
         scale: 1.5,
         userCORS: true,
@@ -375,58 +391,78 @@ function Formulario() {
       },
       jsPDF: {
         unit: "px",
-        format: [input.offsetHeight + 800, input.offsetWidth + 1000],
+        format: [input.offsetHeight + 1100, input.offsetWidth + 1000],
         orientation: "p",
       },
     };
     html2pdf().from(father).set(options).save();
   };
 
-  const getFortalezaAndDebilidades = () => {
-    const nuevoArreglo = [];
+  const identifyDimension = (dimension, porcentaje) => {
+    const tempDimension = {
+      dimension: dimension,
+      nivel: "",
+      fortaleza: false,
+      debilidad: false,
+      texto: "",
+    };
 
-    fortalezaDebilidades.forEach((objeto) => {
-      let porcentajeTotal = 0;
-      objeto.dimension === "Estrategia"
-        ? (porcentajeTotal = estrategia)
-        : objeto.dimension === "Gobernanza y liderazgo"
-        ? (porcentajeTotal = gobernanza)
-        : objeto.dimension === "Procesos"
-        ? (porcentajeTotal = procesos)
-        : objeto.dimension === "Gente y Habilidades"
-        ? (porcentajeTotal = gente)
-        : (porcentajeTotal = 0);
-      let nivel = "";
+    let nivel = "";
 
-      if (porcentajeTotal <= 10) nivel = "Incipiente";
-      else if (porcentajeTotal > 10 && porcentajeTotal <= 20) nivel = "Inicial";
-      else if (porcentajeTotal > 20 && porcentajeTotal <= 40)
-        nivel = "En desarrollo";
-      else if (porcentajeTotal > 40 && porcentajeTotal <= 60)
-        nivel = "Establecido";
-      else if (porcentajeTotal > 60 && porcentajeTotal <= 80)
-        nivel = "Avanzado";
-      else if (porcentajeTotal > 81) nivel = "Digital";
+    if (porcentaje <= 10) nivel = "Incipiente";
+    else if (porcentaje > 10 && porcentaje <= 20) nivel = "Inicial";
+    else if (porcentaje > 20 && porcentaje <= 40) nivel = "En Desarrollo";
+    else if (porcentaje > 40 && porcentaje <= 60) nivel = "Establecido";
+    else if (porcentaje > 60 && porcentaje <= 80) nivel = "Avanzado";
+    else if (porcentaje > 81) nivel = "Digital";
 
-      const fortaleza = 2; /* Obtener la fortaleza correspondiente al nivel y dimensión */
-      const debilidad = 2; /* Obtener la debilidad correspondiente al nivel y dimensión */
+    tempDimension.nivel = nivel;
 
-      const objetoModificado = {
-        dimension: objeto.dimension,
-        nivel: nivel,
-        fortaleza: fortaleza,
-        debilidad: debilidad,
-      };
+    porcentaje <= total
+      ? (tempDimension.debilidad = true)
+      : (tempDimension.fortaleza = true);
 
-      nuevoArreglo.push(objetoModificado);
-    });
-    console.log(nuevoArreglo);
+    let tempArray = fortalezaDebilidades.filter(
+      (e) =>
+        e.dimension === tempDimension.dimension &&
+        e.nivel === tempDimension.nivel
+    )[0];
+    if (tempArray) {
+      if (tempDimension.debilidad) {
+        tempDimension.texto = tempArray.debilidad;
+      } else if (tempDimension.fortaleza) {
+        if (tempDimension.nivel === "Inicial")
+          tempDimension.nivel = "Incipiente";
+        else if (tempDimension.nivel === "En Desarrollo")
+          tempDimension.nivel = "Inicial";
+        else if (tempDimension.nivel === "Establecido")
+          tempDimension.nivel = "En Desarrollo";
+        else if (tempDimension.nivel === "Avanzado")
+          tempDimension.nivel = "Establecido";
+        else if (tempDimension.nivel === "Digital")
+          tempDimension.nivel = "Avanzado";
+
+        tempArray = fortalezaDebilidades.filter(
+          (e) =>
+            e.dimension === tempDimension.dimension &&
+            e.nivel === tempDimension.nivel
+        )[0];
+
+        tempDimension.texto = tempArray.fortaleza;
+      }
+    }
+    setArrayDimension((prevArray) => [...prevArray, tempDimension]);
   };
 
   return (
     <div className="container pt-4 col-xxl-8 mb-4" id="father">
       <div id="my-pdf-content">
-        <h1 className="text-center">Evaluación de Capacidad Digital</h1>
+        {!resultShow ? (
+          <h1 className="text-center">Evaluación de Capacidad Digital</h1>
+        ) : (
+          <h1 className="text-center">Informe Madurez Digital</h1>
+        )}
+
         <Modal show={showModal} onHide={handleClose} backdrop="static">
           <Modal.Header>
             <Modal.Title>Ayudanos con el nombre de tu organización</Modal.Title>
@@ -582,8 +618,6 @@ function Formulario() {
                   }
                 );
                 setResultShow(true);
-                console.log(respuestas);
-                console.log(preguntasNegativas);
               }}
             >
               Ver Diagnóstico
@@ -610,10 +644,11 @@ function Formulario() {
                     />
                   </Col>
                   <Col className="col-12 col-md-6">
+                    <p className="text-end">Fecha: {now}</p>
                     <GaugeChart
                       id="gauge-chart2"
                       nrOfLevels={6}
-                      percent={total.toFixed(2) / 100}
+                      percent={total.toFixed(0) / 100}
                       colors={["#1c67e8", "#bff593"]}
                       textColor="#000000"
                       cornerRadius={0}
@@ -631,6 +666,47 @@ function Formulario() {
                       {/* <p id="porcentaje" className="hidden-news">
                       Promedio del porcentaje fue: {total.toFixed(2)}%
                     </p> */}
+                      <Table striped bordered size="sm" className="w-75">
+                        <thead>
+                          <tr>
+                            <th>Porcentaje</th>
+                            <th>Madurez</th>
+                            <th>Nivel</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>0%</td>
+                            <td>10%</td>
+                            <td>Incipiente</td>
+                          </tr>
+                          <tr>
+                            <td>11%</td>
+                            <td>20%</td>
+                            <td>Inicial</td>
+                          </tr>
+                          <tr>
+                            <td>21%</td>
+                            <td>40%</td>
+                            <td>En Desarrollo</td>
+                          </tr>
+                          <tr>
+                            <td>41%</td>
+                            <td>60%</td>
+                            <td>Establecido</td>
+                          </tr>
+                          <tr>
+                            <td>61%</td>
+                            <td>80%</td>
+                            <td>Avanzado</td>
+                          </tr>
+                          <tr>
+                            <td>81%</td>
+                            <td>100%</td>
+                            <td>Digital</td>
+                          </tr>
+                        </tbody>
+                      </Table>
                     </div>
                   </Col>
                 </Row>
@@ -683,7 +759,6 @@ function Formulario() {
                       className="btn btn-primary mb-4 col-auto"
                       onClick={() => {
                         setShowRuta(true);
-                        getFortalezaAndDebilidades();
                       }}
                     >
                       Obtener hoja de ruta
@@ -693,11 +768,11 @@ function Formulario() {
                 {showRuta && (
                   <Row>
                     <Col className="col-12">
-                      <h2>Fortalezas y debilidades de la organización</h2>
+                      <h2 className="text-center">Fortalezas y debilidades de la organización</h2>
                     </Col>
                     <Col className="col-12">
-                      <Table striped bordered hover>
-                        <thead>
+                      <Table striped bordered responsive>
+                        <thead className="bg-primary text-light">
                           <tr>
                             <th>Fortalezas</th>
                             <th>Debilidades</th>
@@ -705,12 +780,50 @@ function Formulario() {
                         </thead>
                         <tbody>
                           <tr>
-                            <td>FDF</td>
-                            <td>FS</td>
-                          </tr>
-                          <tr>
-                            <td>F</td>
-                            <td>FFFDS</td>
+                            <td className="w-50">
+                              <ListGroup
+                                as="ol"
+                                variant="flush"
+                                className="bg-transparent"
+                              >
+                                {arrayDimension
+                                  .filter((e) => e.fortaleza)
+                                  .map((e, i) => {
+                                    return (
+                                      <ListGroup.Item
+                                        key={i}
+                                        as="li"
+                                        className="bg-transparent"
+                                      >
+                                        <h6>{e.dimension}</h6>
+                                        {e.texto}
+                                      </ListGroup.Item>
+                                    );
+                                  })}
+                              </ListGroup>
+                            </td>
+                            <td>
+                              <ListGroup
+                                as="ol"
+                                variant="flush"
+                                className="bg-transparent"
+                              >
+                                {arrayDimension
+                                  .filter((e) => e.debilidad)
+                                  .map((e, i) => {
+                                    return (
+                                      <ListGroup.Item
+                                        key={i}
+                                        as="li"
+                                        className="bg-transparent"
+                                      >
+                                        <h6>{e.dimension}</h6>
+                                        {e.texto}
+                                      </ListGroup.Item>
+                                    );
+                                  })}
+                              </ListGroup>
+                            </td>
                           </tr>
                         </tbody>
                       </Table>
@@ -719,6 +832,7 @@ function Formulario() {
                 )}
                 {showRuta && (
                   <Row>
+                    <h2 className="text-center">Hoja de Ruta</h2>
                     <Col>
                       <p>
                         La siguiente tabla muestra la hoja de ruta a seguir en

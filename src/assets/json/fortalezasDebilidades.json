@@ -1,6 +1,12 @@
 [
   {
     "dimension": "Estrategia",
+    "nivel": "Incipiente",
+    "fortaleza": "La organización cuenta con una estrategia de negocio",
+    "debilidad": "La organización no cuenta con una estrategia de negocio"
+  },
+  {
+    "dimension": "Estrategia",
     "nivel": "Inicial",
     "fortaleza": "La organización cuenta con un plan estratégico que considera una estrategia digital",
     "debilidad": "La organización  no cuenta con un plan estratégico que que incluya una estrategia digital"
@@ -28,6 +34,12 @@
     "nivel": "Digital",
     "fortaleza": "Los ingresos generados a partir de los negocios digitales de la organización son invertidos constantemente en nuevas iniciativas digitales",
     "debilidad": "Los ingresos generados a partir de los negocios digitales no se estan reinvirtiendo en nuevas iniciativas digitales"
+  },
+  {
+    "dimension": "Gobernanza y liderazgo",
+    "nivel": "Incipiente",
+    "fortaleza": "La organización cuenta con objetivos estratégicos y cargos que demuestran liderazgo",
+    "debilidad": "La organización no posee objetivos estratégicos, ni contempla cargos de liderazgo en su organigrama"
   },
   {
     "dimension": "Gobernanza y liderazgo",
@@ -61,33 +73,45 @@
   },
   {
     "dimension": "Tecnología",
+    "nivel": "Incipiente",
+    "fortaleza": "La organización posee equipos de computo para su operación",
+    "debilidad": "La organización no cuenta con los equipos de computo necesarios para la ejecución de sus tareas"
+  },
+  {
+    "dimension": "Tecnología",
     "nivel": "Inicial",
-    "fortaleza": "",
-    "debilidad": ""
+    "fortaleza": "La organización cuenta con herramientas de bases de datos, gestión colaborativa,  antivirus para la protección de equipos y tiene iniciativas en la transformación de la tecnología",
+    "debilidad": "La organización no cuenta con algunas de las siguientes herramientas: bases de datos, gestión colaborativa, antivirus y no tiene iniciativas de transformación de la tecnología"
   },
   {
     "dimension": "Tecnología",
     "nivel": "En Desarrollo",
-    "fortaleza": "",
-    "debilidad": ""
+    "fortaleza": "La organización cuenta con un plan de gestión de datos, estrategia de backup para el respaldo de la información, protección con cifrado de equipos,  inventarios de activos tecnológicos, herramientas de videoconferencia y cuenta con un responsable  de tecnología",
+    "debilidad": "La organización no cuenta con algunos de los siguientes elementos: estrategia de backup, cifrado e inventarios de activos tecnológicos, herramientas de videoconferencia ni con un responsable de tecnología"
   },
   {
     "dimension": "Tecnología",
     "nivel": "Establecido",
-    "fortaleza": "",
-    "debilidad": ""
+    "fortaleza": "La organización esta implementando analítica de datos para la toma de decisiones, cuenta con políticas de seguridad para proteger la información e indicadores para medir la gestión de  TI",
+    "debilidad": "La organización no usa la analítica de datos para la toma de decisiones ni cuenta con pólíticas de seguridad de la información o no cuenta con indicadores para medir la gestión de  TI"
   },
   {
     "dimension": "Tecnología",
     "nivel": "Avanzado",
-    "fortaleza": "",
-    "debilidad": ""
+    "fortaleza": "La organización cuenta con una estrategia de TI alineadea con la del negocio, esta usando la analítica de datos para toma de decisiones y cuenta con indicadores que le permiten evaluar el uso y apropiación de las herramientas colaborativas",
+    "debilidad": "La organización no cumple con alguno de los siguiente elementos: no usa la analítica de datos para toma de decisiones, la estrategia de TI no se alinea con la del negocio o no hay indicadores que midan el uso y apropiación de las herramientas colaborativas"
   },
   {
     "dimension": "Tecnología",
     "nivel": "Digital",
-    "fortaleza": "",
-    "debilidad": ""
+    "fortaleza": "La organización cuenta con una estrategia de ciberseguridad sólida, la análitica de datos respalda la innovación y la productividad esta siendo impulsada por la gestión colaborativa",
+    "debilidad": "La organización no cuenta con una estrategia de ciberseguridad sólida y/o no se cuenta con productividad a partir de la gestión colaborativa"
+  },
+  {
+    "dimension": "Procesos",
+    "nivel": "Incipiente",
+    "fortaleza": "La organización cuenta con áreas/departamentos, con roles y funciones definidos",
+    "debilidad": "La organización en su estructura no tiene áreas/departamentos definidos"
   },
   {
     "dimension": "Procesos",
@@ -121,63 +145,81 @@
   },
   {
     "dimension": "Cliente",
+    "nivel": "Incipiente",
+    "fortaleza": "La organización cuenta con información de sus clientes",
+    "debilidad": "La organización no esta almacenando información de sus clientes"
+  },
+  {
+    "dimension": "Cliente",
     "nivel": "Inicial",
-    "fortaleza": "",
-    "debilidad": ""
+    "fortaleza": "La organización cuenta con información almacenada y clasificada de sus clientes",
+    "debilidad": "La organización no cuenta con información almacenada y clasificada de sus clientes"
   },
   {
     "dimension": "Cliente",
     "nivel": "En Desarrollo",
-    "fortaleza": "",
-    "debilidad": ""
+    "fortaleza": "La organización esta considerando la omnicanalidad y/o cuenta con canales digitales integrados en los procesos de comunicación y servicio",
+    "debilidad": "La organización no cuenta con canales con canales digitales integrados en los procesos de comunicación y servicio que le permitan llegar a una visión omnicanal"
   },
   {
     "dimension": "Cliente",
     "nivel": "Establecido",
-    "fortaleza": "",
-    "debilidad": ""
+    "fortaleza": "La organización esta ejecutando esfuerzos hacia la omnicanalidad y/o cuenta con servicios/productos digitales integrados en las interfaces y procesos comerciales generando un impacto en la experiencia del cliente",
+    "debilidad": "La organización no cuenta con servicios/productos digitales integrados en las interfaces y procesos comerciales y/o no esta incentivando la participación del cliente en la creación de productos/servicios"
   },
   {
     "dimension": "Cliente",
     "nivel": "Avanzado",
-    "fortaleza": "",
-    "debilidad": ""
+    "fortaleza": "La organización diseña y/o mejora servicios con la participación del cliente y/o a partir de los datos y experiencia del cliente",
+    "debilidad": "La organización no esta diseñando y/o mejorando sus productos/servicios a partir de la participación del cliente y/o los datos y experiencia del cliente"
   },
   {
     "dimension": "Cliente",
     "nivel": "Digital",
-    "fortaleza": "",
-    "debilidad": ""
+    "fortaleza": "La organización cuenta con comunicación personalizada al cliente y esta desarrollando nuevos servicios/productos digitales a partir del conocimiento del cliente y con su participación",
+    "debilidad": "La organización no cuenta con una comunicación personalizada al cliente y/o el desarrollo de sus  nuevos servicios/productos digitales no cuentan con la participación del cliente"
+  },
+  {
+    "dimension": "Cultura",
+    "nivel": "Incipiente",
+    "fortaleza": "La dirección de la organización demuestra interés en la transformación digital",
+    "debilidad": "La dirección de la organización no demuestra interés en la transformación digital y/o los colaboradores no estan familiarizados con la tecnología"
   },
   {
     "dimension": "Cultura",
     "nivel": "Inicial",
-    "fortaleza": "",
-    "debilidad": ""
+    "fortaleza": "En la organización la dirección identifica al empleado como clave del éxito en la transformación digital y los empleados están familiarizados con la tecnología o productos existentes",
+    "debilidad": "En la organización los empleados no están familiarizados con la tecnología o productos existentes y/o no se cuenta con iniciativas orientadas a la innovación"
   },
   {
     "dimension": "Cultura",
     "nivel": "En Desarrollo",
-    "fortaleza": "",
-    "debilidad": ""
+    "fortaleza": "La organización fomenta la colaboración, el trabajo flexible, la innovación y cuenta con indicadores para medirla",
+    "debilidad": "La organización no cuenta con indicadores claves para medir los objetivos de innovación y/o no fomenta la colaboración y/o trabajo flexible y/o la innovación"
   },
   {
     "dimension": "Cultura",
     "nivel": "Establecido",
-    "fortaleza": "",
-    "debilidad": ""
+    "fortaleza": "En la organización la dirección tiene una comunicación continua de la estrategia digital, promueve el liderazgo de los empleados y monitorean los indicadores de éxito, al igual que identifica mejora en los objetivos de innovación",
+    "debilidad": "En la organización no hay una comunicación clara de la estrategia digital y/o no se promueve el liderazgo de los empleados y/o no se monitorean los indicadores de éxito"
   },
   {
     "dimension": "Cultura",
     "nivel": "Avanzado",
-    "fortaleza": "",
-    "debilidad": ""
+    "fortaleza": "La organización tiene al cliente como centro de sus objetivos, es ágil, permite la autogestión y el personal esta comprometido con la transformación digital",
+    "debilidad": "La organización no tiene una orientación ágil y/o hacia el cliente como centro de los objetivos y/o promueve la autogestión y/o el compromiso del personal con la transformación digital"
   },
   {
     "dimension": "Cultura",
     "nivel": "Digital",
-    "fortaleza": "",
-    "debilidad": ""
+    "fortaleza": "La organización es flexible, prioriza la experiencia del cliente y se centra en la innovación digital",
+    "debilidad": "La organización no se adapta fácilmente a los cambios del mercado y/o no se centra en la innovación digital"
+  },
+  {
+    "dimension": "Gente y Habilidades",
+    "nivel": "Incipiente",
+    "fortaleza": "La organización ha identificado la necesidad de que sus colaboradores desarrollen competencias digitales",
+    "debilidad": "La organización no ha identificado como  necesidad el desarrollo de las competencias digitales en sus colaboradores"
   },
   {
     "dimension": "Gente y Habilidades",
